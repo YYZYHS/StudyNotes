@@ -1,0 +1,22 @@
+17周
+数据结构
+29   1.8h/周 1h48min
+操作系统
+25   1.4h/周 1h24min
+计算机组成原理
+33   2h/周   2h00min
+计算机网络
+22   1.3h/周  1h18min
+python 52周
+55  1.05h/周  1h3min
+
+
+\left\{
+	\begin{array}{l}
+	\end{array}
+\right.
+
+\left.
+	\begin{array}{l}
+	\end{array}
+\right\}
