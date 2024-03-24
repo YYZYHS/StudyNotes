@@ -1,0 +1,167 @@
+{
+  "main": {
+    "id": "1e330cc44ec6f7ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "05a2cbe189bfc3ab",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4e3b940a65fd3a36",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9a99d974a1dd1261",
+    "type": "split",
+    "children": [
+      {
+        "id": "deb17560d7d7530f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e118d70931540fe4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4ab557e1d47d6174",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "034403bebadf9e2e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 304.5
+  },
+  "right": {
+    "id": "83528fe38422cdb4",
+    "type": "split",
+    "children": [
+      {
+        "id": "2fd3344e4719176f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "86a2a0cf9c900618",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "020f3b6fef2c66ef",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0a19d7492013fd03",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "ac6e3a701dcc51a4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "markdown-importer:打开 Markdown 格式转换器": false
+    }
+  },
+  "active": "4e3b940a65fd3a36",
+  "lastOpenFiles": [
+    "C++/黑马程序员C++.md",
+    "hello算法/hello-algo-1.0.0b6-zh-cpp.pdf",
+    "Git分布式管理工具/git分布式版本控制工具.md",
+    "王道408/markdown笔记/数据结构.md",
+    "点此查看静态顺序表C语言格式定义.md",
+    "王道408/markdown笔记/数据结构.assets/image-20240307213709210.png",
+    "点此查看静态顺序表C语言格式定义此处.md",
+    "王道408/markdown笔记/计算机组成原理.md",
+    "未命名 1.canvas",
+    "未命名.canvas",
+    "2024-03-24.md",
+    "王道408/markdown笔记/计算机网络.md",
+    "王道408/markdown笔记/操作系统.md",
+    "高中知识/高中英语人教版1.pdf",
+    "高中知识/高中英语.md",
+    "高中知识/高中数学.md",
+    "高中知识/高中数学.pdf",
+    "王道408/markdown笔记/计算机网络.assets/网络拓扑结构.png",
+    "王道408/markdown笔记/操作系统.assets/image-20240314220401962.png",
+    "王道408/markdown笔记/操作系统.assets/image-20240314221532440.png",
+    "Python编程基础/Python编程基础.md",
+    "README.md"
+  ]
+}
