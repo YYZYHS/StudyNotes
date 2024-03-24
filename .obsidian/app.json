@@ -1,3 +1,5 @@
 {
-  "showLineNumber": true
+  "showLineNumber": true,
+  "vimMode": false,
+  "defaultViewMode": "source"
 }
