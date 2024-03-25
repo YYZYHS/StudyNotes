@@ -4,47 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "e31f95537cd2c1b9",
+        "id": "de37a59042dd328b",
         "type": "tabs",
         "children": [
           {
-            "id": "d834c12b3fef6681",
+            "id": "94b521beb36bc8b1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "学习日志/2024-03-25.md",
                 "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "20e5174575d1e6a0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "学习日志/2024-03-24.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f5bd554d4227e373",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "高中知识/高中英语.md",
-                "mode": "preview",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -89,12 +64,21 @@
               "type": "bookmarks",
               "state": {}
             }
+          },
+          {
+            "id": "78702e9b701583e3",
+            "type": "leaf",
+            "state": {
+              "type": "surfing-tab-tree",
+              "state": {}
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 304.5
+    "width": 304.5,
+    "collapsed": true
   },
   "right": {
     "id": "83528fe38422cdb4",
@@ -110,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "高中知识/高中英语.md",
+                "file": "学习日志/2024-03-25.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "高中知识/高中英语.md",
+                "file": "学习日志/2024-03-25.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "高中知识/高中英语.md"
+                "file": "学习日志/2024-03-25.md"
               }
             }
           },
@@ -175,11 +159,12 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 375.5
+    "width": 375.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -192,30 +177,34 @@
       "excel:创建 Excel 文件": false
     }
   },
-  "active": "f5bd554d4227e373",
+  "active": "94b521beb36bc8b1",
   "lastOpenFiles": [
-    "学习日志/2024-03-24.md",
     "高中知识/高中英语.md",
-    "学习计划.md",
-    "README.md",
-    "高中知识/高中英语人教版1.pdf",
-    "学习日志/2024-03-25.md",
+    "学习日志/2024-03-26.md",
     "法律/民法典.pdf",
+    "Qt/Qt.md",
+    "学习日志/2024-03-25.md",
+    "Qt/新建 文本文档.txt",
+    "Qt",
+    "新建文件夹",
+    "王道408/计算机网络.md",
+    "学习日志/日志模板/日志模板1.md",
+    "学习日志/2024-03-24.md",
+    "学习日志/日志模板",
+    "README.md",
+    "学习计划.md",
+    "高中知识/高中英语人教版1.pdf",
     "法律/mso9935.tmp",
     "法律/mso7BC9.tmp",
     "法律/~$民法典.docx",
     "学习计划.xlsx",
     "Excel 2024-03-24 23.51.57.sheet.md",
     "学习计划.sheet.md",
-    "学习计划.sheet",
-    "学习计划 - 副本.xlsx",
     "Excel 2024-03-24 23.50.21.sheet.md",
     "2024-W12.md",
     "王道408/markdown笔记/操作系统.md",
     "未命名.canvas",
-    "学习日志",
     "C++/黑马程序员C++.md",
-    "hello算法/hello-algo-1.0.0b6-zh-cpp.pdf",
     "Git分布式管理工具/git分布式版本控制工具.md",
     "王道408/markdown笔记/数据结构.md",
     "点此查看静态顺序表C语言格式定义.md",
