@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\\u56FE\u4E66\u9986\\\u5B66\u4E60\u7B14\u8BB0\\C\u002B\u002B\u4E66\u7C4D\\\u9ED1\u9A6C\u7A0B\u5E8F\u5458C\u002B\u002B\u5B66\u4E60\u4EE3\u7801\\C\u002B\u002B\u6CE8\u91CA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{788ED3AC-728B-4A3F-A47A-5CC42193670E}|C\u002B\u002B\u6CE8\u91CA\\C\u002B\u002B\u6CE8\u91CA.vcxproj|D:\\\u56FE\u4E66\u9986\\\u5B66\u4E60\u7B14\u8BB0\\C\u002B\u002B\u4E66\u7C4D\\\u9ED1\u9A6C\u7A0B\u5E8F\u5458C\u002B\u002B\u5B66\u4E60\u4EE3\u7801\\C\u002B\u002B\u6CE8\u91CA\\C\u002B\u002B\u6CE8\u91CA\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{788ED3AC-728B-4A3F-A47A-5CC42193670E}|C\u002B\u002B\u6CE8\u91CA\\C\u002B\u002B\u6CE8\u91CA.vcxproj|solutionrelative:C\u002B\u002B\u6CE8\u91CA\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\\u56FE\u4E66\u9986\\\u5B66\u4E60\u7B14\u8BB0\\C\u002B\u002B\u4E66\u7C4D\\\u9ED1\u9A6C\u7A0B\u5E8F\u5458C\u002B\u002B\u5B66\u4E60\u4EE3\u7801\\C\u002B\u002B\u6CE8\u91CA\\C\u002B\u002B\u6CE8\u91CA\\main.cpp",
+              "RelativeDocumentMoniker": "C\u002B\u002B\u6CE8\u91CA\\main.cpp",
+              "ToolTip": "D:\\\u56FE\u4E66\u9986\\\u5B66\u4E60\u7B14\u8BB0\\C\u002B\u002B\u4E66\u7C4D\\\u9ED1\u9A6C\u7A0B\u5E8F\u5458C\u002B\u002B\u5B66\u4E60\u4EE3\u7801\\C\u002B\u002B\u6CE8\u91CA\\C\u002B\u002B\u6CE8\u91CA\\main.cpp",
+              "RelativeToolTip": "C\u002B\u002B\u6CE8\u91CA\\main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-28T14:47:18.738Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
