@@ -214,7 +214,7 @@ Date:   Sat Dec 30 12:00:00 2023 +0000
 4. **--graph**：以图的形式显示
 
 ```shell
-git log --all --prettyoneline --abbrev-commit --graph
+git log --all --pretty=oneline --abbrev-commit --graph
 ```
 
 这些选项可以单独使用，也可以组合在一起以实现更精细的提交历史过滤和定制。通过灵活使用这些选项，您可以轻松地查看和分析 Git 项目的提交历史，并根据需要调整输出的内容。
