@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "学习日志/2024-04-13.md",
+                "file": "学习日志/2024-04-15.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "学习日志/2024-04-13.md",
+                "file": "学习日志/2024-04-15.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "学习日志/2024-04-13.md",
+                "file": "学习日志/2024-04-15.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "学习日志/2024-04-13.md"
+                "file": "学习日志/2024-04-15.md"
               }
             }
           },
@@ -178,9 +178,14 @@
   },
   "active": "8b57e3ad659ed0e6",
   "lastOpenFiles": [
+    "D0CCAB30",
+    "王道408/操作系统.assets/image-20240415232700159.png",
+    "~$学习计划.xlsx",
+    "学习日志/2024-04-14.md",
+    "学习日志/2024-04-15.md",
+    "学习日志/2024-04-13.md",
     "README.md",
     "Python编程基础/Python编程基础_noStyle.html",
-    "学习日志/2024-04-13.md",
     "学习日志/日志模板/日志模板1.md",
     "高中知识/高中数学.md",
     "高中知识/高中数学_noStyle.html",
@@ -199,14 +204,12 @@
     "学习日志/2024-03-28.md",
     "C++书籍/黑马程序员C++学习代码/C++注释/C++注释/main.cpp",
     "C++书籍/黑马程序员C++学习代码/C++注释/C++注释.sln",
-    "C++书籍/黑马程序员C++学习代码/C++注释/C++注释/C++注释.vcxproj.filters",
     "学习日志/2024-03-27.md",
     "Git分布式管理工具/git分布式版本控制工具.md",
     "学习日志/2024-03-26.md",
     "Git分布式管理工具/git分布式版本控制工具.assets/image-20240326224744026.png",
     "Git分布式管理工具/git分布式版本控制工具.assets/image-20240326224336593.png",
     "Git分布式管理工具/git分布式版本控制工具.assets/image-20240326224034413.png",
-    "Git分布式管理工具/git分布式版本控制工具.assets/v2-c84e5d4b40ba5b347f8ebad6c132ba67_r-1711463529905-3.jpg",
     "高中知识/高中英语.md",
     "Qt/Qt.md",
     "学习日志/2024-03-25.md",
@@ -222,8 +225,6 @@
     "C++/黑马程序员C++.md",
     "王道408/markdown笔记/数据结构.md",
     "点此查看静态顺序表C语言格式定义.md",
-    "点此查看静态顺序表C语言格式定义此处.md",
-    "王道408/markdown笔记/计算机组成原理.md",
     "未命名 1.canvas"
   ]
 }
