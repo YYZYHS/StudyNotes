@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "学习日志/2024-04-17.md",
+                "file": "Python编程基础/Python编程基础.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "学习日志/2024-04-17.md",
+                "file": "Python编程基础/Python编程基础.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "学习日志/2024-04-17.md",
+                "file": "Python编程基础/Python编程基础.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "学习日志/2024-04-17.md"
+                "file": "Python编程基础/Python编程基础.md"
               }
             }
           },
@@ -178,8 +178,10 @@
   },
   "active": "8b57e3ad659ed0e6",
   "lastOpenFiles": [
-    "学习日志/2024-04-16.md",
+    "王道408/操作系统.md",
+    "学习日志/2024-05-17.md",
     "学习日志/2024-04-17.md",
+    "学习日志/2024-04-16.md",
     "学习日志/2024-04-15.md",
     "D0CCAB30",
     "王道408/操作系统.assets/image-20240415232700159.png",
@@ -223,8 +225,6 @@
     "2024-W12.md",
     "王道408/markdown笔记/操作系统.md",
     "未命名.canvas",
-    "C++/黑马程序员C++.md",
-    "王道408/markdown笔记/数据结构.md",
     "未命名 1.canvas"
   ]
 }
