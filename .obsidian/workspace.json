@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "f0119004d6a27608",
+        "id": "e07375add3434985",
         "type": "tabs",
         "children": [
           {
-            "id": "3395f379d623967a",
+            "id": "2b46bcb443a0d29f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "学习日志/2024-06-15.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -77,7 +73,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 304.5
+    "width": 304.5,
+    "collapsed": true
   },
   "right": {
     "id": "83528fe38422cdb4",
@@ -93,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "学习日志/2024-06-15.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +106,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "学习日志/2024-06-15.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -132,9 +127,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "学习日志/2024-06-15.md"
-              }
+              "state": {}
             }
           },
           {
@@ -162,7 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 202.5
+    "width": 287.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -175,14 +168,16 @@
       "excel:创建 Excel 文件": false
     }
   },
-  "active": "3395f379d623967a",
+  "active": "2b46bcb443a0d29f",
   "lastOpenFiles": [
+    "高中知识/高中数学.md",
     "学习日志/2024-06-16.md",
     "Anki文字转语音文本.md",
+    "王道408/计算机组成原理.md",
+    "王道408/操作系统.md",
     "学习日志/2024-06-15.md",
     "学习日志/日志模板/日志模板1.md",
     "Python编程基础/Python编程基础.md",
-    "王道408/操作系统.md",
     "学习日志/2024-05-17.md",
     "学习日志/2024-04-17.md",
     "学习日志/2024-04-16.md",
@@ -194,7 +189,6 @@
     "学习日志/2024-04-13.md",
     "README.md",
     "Python编程基础/Python编程基础_noStyle.html",
-    "高中知识/高中数学.md",
     "高中知识/高中数学_noStyle.html",
     "高中知识/高中数学.pdf",
     "高中知识/高中数学.assets/image-20240413225735627.png",
@@ -222,7 +216,6 @@
     "王道408/计算机网络.md",
     "学习日志/2024-03-24.md",
     "学习计划.md",
-    "Excel 2024-03-24 23.51.57.sheet.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
