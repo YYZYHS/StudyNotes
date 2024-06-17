@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "e6608df300294280",
+            "id": "9b520052b850c8c0",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -77,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 304.5
+    "width": 304.5,
+    "collapsed": true
   },
   "right": {
     "id": "83528fe38422cdb4",
@@ -175,13 +176,23 @@
       "excel:创建 Excel 文件": false
     }
   },
-  "active": "e6608df300294280",
+  "active": "9b520052b850c8c0",
   "lastOpenFiles": [
     "学习日志/日志模板/日志模板1.md",
     "学习日志/2024-06-17.md",
+    "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
+    "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
+    "Anki_TTS备份/Anki文字转语音文本_高中数学.md",
+    "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
+    "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
+    "Anki_TTS备份/Anki文字转语音文本_数据结构.md",
+    "Anki_TTS备份/Anki文字转语音文本_民法典.md",
+    "Anki_TTS备份/Anki文字转语音文本_操作系统.md",
+    "Anki_TTS备份/Anki文字转语音文本_Python编程基础.md",
+    "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
+    "Anki_TTS备份",
     "高中知识/高中数学.md",
     "学习日志/2024-06-16.md",
-    "Anki文字转语音文本.md",
     "王道408/计算机组成原理.md",
     "王道408/操作系统.md",
     "学习日志/2024-06-15.md",
@@ -210,19 +221,9 @@
     "Pasted image 20240413213209.png",
     "Pasted image 20240413212858.png",
     "学习日志/2024-04-04.md",
-    "学习日志/2024-03-28.md",
-    "C++书籍/黑马程序员C++学习代码/C++注释/C++注释/main.cpp",
-    "学习日志/2024-03-27.md",
-    "Git分布式管理工具/git分布式版本控制工具.md",
-    "学习日志/2024-03-26.md",
     "Git分布式管理工具/git分布式版本控制工具.assets/image-20240326224744026.png",
     "Git分布式管理工具/git分布式版本控制工具.assets/image-20240326224336593.png",
     "Git分布式管理工具/git分布式版本控制工具.assets/image-20240326224034413.png",
-    "高中知识/高中英语.md",
-    "Qt/Qt.md",
-    "学习日志/2024-03-25.md",
-    "王道408/计算机网络.md",
-    "学习日志/2024-03-24.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
