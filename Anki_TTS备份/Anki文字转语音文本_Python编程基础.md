@@ -8,6 +8,9 @@
 
 ## Python0014 chr()函数
 Python中的chr()函数；该函数的原型是：chr(i)。它会返回整数i对应的Unicode字符。
+
+## Python0017 print函数----通过字符输出ASCII码
+通过字符输出ASCII码，我们可以使用ord()函数。比如，print(ord('A')) 这一行代码会输出字符A的ASCII码。同样，print(ord('杨')) 这一行代码会输出字符“杨”的ASCII码。
 ## Python0023 单行注释
 单行注释有两种方式,一种是在代码后面加井号,另一种是单独一行写注释
 ## Python0022 Python中的注释
