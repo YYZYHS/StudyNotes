@@ -4,35 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "7da1ca48306288bc",
+        "id": "ae0bc763817edab1",
         "type": "tabs",
         "children": [
           {
-            "id": "69f3953afb5a5d66",
+            "id": "4e6c9c1b69f243ac",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "王道408/计算机组成原理.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "92dee0fbbc2c5c1b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +106,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,9 +127,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md"
-              }
+              "state": {}
             }
           },
           {
@@ -176,7 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 798.5
+    "width": 401.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -189,21 +168,23 @@
       "excel:创建 Excel 文件": false
     }
   },
-  "active": "92dee0fbbc2c5c1b",
+  "active": "4e6c9c1b69f243ac",
   "lastOpenFiles": [
     "王道408/计算机组成原理.md",
+    "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
+    "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
+    "Anki_TTS备份/Anki文字转语音文本_操作系统.md",
+    "Anki_TTS备份/Anki文字转语音文本_民法典.md",
+    "Anki_TTS备份/Anki文字转语音文本_Python编程基础.md",
+    "学习日志/2024-06-20.md",
+    "学习日志/2024-06-19.md",
+    "学习日志/2024-06-18.md",
     "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
     "Anki_TTS备份/Anki文字转语音文本_数据结构.md",
-    "学习日志/2024-06-18.md",
-    "Anki_TTS备份/Anki文字转语音文本_操作系统.md",
     "王道408/操作系统.md",
     "王道408/计算机网络.md",
-    "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
     "Anki_TTS备份/Anki文字转语音文本_高中数学.md",
-    "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
     "王道408/数据结构.md",
-    "Anki_TTS备份/Anki文字转语音文本_Python编程基础.md",
-    "Anki_TTS备份/Anki文字转语音文本_民法典.md",
     "学习日志/2024-06-17.md",
     "学习日志/日志模板/日志模板1.md",
     "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
@@ -216,11 +197,9 @@
     "学习日志/2024-05-17.md",
     "学习日志/2024-04-17.md",
     "学习日志/2024-04-16.md",
-    "学习日志/2024-04-15.md",
     "D0CCAB30",
     "王道408/操作系统.assets/image-20240415232700159.png",
     "~$学习计划.xlsx",
-    "学习日志/2024-04-14.md",
     "Python编程基础/Python编程基础_noStyle.html",
     "高中知识/高中数学_noStyle.html",
     "高中知识/高中数学.pdf",
