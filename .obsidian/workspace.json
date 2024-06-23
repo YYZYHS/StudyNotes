@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_计算机网络.md"
+                "file": "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md"
               }
             }
           },
@@ -178,9 +178,15 @@
   },
   "active": "4e6c9c1b69f243ac",
   "lastOpenFiles": [
-    "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
+    "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
     "Anki_TTS备份/Anki文字转语音文本_高中数学.md",
+    "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
+    "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
     "Anki_TTS备份/Anki文字转语音文本_民法典.md",
+    "Anki_TTS备份/Anki文字转语音文本_Python编程基础.md",
+    "Python编程基础/Python编程基础.md",
+    "学习日志/2024-06-23.md",
+    "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
     "Qt/StudyCode/学生运动会管理系统_C/SportsMeet/main.c.QuatPq",
     "Qt/StudyCode/学生运动会管理系统_C/build-SportsMeet-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/SportsMeet.exe",
     "Qt/StudyCode/学生运动会管理系统_C/SportsMeet/main.c.UJTZuS",
@@ -191,16 +197,12 @@
     "Qt/StudyCode/学生运动会管理系统_C/build-SportsMeet-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/Makefile",
     "Qt/StudyCode/学生运动会管理系统_C/build-SportsMeet-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/Makefile.Release",
     "Qt/StudyCode/学生运动会管理系统_C/build-SportsMeet-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/Makefile.Debug",
-    "Anki_TTS备份/Anki文字转语音文本_Python编程基础.md",
     "学习日志/2024-06-21.md",
     "学习日志/2024-06-19.md",
     "学习日志/2024-06-18.md",
     "学习日志/2024-06-20.md",
-    "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
-    "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
     "王道408/计算机组成原理.md",
     "Anki_TTS备份/Anki文字转语音文本_操作系统.md",
-    "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
     "Anki_TTS备份/Anki文字转语音文本_数据结构.md",
     "王道408/操作系统.md",
     "王道408/计算机网络.md",
@@ -211,7 +213,6 @@
     "高中知识/高中数学.md",
     "学习日志/2024-06-16.md",
     "学习日志/2024-06-15.md",
-    "Python编程基础/Python编程基础.md",
     "学习日志/2024-05-17.md",
     "王道408/操作系统.assets/image-20240415232700159.png",
     "高中知识/高中数学.assets/image-20240413225735627.png",
