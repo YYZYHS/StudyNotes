@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>黑马程序员C++</title>
+</head>
+<body><center style="font-family: 华文新魏"><font size="12px" color="#4870ac">黑马程序员 C++</font></center>
+<h1 id='c++基础入门'>C++基础入门</h1>
+<h2 id='第1章-c++初识'>第1章 C++初识</h2>
+<p>&nbsp;</p>
+<h3 id='11-第一个c++程序'>1.1 第一个C++程序</h3>
+<ul>
+<li><p>编写一个C++程序总共分为4个步骤</p>
+<ul>
+<li>创建项目</li>
+<li>创建文件</li>
+<li>编写代码</li>
+<li>运行程序</li>
+
+</ul>
+</li>
+
+</ul>
+<h4 id='111-创建项目'>1.1.1 创建项目</h4>
+<p>本文档以VS2022版本为演示</p>
+<ol start='' >
+<li>在起始页面选择<code>创建新项目</code></li>
+
+</ol>
+<p><img src="./%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98C++.assets/image-20240320000832354.png" referrerpolicy="no-referrer" alt="image-20240320000832354"></p>
+<ol start='2' >
+<li>选择<code>C++语言</code>,<code>Windows平台</code>,选择<code>空项目</code>,点击<code>下一步</code></li>
+
+</ol>
+<p><img src="./%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98C++.assets/image-20240320000446533.png" referrerpolicy="no-referrer" alt="image-20240320000446533"></p>
+<ol start='3' >
+<li>输入<code>项目名称</code>,选择<code>项目位置</code>,点击<code>创建</code></li>
+
+</ol>
+<p><img src="./%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98C++.assets/image-20240320000922225.png" referrerpolicy="no-referrer" alt="image-20240320000922225"></p>
+<h4 id='112-创建文件'>1.1.2 创建文件</h4>
+<ol start='' >
+<li>右击<code>项目名称</code>,选择<code>生成--&gt;新建项</code></li>
+
+</ol>
+<p><img src="./%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98C++.assets/image-20240320001105466.png" referrerpolicy="no-referrer" alt="image-20240320001105466"></p>
+<ol start='2' >
+<li>输入<code>文件名</code>,选择<code>创建</code></li>
+
+</ol>
+<p><img src="./%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98C++.assets/image-20240320001230981.png" referrerpolicy="no-referrer" alt="image-20240320001230981"></p>
+<h4 id='113-编写代码'>1.1.3 编写代码</h4>
+<pre><code class='language-c++' lang='c++'>// 第一个C++程序
+#include &lt;iostream&gt;
+using namespace std;
+
+/*
+ main是一个程序的入口
+ 每个程序都必须有且仅有一个人main函数
+*/
+int main()
+{
+	cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; endl;
+
+	system(&quot;pause&quot;);
+
+	return 0;
+}
+</code></pre>
+<p>&nbsp;</p>
+<h4 id='114-运行程序'>1.1.4 运行程序</h4>
+<p>以VS2022版本为演示运行程序的过程</p>
+<p><img src="./%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98C++.assets/image-20240320001752001.png" referrerpolicy="no-referrer" alt="image-20240320001752001"></p>
+<h4 id='115-vs2022常用快捷键'>1.1.5 VS2022常用快捷键</h4>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>功能</th><th>快捷键</th></tr></thead>
+<tbody><tr><td>调试运行</td><td>F5</td></tr><tr><td>直接执行(不调试)</td><td>Ctrl+F5</td></tr><tr><td>停止调试</td><td>Shift+F5</td></tr><tr><td>单步调试</td><td>F10</td></tr><tr><td>逐过程调试</td><td>F11</td></tr><tr><td>调试时运行到光标处</td><td>Ctrl+F10</td></tr><tr><td>重构 - 重命名</td><td>Ctrl+R, Ctrl+R</td></tr><tr><td>切换注释</td><td>Ctrl+K, Ctrl+C</td></tr><tr><td>取消注释</td><td>Ctrl+K, Ctrl+U</td></tr><tr><td>一键格式化代码</td><td>Ctrl+K, Ctrl+F</td></tr></tbody>
+</table></figure>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>功能</th><th>快捷键</th></tr></thead>
+<tbody><tr><td>全局搜索</td><td>Ctrl+Shift+F</td></tr><tr><td>查找所有引用</td><td>Shift+F12</td></tr><tr><td>打开代码定义</td><td>F12</td></tr><tr><td>关闭当前文档</td><td>Ctrl+F4</td></tr><tr><td>到光标上一个位置</td><td>Ctrl+-</td></tr><tr><td>到光标下一个位置</td><td>Ctrl+Shift+-</td></tr><tr><td>切换头/源文件</td><td>Ctrl+K, Ctrl+O</td></tr><tr><td>速览声明/定义</td><td>Ctrl+K, Ctrl+J</td></tr></tbody>
+</table></figure>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>功能</th><th>快捷键</th></tr></thead>
+<tbody><tr><td>重构 - 提取方法</td><td>Ctrl+R, Ctrl+M</td></tr><tr><td>重构 - 提取接口</td><td>Ctrl+R, Ctrl+I</td></tr><tr><td>重构 - 提取类</td><td>Ctrl+R, Ctrl+E</td></tr><tr><td>重构 - 检查命名</td><td>Ctrl+R, Ctrl+N</td></tr></tbody>
+</table></figure>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>功能</th><th>快捷键</th></tr></thead>
+<tbody><tr><td>新建项目</td><td>Ctrl+Shift+N</td></tr><tr><td>打开项目或文件</td><td>Ctrl+O</td></tr><tr><td>保存</td><td>Ctrl+S</td></tr><tr><td>重做</td><td>Ctrl+Y</td></tr><tr><td>撤销</td><td>Ctrl+Z</td></tr></tbody>
+</table></figure>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>功能</th><th>快捷键</th></tr></thead>
+<tbody><tr><td>切换全屏模式</td><td>Alt+Shift+Enter</td></tr><tr><td>显示智能提示</td><td>Ctrl+空格</td></tr></tbody>
+</table></figure>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>功能</th><th>快捷键</th></tr></thead>
+<tbody><tr><td>打开解决方案资源管理器</td><td>Ctrl+Alt+L</td></tr><tr><td>打开/关闭解决方案资源管理器</td><td>Ctrl+Alt+L</td></tr><tr><td>调试窗口切换</td><td>Ctrl+Alt+I</td></tr><tr><td>显示调试快捷菜单</td><td>Ctrl+Alt+NumPad 1</td></tr><tr><td>显示/隐藏错误列表窗口</td><td>Ctrl+\, E</td></tr><tr><td>显示/隐藏输出窗口</td><td>Ctrl+\, O</td></tr><tr><td>显示/隐藏属性窗口</td><td>F4</td></tr><tr><td>显示/隐藏工具箱</td><td>Ctrl+Alt+X</td></tr><tr><td>显示/隐藏搜索结果窗口</td><td>Ctrl+\, S</td></tr><tr><td>显示/隐藏团队资源管理器</td><td>Ctrl+\, G</td></tr><tr><td>显示/隐藏团队资源管理器</td><td>Ctrl+\, G</td></tr></tbody>
+</table></figure>
+<p>这些快捷键可以帮助您提高在 Visual Studio 中的工作效率。</p>
+<h3 id='12-注释'>1.2 注释</h3>
+<ul>
+<li><p>作用：在代码中加一些说明和解释，方便自己或其他程序员阅读代码。</p>
+</li>
+<li><p>注释的两种格式：</p>
+<ol start='' >
+<li><p>单行注释：<code>// 描述内容</code></p>
+<ul>
+<li>通常放在一行代码的上方，或者一条语句的末尾，对该行代码进行说明。</li>
+
+</ul>
+</li>
+<li><p>多行注释：<code>/* 描述信息 */</code></p>
+<ul>
+<li>通常放在一段代码的上方，对该段代码做整体说明。</li>
+
+</ul>
+</li>
+
+</ol>
+</li>
+<li><p>提示：编译器在编译代码时，会忽略注释的内容。</p>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>// 示例：
+// 这是一个单行注释
+int x = 5; // 这也是一个单行注释，对变量赋值进行说明
+
+/*
+这是一个多行注释的示例。
+这里可以写更多的说明信息，对一段代码进行整体描述。
+*/
+</code></pre>
+<p><strong>补充</strong>：在注释中，除了对代码进行说明外，有时也可以记录一些相关的信息，比如作者、日期、修改历史等。这些信息有助于代码的维护和管理。</p>
+<h3 id='13-变量'>1.3 变量</h3>
+<ul>
+<li>作用：给一段指定的内存空间起名。</li>
+<li>语法：<code>数据类型 变量名 = 初始值;</code></li>
+<li>变量存在的意义：方便管理这段内存。</li>
+
+</ul>
+<pre><code class='language-c++' lang='c++'>// 示例：
+int num = 10; // 声明一个整型变量 num，并初始化为 10
+float pi = 3.14; // 声明一个浮点型变量 pi，并初始化为 3.14
+char letter = &#39;A&#39;; // 声明一个字符型变量 letter，并初始化为 &#39;A&#39;
+</code></pre>
+<h3 id='14-常量'>1.4 常量</h3>
+<ul>
+<li><p>作用：用于记录程序中<code>不可更改的数值</code>。</p>
+</li>
+<li><p>C++定义常量有两种方式：</p>
+<ol start='' >
+<li><p>#define 宏常量：<code>#define 常量名 常量值</code></p>
+<ul>
+<li>通常在文件的开头定义，表示一个常量。</li>
+
+</ul>
+</li>
+<li><p>使用 const 修饰的变量：<code>const 数据类型 常量名 = 常量值</code></p>
+<ul>
+<li>通常在变量定义前加关键字 const，修饰该变量为常量，不可修改。</li>
+
+</ul>
+</li>
+
+</ol>
+</li>
+<li><p>推荐使用 const 定义的常量：</p>
+<ul>
+<li>const 常量拥有<code>类型安全性</code>，可以进行类型检查，而宏常量则无法进行类型检查。</li>
+<li>const 常量<code>具有作用域</code>，可以避免宏常量可能带来的命名冲突。</li>
+<li>const 常量会<code>被编译器放入符号表中</code>，有助于调试和程序的可读性。</li>
+
+</ul>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>// 示例：
+#define PI 3.14159 // 定义一个宏常量 PI
+
+const int MAX_SIZE = 100; // 定义一个 const 常量 MAX_SIZE
+
+int main() {
+    // 使用常量
+    int radius = 5;
+    double circleArea = PI * radius * radius; // 使用宏常量计算圆的面积
+    int arr[MAX_SIZE]; // 使用 const 常量定义数组的大小
+    // 其他代码
+    
+    // 错误示例
+    PI = 3;
+    MAX_SIZE = 1000;
+    // 上面的操作是错误的,因为常量不可更改,一旦修改就会报错
+    return 0;
+}
+</code></pre>
+<p>注意：在 C++ 中，推荐使用 const 关键字定义常量，因为它具有更多的优势和安全性。</p>
+<h3 id='15-关键字'>1.5 关键字</h3>
+<ul>
+<li>作用：关键字是编程语言中预先定义好的具有特殊含义的单词，用于实现语法规则和控制程序的行为。</li>
+<li>注意：在定义变量或常量时，不要使用关键字，否则会导致编译错误或语义混淆。</li>
+
+</ul>
+<p>C++关键字如下：</p>
+<p>下面是一个简单的C++关键字表格：</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>关键字</th><th>描述</th></tr></thead>
+<tbody><tr><td>auto</td><td>声明自动变量</td></tr><tr><td>break</td><td>跳出当前循环或switch语句</td></tr><tr><td>case</td><td>switch语句中的分支标签</td></tr><tr><td>char</td><td>字符型数据类型</td></tr><tr><td>class</td><td>定义类</td></tr><tr><td>const</td><td>声明常量</td></tr><tr><td>continue</td><td>继续下一次循环迭代</td></tr><tr><td>default</td><td>switch语句中的默认标签</td></tr><tr><td>delete</td><td>释放由new创建的对象或数组</td></tr><tr><td>do</td><td>循环语句</td></tr><tr><td>double</td><td>双精度浮点数数据类型</td></tr><tr><td>else</td><td>条件语句中的其他选择</td></tr><tr><td>enum</td><td>枚举类型</td></tr><tr><td>explicit</td><td>禁止编译器执行自动类型转换</td></tr><tr><td>extern</td><td>声明外部变量或函数</td></tr><tr><td>false</td><td>布尔类型的假值</td></tr><tr><td>float</td><td>单精度浮点数数据类型</td></tr><tr><td>for</td><td>循环语句</td></tr><tr><td>friend</td><td>友元函数或友元类</td></tr><tr><td>goto</td><td>转移到指定标签位置</td></tr><tr><td>if</td><td>条件语句</td></tr><tr><td>inline</td><td>内联函数</td></tr><tr><td>int</td><td>整数数据类型</td></tr><tr><td>long</td><td>长整数数据类型</td></tr><tr><td>mutable</td><td>可变数据成员</td></tr><tr><td>namespace</td><td>命名空间</td></tr><tr><td>new</td><td>分配动态内存</td></tr><tr><td>operator</td><td>重载运算符</td></tr><tr><td>private</td><td>类的私有成员</td></tr><tr><td>protected</td><td>类的受保护成员</td></tr><tr><td>public</td><td>类的公共成员</td></tr><tr><td>register</td><td>声明寄存器变量</td></tr><tr><td>return</td><td>返回函数值或结束函数执行</td></tr><tr><td>short</td><td>短整数数据类型</td></tr><tr><td>signed</td><td>有符号整数数据类型</td></tr><tr><td>sizeof</td><td>返回对象或类型的字节大小</td></tr><tr><td>static</td><td>声明静态变量</td></tr><tr><td>static_cast</td><td>执行静态类型转换</td></tr><tr><td>struct</td><td>定义结构类型</td></tr><tr><td>switch</td><td>开关语句</td></tr><tr><td>template</td><td>模板</td></tr><tr><td>this</td><td>指向当前对象的指针</td></tr><tr><td>throw</td><td>抛出异常</td></tr><tr><td>true</td><td>布尔类型的真值</td></tr><tr><td>try</td><td>尝试执行代码块，捕获异常</td></tr><tr><td>typedef</td><td>定义类型别名</td></tr><tr><td>typeid</td><td>返回对象的类型信息</td></tr><tr><td>typename</td><td>指定类型名称</td></tr><tr><td>union</td><td>联合类型</td></tr><tr><td>unsigned</td><td>无符号整数数据类型</td></tr><tr><td>using</td><td>使用指定的命名空间或标识符</td></tr><tr><td>virtual</td><td>虚函数关键字</td></tr><tr><td>void</td><td>没有返回值或无参数的函数类型</td></tr><tr><td>volatile</td><td>指示变量可能在程序外部改变</td></tr><tr><td>wchar_t</td><td>宽字符型数据类型</td></tr><tr><td>while</td><td>循环语句</td></tr></tbody>
+</table></figure>
+<p>这些关键字在 C++ 中具有特殊含义，用于实现语言的各种功能和特性。在编写代码时，需要避免将这些关键字用作变量名或其他标识符。</p>
+<h3 id='16-标识符命名规则'>1.6 标识符命名规则</h3>
+<p>标识符命名规则是编程中的基本规范，确保代码的可读性和可维护性。以下是一些常见的标识符命名规则：</p>
+<ul>
+<li><p><strong>作用</strong>：C++规定在给标识符（如变量、常量）命名时必须遵循一定的规则，这些规则有助于确保代码的清晰易懂。</p>
+</li>
+<li><p><strong>约定</strong>：</p>
+<ul>
+<li>标识符不能是关键字。</li>
+<li>标识符只能由字母、数字、下划线组成。</li>
+<li>第一个字符必须为字母或下划线。</li>
+<li>标识符中的字母区分大小写。</li>
+
+</ul>
+</li>
+<li><p><strong>建议</strong>：在命名标识符时，建议遵循以下几点：</p>
+<ul>
+<li><strong>类名</strong>：采用驼峰命名法，首字母大写，其后每个英文单词的第一个字母大写，其他小写。类名通常是名词，用于描述一个对象或实体的抽象概念。例如 UserInfo、Calculator、DatabaseConnection。</li>
+<li><strong>变量名</strong>：采用驼峰命名法，首字母小写，其后每个英文单词的第一个字母大写，其他小写。通常使用“名词”或“形容词+名词”的格式。例如 <code>userName</code>、<code>totalAmount</code>、<code>isInitialized</code>。</li>
+<li><strong>函数名</strong>：采用驼峰命名法，首字母小写，其后每个英文单词的第一个字母大写，其他小写。函数名通常是动词或动词短语，用于描述函数所执行的操作。例如 calculateTotal()、displayMessage()、isValidInput()。</li>
+<li><strong>常量名</strong>：使用大写字母和下划线表示常量，常量名应具有明确的含义，尽量简洁清晰。例如 <code>MAX_VALUE</code>、<code>PI</code>、<code>ERROR_MESSAGE</code>。</li>
+<li><strong>全局变量</strong>：在变量名前加上 <code>g_</code> 前缀，以便与局部变量区分开。例如 <code>g_userName</code>、<code>g_totalAmount</code>。</li>
+<li><strong>静态变量</strong>：在变量名前加上 <code>s_</code> 前缀，以便与非静态变量区分开。例如 <code>s_instanceCount</code>、<code>s_maxValue</code>。</li>
+<li><strong>成员变量</strong>：在变量名前加上 <code>m_</code> 前缀，以便与局部变量或全局变量区分开。例如 <code>m_age</code>、<code>m_salary</code>。</li>
+<li><strong>枚举值</strong>：使用大写字母和下划线表示枚举值，具有清晰的含义，以提高可读性。例如 <code>SUCCESS</code>、<code>FAILURE</code>、<code>STATUS_OK</code>。</li>
+
+</ul>
+</li>
+
+</ul>
+<p>通过遵循这些命名规范，可以使代码更易读、易理解，提高代码的可维护性和可扩展性。</p>
+<h2 id='第2章-数据类型'>第2章 数据类型</h2>
+<p><strong>数据类型存在意义</strong>：给变量分配合适的内存空间，C++规定在创建一个变量或者常量时，必须要指定出相应的放据类型，否则无法给变量分配内存。</p>
+<h3 id='21-整型类型'>2.1 整型类型</h3>
+<ul>
+<li><p>作用：整型变量表示的是整数类型的数据</p>
+</li>
+<li><p>C++中能够表示整型的类型有以下几种方式，区别在于所占内存空间不同：</p>
+<ul>
+<li><figure class='table-figure'><table>
+<thead>
+<tr><th>数据类型</th><th>占用空间</th><th>取值范围</th></tr></thead>
+<tbody><tr><td>short（短整型）</td><td>2字节</td><td><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="14.512ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 6414.2 915.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-5-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-5-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-5-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-5-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-5-TEX-N-223C" d="M55 166Q55 241 101 304T222 367Q260 367 296 349T362 304T421 252T484 208T554 189Q616 189 655 236T694 338Q694 350 698 358T708 367Q722 367 722 334Q722 260 677 197T562 134H554Q517 134 481 152T414 196T355 248T292 293T223 311Q179 311 145 286Q109 257 96 218T80 156T69 133Q55 133 55 166Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-5-TEX-N-2212"></use></g><g data-mml-node="msup" transform="translate(778,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-5-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-5-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-5-TEX-N-35" transform="translate(500,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(2345.9,0)"><use data-c="223C" xlink:href="#MJX-5-TEX-N-223C"></use></g><g data-mml-node="msup" transform="translate(3401.7,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-5-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-5-TEX-N-31"></use><use data-c="35" xlink:href="#MJX-5-TEX-N-35" transform="translate(500,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(4914,0)"><use data-c="2212" xlink:href="#MJX-5-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(5914.2,0)"><use data-c="31" xlink:href="#MJX-5-TEX-N-31"></use></g></g></g></svg></mjx-container><script type="math/tex">-2^{15} \sim 2^{15} -1</script></td></tr><tr><td>int（整型）</td><td>4字节</td><td><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="14.512ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 6414.2 915.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-7-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-7-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-7-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-7-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-7-TEX-N-223C" d="M55 166Q55 241 101 304T222 367Q260 367 296 349T362 304T421 252T484 208T554 189Q616 189 655 236T694 338Q694 350 698 358T708 367Q722 367 722 334Q722 260 677 197T562 134H554Q517 134 481 152T414 196T355 248T292 293T223 311Q179 311 145 286Q109 257 96 218T80 156T69 133Q55 133 55 166Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-7-TEX-N-2212"></use></g><g data-mml-node="msup" transform="translate(778,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-7-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="33" xlink:href="#MJX-7-TEX-N-33"></use><use data-c="31" xlink:href="#MJX-7-TEX-N-31" transform="translate(500,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(2345.9,0)"><use data-c="223C" xlink:href="#MJX-7-TEX-N-223C"></use></g><g data-mml-node="msup" transform="translate(3401.7,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-7-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="33" xlink:href="#MJX-7-TEX-N-33"></use><use data-c="31" xlink:href="#MJX-7-TEX-N-31" transform="translate(500,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(4914,0)"><use data-c="2212" xlink:href="#MJX-7-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(5914.2,0)"><use data-c="31" xlink:href="#MJX-7-TEX-N-31"></use></g></g></g></svg></mjx-container><script type="math/tex">-2^{31} \sim 2^{31} -1</script></td></tr><tr><td>long（长整型）</td><td>Windows为4字节<br />Linux（32位）为4字节<br />Linux（64位）为8字节</td><td><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="14.512ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 6414.2 915.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-7-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-7-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-7-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-7-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-7-TEX-N-223C" d="M55 166Q55 241 101 304T222 367Q260 367 296 349T362 304T421 252T484 208T554 189Q616 189 655 236T694 338Q694 350 698 358T708 367Q722 367 722 334Q722 260 677 197T562 134H554Q517 134 481 152T414 196T355 248T292 293T223 311Q179 311 145 286Q109 257 96 218T80 156T69 133Q55 133 55 166Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-7-TEX-N-2212"></use></g><g data-mml-node="msup" transform="translate(778,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-7-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="33" xlink:href="#MJX-7-TEX-N-33"></use><use data-c="31" xlink:href="#MJX-7-TEX-N-31" transform="translate(500,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(2345.9,0)"><use data-c="223C" xlink:href="#MJX-7-TEX-N-223C"></use></g><g data-mml-node="msup" transform="translate(3401.7,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-7-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="33" xlink:href="#MJX-7-TEX-N-33"></use><use data-c="31" xlink:href="#MJX-7-TEX-N-31" transform="translate(500,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(4914,0)"><use data-c="2212" xlink:href="#MJX-7-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(5914.2,0)"><use data-c="31" xlink:href="#MJX-7-TEX-N-31"></use></g></g></g></svg></mjx-container><script type="math/tex">-2^{31} \sim 2^{31} -1</script></td></tr><tr><td>long long（长长整型）</td><td>8字节</td><td><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="14.512ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 6414.2 915.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-8-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-8-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-8-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-8-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-8-TEX-N-223C" d="M55 166Q55 241 101 304T222 367Q260 367 296 349T362 304T421 252T484 208T554 189Q616 189 655 236T694 338Q694 350 698 358T708 367Q722 367 722 334Q722 260 677 197T562 134H554Q517 134 481 152T414 196T355 248T292 293T223 311Q179 311 145 286Q109 257 96 218T80 156T69 133Q55 133 55 166Z"></path><path id="MJX-8-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-8-TEX-N-2212"></use></g><g data-mml-node="msup" transform="translate(778,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-8-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="36" xlink:href="#MJX-8-TEX-N-36"></use><use data-c="33" xlink:href="#MJX-8-TEX-N-33" transform="translate(500,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(2345.9,0)"><use data-c="223C" xlink:href="#MJX-8-TEX-N-223C"></use></g><g data-mml-node="msup" transform="translate(3401.7,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-8-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="36" xlink:href="#MJX-8-TEX-N-36"></use><use data-c="33" xlink:href="#MJX-8-TEX-N-33" transform="translate(500,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(4914,0)"><use data-c="2212" xlink:href="#MJX-8-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(5914.2,0)"><use data-c="31" xlink:href="#MJX-8-TEX-N-31"></use></g></g></g></svg></mjx-container><script type="math/tex">-2^{63} \sim 2^{63} -1</script></td></tr></tbody>
+</table></figure>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+int main()
+{
+	// 整型(-32768~32767)
+	// 1、短整型
+	short a = 10;
+	//short int a = 32768; // 32768超出了short int的范围,会报错
+	// 2、整型(-2^31~2^31-1)
+	int b = 10;
+	// 3、长整型(-2^63~2^63-1)
+	 long c = 10;
+	// 4、长长整型(-2^63~2^63-1)
+	 long long d = 10;
+
+
+	 cout &lt;&lt; &quot;a = &quot; &lt;&lt; a &lt;&lt; endl;
+	 cout &lt;&lt; &quot;b = &quot; &lt;&lt; b &lt;&lt; endl;
+	 cout &lt;&lt; &quot;c = &quot; &lt;&lt; c &lt;&lt; endl;
+	 cout &lt;&lt; &quot;d = &quot; &lt;&lt; d &lt;&lt; endl;
+
+	 return 0;
+}
+</code></pre>
+<p>&nbsp;</p>
+<h3 id='22-sizeof关键字'>2.2 sizeof关键字</h3>
+<ul>
+<li>作用：利用sizeof关键字可以统计数据类型所占内存大小。</li>
+<li>语法：sizeof(数据类型/变量)。</li>
+
+</ul>
+<pre><code class='language-c++' lang='c++'>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+	// sizeof关键字学习
+
+	// 已知: 
+	//  short类型占2个字节, int类型占4个字节, 
+	// long类型占4个字节, long long类型占8个字节
+
+	// sizeof关键字用于获取数据类型或变量的大小
+	cout &lt;&lt; &quot;sizeof(short) = &quot; &lt;&lt; sizeof(short) &lt;&lt; endl;
+	cout &lt;&lt; &quot;sizeof(int) = &quot; &lt;&lt; sizeof(int) &lt;&lt; endl;
+	cout &lt;&lt; &quot;sizeof(long) = &quot; &lt;&lt; sizeof(long) &lt;&lt; endl;
+	cout &lt;&lt; &quot;sizeof(long long) = &quot; &lt;&lt; sizeof(long long) &lt;&lt; endl;
+
+	// 整型变量大小比较
+	// short &lt; int &lt;= long &lt;= long long
+
+	return 0;
+}
+</code></pre>
+</body>
+</html>

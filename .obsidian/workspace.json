@@ -13,7 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "de4203e6a545556c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "C++/黑马程序员C++.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,8 +89,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 271.5,
-    "collapsed": true
+    "width": 271.5
   },
   "right": {
     "id": "83528fe38422cdb4",
@@ -94,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md"
+                "file": "Anki_TTS备份/Anki文字转语音文本_文学修养.md"
               }
             }
           },
@@ -163,7 +174,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 398.5
+    "width": 398.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -178,25 +190,28 @@
   },
   "active": "4e6c9c1b69f243ac",
   "lastOpenFiles": [
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/vlqwav1j.cdd~",
     "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
+    "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.tlog/Cl.items.tlog",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.exe.recipe",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.tlog/link.command.1.tlog",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.tlog/link.secondary.1.tlog",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.tlog/link.write.1.tlog",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.tlog/link.read.1.tlog",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.tlog/link.read.4.tlog",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.tlog/link-cvtres.write.1.tlog",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.tlog/link-cvtres.read.1.tlog",
+    "C++书籍/黑马程序员C++学习代码/sizeof关键字/sizeof关键字/x64/Debug/sizeof关键字.tlog/link-rc.write.1.tlog",
+    "C++/黑马程序员C++.md",
+    "学习日志/2024-06-23.md",
+    "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
     "Anki_TTS备份/Anki文字转语音文本_高中数学.md",
     "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
     "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
     "Anki_TTS备份/Anki文字转语音文本_民法典.md",
     "Anki_TTS备份/Anki文字转语音文本_Python编程基础.md",
     "Python编程基础/Python编程基础.md",
-    "学习日志/2024-06-23.md",
-    "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
-    "Qt/StudyCode/学生运动会管理系统_C/SportsMeet/main.c.QuatPq",
-    "Qt/StudyCode/学生运动会管理系统_C/build-SportsMeet-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/SportsMeet.exe",
-    "Qt/StudyCode/学生运动会管理系统_C/SportsMeet/main.c.UJTZuS",
-    "Qt/StudyCode/学生运动会管理系统_C/SportsMeet/main.c.FCGXUt",
-    "Qt/StudyCode/学生运动会管理系统_C/SportsMeet/main.c.swIkwz",
-    "Qt/StudyCode/学生运动会管理系统_C/SportsMeet/main.c.LILccl",
-    "Qt/StudyCode/学生运动会管理系统_C/build-SportsMeet-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/main.o",
-    "Qt/StudyCode/学生运动会管理系统_C/build-SportsMeet-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/Makefile",
-    "Qt/StudyCode/学生运动会管理系统_C/build-SportsMeet-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/Makefile.Release",
-    "Qt/StudyCode/学生运动会管理系统_C/build-SportsMeet-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/Makefile.Debug",
     "学习日志/2024-06-21.md",
     "学习日志/2024-06-19.md",
     "学习日志/2024-06-18.md",
@@ -211,9 +226,6 @@
     "学习日志/日志模板/日志模板1.md",
     "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
     "高中知识/高中数学.md",
-    "学习日志/2024-06-16.md",
-    "学习日志/2024-06-15.md",
-    "学习日志/2024-05-17.md",
     "王道408/操作系统.assets/image-20240415232700159.png",
     "高中知识/高中数学.assets/image-20240413225735627.png",
     "高中知识/高中数学.assets/image-20240413225719613.png",

@@ -298,11 +298,11 @@ C++关键字如下：
   
   - **常量名**：使用大写字母和下划线表示常量，常量名应具有明确的含义，尽量简洁清晰。例如 `MAX_VALUE`、`PI`、`ERROR_MESSAGE`。
   
-  - **全局变量**：在变量名前加上 `g_` 前缀或者使用 `g_` 开头的驼峰命名法，以便与局部变量区分开。例如 `g_userName`、`g_totalAmount`。
+  - **全局变量**：在变量名前加上 `g_` 前缀，以便与局部变量区分开。例如 `g_userName`、`g_totalAmount`。
   
-  - **静态变量**：在变量名前加上 `s_` 前缀或者使用 `s_` 开头的驼峰命名法，以便与非静态变量区分开。例如 `s_instanceCount`、`s_maxValue`。
+  - **静态变量**：在变量名前加上 `s_` 前缀，以便与非静态变量区分开。例如 `s_instanceCount`、`s_maxValue`。
   
-  - **成员变量**：在变量名前加上 `m_` 前缀或者使用 `m_` 开头的驼峰命名法，以便与局部变量或全局变量区分开。例如 `m_age`、`m_salary`。
+  - **成员变量**：在变量名前加上 `m_` 前缀，以便与局部变量或全局变量区分开。例如 `m_age`、`m_salary`。
   
   - **枚举值**：使用大写字母和下划线表示枚举值，具有清晰的含义，以提高可读性。例如 `SUCCESS`、`FAILURE`、`STATUS_OK`。
   
@@ -357,5 +357,32 @@ int main()
 
 
 
-### 2.2 浮点类型
+### 2.2 sizeof关键字
 
+- 作用：利用sizeof关键字可以统计数据类型所占内存大小。
+- 语法：sizeof(数据类型/变量)。
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	// sizeof关键字学习
+
+	// 已知: 
+	//  short类型占2个字节, int类型占4个字节, 
+	// long类型占4个字节, long long类型占8个字节
+
+	// sizeof关键字用于获取数据类型或变量的大小
+	cout << "sizeof(short) = " << sizeof(short) << endl;
+	cout << "sizeof(int) = " << sizeof(int) << endl;
+	cout << "sizeof(long) = " << sizeof(long) << endl;
+	cout << "sizeof(long long) = " << sizeof(long long) << endl;
+
+	// 整型变量大小比较
+	// short < int <= long <= long long
+
+	return 0;
+}
+```
