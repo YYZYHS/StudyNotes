@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_文学修养.md"
+                "file": "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md"
               }
             }
           },
@@ -176,14 +176,16 @@
       "excel:创建 Excel 文件": false
     }
   },
-  "active": "de4203e6a545556c",
+  "active": "e118d70931540fe4",
   "lastOpenFiles": [
+    "Anki_TTS备份/Anki文字转语音文本_民法典.md",
+    "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
+    "学习日志/2024-06-26.md",
     "C++/黑马程序员C++.md",
     "散碎笔记/代理模式----PAC模式.md",
     "散碎笔记/代理模式----Tun模式.md",
     "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
     "学习日志/2024-06-25.md",
-    "Anki_TTS备份/Anki文字转语音文本_民法典.md",
     "Anki_TTS备份/Anki文字转语音文本_高中数学.md",
     "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release/release/CPPTestDemo.exe",
     "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release/release/main.o",
@@ -196,7 +198,6 @@
     "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/CPPTestDemo.exe",
     "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/main.o",
     "学习日志/2024-06-24.md",
-    "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
     "C++书籍/算法（第4版）/算法（第4版）/解压密码获取方式.png",
     "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
     "学习日志/2024-06-23.md",
@@ -214,7 +215,6 @@
     "王道408/操作系统.md",
     "王道408/计算机网络.md",
     "王道408/数据结构.md",
-    "学习日志/2024-06-17.md",
     "王道408/操作系统.assets/image-20240415232700159.png",
     "高中知识/高中数学.assets/image-20240413225735627.png",
     "高中知识/高中数学.assets/image-20240413225719613.png",
