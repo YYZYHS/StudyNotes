@@ -26,7 +26,9 @@ LNode* getElem(LinkList L, int i);	//按位查找
 int locateElem(LinkList L, ElemType e);	//按值查找
 bool initListByHead(LinkList* L); //头插法建立链表
 bool initListTail(LinkList* L); //尾插法建立链表
-bool insertList(LinkList L, int i, ElemType e);	//按位插入
+bool insertNextNode(LNode* p, ElemType e);	//在指定结点之后插入新结点
+bool insertPriorNode(LinkList L, LNode* p, ElemType e);	//在指定结点之前插入新结点
+bool insertList(LinkList L, int i, ElemType e);	//按位插入----后插法
 bool insertListByForward(LinkList L, int i, ElemType e);	//按位插入---前插法
 bool deleteElem(LinkList L, int i, ElemType* e);	//按位删除
 bool destroyList(LinkList* L);	//销毁链表
@@ -332,6 +334,7 @@ bool deleteElem(LinkList L, int i, ElemType* e)
 	}
 	p->next = q->next;		//删除第i个结点
 	free(q);				//释放第i个结点的内存
+	q = NULL;				//q指向NULL,防止产生野指针
 	return true;
 }
 
@@ -354,6 +357,7 @@ bool deleteElemByValue(LinkList L, ElemType e)
 	LNode* q = p->next;		//q指向值为e的结点
 	p->next = q->next;		//删除值为e的结点
 	free(q);				//释放值为e的结点的内存
+	q = NULL;				//q指向NULL,防止产生野指针
 	return true;
 }
 
