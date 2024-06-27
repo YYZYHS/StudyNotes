@@ -4,16 +4,28 @@
     "type": "split",
     "children": [
       {
-        "id": "ae0bc763817edab1",
+        "id": "7cb59775086a8079",
         "type": "tabs",
         "children": [
           {
-            "id": "de4203e6a545556c",
+            "id": "a5b5b504a34353fa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1988f0ae97a23025",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "C++/黑马程序员C++.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
+                "file": "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md"
+                "file": "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md"
               }
             }
           },
@@ -163,7 +175,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 398.5
+    "width": 398.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -176,45 +189,44 @@
       "excel:创建 Excel 文件": false
     }
   },
-  "active": "e118d70931540fe4",
+  "active": "a5b5b504a34353fa",
   "lastOpenFiles": [
+    "C++/黑马程序员C++.md",
+    "数一/高等数学(汤家凤).md",
+    "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
+    "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/数据类型_实型类型.tlog/link.read.2.tlog",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/数据类型_实型类型.tlog/unsuccessfulbuild",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/main.obj",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/数据类型_实型类型.tlog/CL.write.1.tlog",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/数据类型_实型类型.tlog/CL.read.1.tlog",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/数据类型_实型类型.tlog/Cl.items.tlog",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/数据类型_实型类型.exe.recipe",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/数据类型_实型类型.tlog/link.command.1.tlog",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/数据类型_实型类型.tlog/link.secondary.1.tlog",
+    "C++/黑马程序员C++学习代码/数据类型_实型类型/数据类型_实型类型/x64/Debug/数据类型_实型类型.tlog/link.write.1.tlog",
+    "Anki_TTS备份/Anki文字转语音文本_高等数学.md",
     "Anki_TTS备份/Anki文字转语音文本_民法典.md",
+    "高中知识/高中数学.md",
+    "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
+    "Anki_TTS备份/Anki文字转语音文本_高中数学.md",
+    "学习日志/2024-06-27.md",
+    "Anki_TTS备份/Anki文字转语音文本_英语.md",
+    "Anki_TTS备份/Anki文字转语音文本_Git分布式版本控制工具.md",
     "Anki_TTS备份/Anki文字转语音文本_文学修养.md",
     "学习日志/2024-06-26.md",
-    "C++/黑马程序员C++.md",
     "散碎笔记/代理模式----PAC模式.md",
     "散碎笔记/代理模式----Tun模式.md",
-    "Anki_TTS备份/Anki文字转语音文本_C++_C编程指南及编码规范.md",
     "学习日志/2024-06-25.md",
-    "Anki_TTS备份/Anki文字转语音文本_高中数学.md",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release/release/CPPTestDemo.exe",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release/release/main.o",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release/Makefile",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release/Makefile.Debug",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release/Makefile.Release",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release/debug",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release/release",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Release",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/CPPTestDemo.exe",
-    "Qt/StudyCode/build-CPPTestDemo-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/debug/main.o",
     "学习日志/2024-06-24.md",
     "C++书籍/算法（第4版）/算法（第4版）/解压密码获取方式.png",
-    "Anki_TTS备份/Anki文字转语音文本_C_C++编程.md",
     "学习日志/2024-06-23.md",
     "Anki_TTS备份/Anki文字转语音文本_计算机网络.md",
-    "Anki_TTS备份/Anki文字转语音文本_计算机组成原理.md",
     "Anki_TTS备份/Anki文字转语音文本_Python编程基础.md",
     "Python编程基础/Python编程基础.md",
     "学习日志/2024-06-21.md",
     "学习日志/2024-06-19.md",
     "学习日志/2024-06-18.md",
-    "学习日志/2024-06-20.md",
-    "王道408/计算机组成原理.md",
-    "Anki_TTS备份/Anki文字转语音文本_操作系统.md",
-    "Anki_TTS备份/Anki文字转语音文本_数据结构.md",
-    "王道408/操作系统.md",
-    "王道408/计算机网络.md",
-    "王道408/数据结构.md",
     "王道408/操作系统.assets/image-20240415232700159.png",
     "高中知识/高中数学.assets/image-20240413225735627.png",
     "高中知识/高中数学.assets/image-20240413225719613.png",
