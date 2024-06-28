@@ -25,10 +25,10 @@ bool initListByHeadInsert(LinkList* L);					// 用前插法初始化一个链表
 bool initListByTailInsert(LinkList* L);					// 用尾插法初始化一个链表
 LNode* getElem(LinkList L, int i);						// 按位查找
 int locateElem(LinkList L, ElemType e);					// 按值查找
-bool insertPreNode(LNode* p, ElemType e);				// 在指定结点的前面插入新结点
+bool insertPreNode(LinkList* L, LNode* p, ElemType e);	// 在指定结点的前面插入新结点
 bool insertNextNode(LNode* p, ElemType e);				// 在指定结点的后面插入新结点
-bool insertElem(LinkList L, int i, ElemType e);			// 按位插入---后插法
-bool insertElemByHead(LinkList L, int i, ElemType e);	// 按位插入---前插法
+bool insertElem(LinkList* L, int i, ElemType e);			// 按位插入---后插法
+bool insertElemByHead(LinkList* L, int i, ElemType e);	// 按位插入---前插法
 bool deleteElem(LinkList L, int i);						// 删除
 bool destroyList(LinkList L);							// 销毁
 bool isEmpty(LinkList L);								// 判空
@@ -205,27 +205,132 @@ int locateElem(LinkList L, ElemType e)
 
 /*6、链表的基本操作：插入*/
 // 在指定结点的前面插入新结点
-bool insertPreNode(LNode* p, ElemType e)
+bool insertPreNode(LinkList* L, LNode* p, ElemType e)
 {
+	if(NULL == p)													// 如果指定结点为空
+	{
+		printf("指定结点为空\n");
+		return false;
+	}
+	/*
+	// 前插法插入新结点方法一，时间复杂度O(n)
+	// 如果指定结点是头结点
+	LNode* q = L;													// 创建一个指针q，从头结点开始遍历,寻找p的前驱结点
+	while (q != p)
+	{
+		q = q->next;
+	}
+	if (q == NULL)
+	{
+		printf("指定结点不在链表中\n");
+		return false;
+	}
+	if(p == L)
+	{
+		LNode* newNode = createNewNode(e);							// 创建新结点
+		if(NULL == newNode)											// 创建失败
+		{
+			printf("内存分配失败!插入失败！\n");
+			return false;
+		}
+		newNode->next = L;											// 将新结点插入到表头
+		L = newNode;												// 更新头指针
+		return true;
+	}
+	else
+	{
+		LNode* newNode = createNewNode(e);							// 创建新结点
+		if(NULL == newNode)											// 创建失败
+		{
+			printf("内存分配失败!插入失败！\n");
+			return false;
+		}
+		newNode->next = p;											// 将新结点插入到指定结点的前面
+		q->next = newNode;											// 更新指定结点的前驱结点的指针域
+		return true;
+	}
+	*/
 
+	// 前插法插入新结点方法二，时间复杂度O(1)
+	LNode* newNode = createNewNode(e);								// 创建新结点
+	if(NULL == newNode)												// 创建失败
+	{
+		printf("内存分配失败!插入失败！\n");
+		return false;
+	}
+	if(p == *L)														// 如果指定结点是头结点
+	{
+		newNode->next = *L;											// 将新结点插入到表头
+		*L = newNode;												// 更新头指针
+		return true;
+	}
+	else
+	{
+		// 先以后插法插入新结点，然后交换数据域
+		newNode->next = p->next;									// 后插法插入新结点
+		p->next = newNode;
+		ElemType temp = p->data;									// 交换数据域
+		p->data = newNode->data;
+		newNode->data = temp;
+	}
 }
 
 // 在指定结点的后面插入新结点
 bool insertNextNode(LNode* p, ElemType e)
 {
-
+	if(NULL == p)													// 如果指定结点为空
+	{
+		printf("指定结点为空\n");
+		return false;
+	}
+	LNode* newNode = createNewNode(e);								// 创建新结点
+	if(NULL == newNode)												// 创建失败
+	{
+		printf("内存分配失败!插入失败！\n");
+		return false;
+	}
+	newNode->next = p->next;										// 将新结点插入到指定结点的后面
+	p->next = newNode;												// 更新指定结点的指针域
+	return true;
 }
 
 // 按位插入 --- 后插法
-bool insertElem(LinkList L, int i, ElemType e)
+bool insertElem(LinkList* L, int i, ElemType e)
 {
+	if (i < 1)														// 位置不合法
+	{
+		printf("插入位置不合法\n");
+		return false;
+	}
+	
+	if (i == 1)
+	{
+		LNode* newNode = createNewNode(e);							// 创建新结点
+		if (NULL == newNode)											// 创建失败
+		{
+			printf("内存分配失败!插入失败！\n");
+			return false;
+		}
+		newNode->next = *L;											// 将新结点插入到表头
+		*L = newNode;												// 更新头指针
+		return true;
 
+	}
+	LNode* p = getElem(*L, i - 1);									// 获取第i-1个结点
+	return insertNextNode(p, e);									// 在第i-1个结点后插入新结点
 }
 
 // 按位插入 --- 前插法
-bool insertElemByHead(LinkList L, int i, ElemType e)
+bool insertElemByHead(LinkList* L, int i, ElemType e)
 {
+	if(i < 1)														// 位置不合法
+	{
+		printf("插入位置不合法\n");
+		return false;
+	}
 
+	LNode* p = getElem(*L, i);										// 获取第i个结点
+	return insertPreNode(L, p, e);									// 在第i个结点前插入新结点
 }
 
 
@@ -300,7 +405,6 @@ int main()
 	printf("L2第3个元素：%d\n", p2->data);
 	printf("L2最后一个元素：%d\n", p3->data);
 	printf("L2第%d个元素：%s\n", length(L2) + 1, p4 == NULL ? "不存在" : "存在");
-	return 0;
 
 	// 4、L2按值查找，分别测试首尾元素和中间的元素
 	printf("开始测试L2按值查找\n");
@@ -313,14 +417,15 @@ int main()
 
 	// 5、L3按位插入，分别以前插、后插的方式，在表头，表尾，表中插入元素
 	printf("开始测试L3按位插入\n");
-	printf("在表头以前插方式插入元素100,%s\n", insertElemByHead(L3, 1, 100) ? "成功" : "失败");
-	printf("在表尾以前插方式插入元素200,%s\n", insertElemByHead(L3, length(L3) + 1, 200) ? "成功" : "失败");
-	printf("在链表倒数第二个位置以前插方式插入元素300,%s\n", insertElemByHead(L3, length(L3), 300) ? "成功" : "失败");
+	printf("在表头以前插方式插入元素100,%s\n", insertElemByHead(&L3, 1, 100) ? "成功" : "失败");
+	printf("在表尾以前插方式插入元素200,%s\n", insertElemByHead(&L3, length(L3) + 1, 200) ? "成功" : "失败");
+	printf("在链表倒数第二个位置以前插方式插入元素300,%s\n", insertElemByHead(&L3, length(L3), 300) ? "成功" : "失败");
 	printList(L3);
-	printf("在表头以后插方式插入元素400,%s\n", insertElem(L3, 1, 400) ? "成功" : "失败");
-	printf("在表尾以后插方式插入元素500,%s\n", insertElem(L3, length(L3) + 1, 500) ? "成功" : "失败");
-	printf("在链表倒数第二个位置以后插方式插入元素600,%s\n", insertElem(L3, length(L3), 600) ? "成功" : "失败");
+	printf("在表头以后插方式插入元素400,%s\n", insertElem(&L3, 1, 400) ? "成功" : "失败");
+	printf("在表尾以后插方式插入元素500,%s\n", insertElem(&L3, length(L3) + 1, 500) ? "成功" : "失败");
+	printf("在链表倒数第二个位置以后插方式插入元素600,%s\n", insertElem(&L3, length(L3), 600) ? "成功" : "失败");
 	printList(L3);
+	return 0;
 
 	// 6、L3删除元素，分别删除表头、表尾、表中元素
 	printf("开始测试L3删除元素\n");

@@ -1,8 +1,5 @@
 ﻿  main.c
-D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\main.c(236,1): warning C4716: “deleteElem”: 必须返回一个值
-D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\main.c(229,1): warning C4716: “insertElemByHead”: 必须返回一个值
-D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\main.c(223,1): warning C4716: “insertElem”: 必须返回一个值
-D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\main.c(217,1): warning C4716: “insertNextNode”: 必须返回一个值
-D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\main.c(211,1): warning C4716: “insertPreNode”: 必须返回一个值
-D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\main.c(243,1): warning C4716: “destroyList”: 必须返回一个值
+D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\main.c(276,1): warning C4715: “insertPreNode”: 不是所有的控件路径都返回值
+D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\main.c(341,1): warning C4716: “deleteElem”: 必须返回一个值
+D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\main.c(348,1): warning C4716: “destroyList”: 必须返回一个值
   单链表_C语言版_无头结点.vcxproj -> D:\图书馆\学习笔记\C++\练习代码\单链表_C语言版_无头结点\x64\Debug\单链表_C语言版_无头结点.exe
