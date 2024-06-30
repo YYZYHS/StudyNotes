@@ -29,8 +29,8 @@ bool insertPreNode(LinkList* L, LNode* p, ElemType e);	// 在指定结点的前面插入新
 bool insertNextNode(LNode* p, ElemType e);				// 在指定结点的后面插入新结点
 bool insertElem(LinkList* L, int i, ElemType e);			// 按位插入---后插法
 bool insertElemByHead(LinkList* L, int i, ElemType e);	// 按位插入---前插法
-bool deleteElem(LinkList L, int i);						// 删除
-bool destroyList(LinkList L);							// 销毁
+bool deleteElem(LinkList* L, int i);						// 删除
+bool destroyList(LinkList *L);							// 销毁
 bool isEmpty(LinkList L);								// 判空
 int length(LinkList L);									// 获取长度
 
@@ -335,16 +335,66 @@ bool insertElemByHead(LinkList* L, int i, ElemType e)
 
 
 /*7、链表的基本操作：删除*/
-bool deleteElem(LinkList L, int i)
+bool deleteElem(LinkList* L, int i)
 {
+	if(i < 1)	// 位置不合法
+	{
+		printf("删除位置不合法\n");
+		return false;
+	}
 
+	if(L == NULL)
+	{
+		printf("链表指针为空\n");
+		return false;
+	}
+
+	if(isEmpty(*L))	// 如果链表为空
+	{
+		printf("链表为空\n");
+		return false;
+	}
+
+	if(i == 1)	// 删除头结点
+	{
+		LNode* p = *L;	// 保存头结点
+		*L = (*L)->next;	// 更新头指针
+		free(p);	// 释放头结点
+		return true;
+	}
+	else
+	{
+		LNode* p = getElem(*L, i - 1);	// 获取第i-1个结点
+		if(p == NULL || p->next == NULL)	// 如果第i-1个结点不存在或者第i个结点不存在
+		{
+			printf("删除位置不合法\n");
+			return false;
+		}
+		LNode* q = p->next;	// 保存第i个结点
+		p->next = q->next;	// 删除第i个结点
+		free(q);	// 释放第i个结点
+		return true;
+	}
 }
 
 
 /*8、链表的基本操作：销毁*/
-bool destroyList(LinkList L)
+bool destroyList(LinkList *L)
 {
-
+	if(NULL == L)	// 如果链表指针为空
+	{
+		printf("链表指针为空\n");
+		return false;
+	}
+	LNode* p = *L;	// 从头结点开始销毁
+	while (p != NULL)
+	{
+		LNode* q = p->next;	// 保存下一个结点
+		free(p);	// 释放当前结点
+		p = q;	// 移动到下一个结点
+	}
+	*L = NULL;	// 头指针置空
+	return true;
 }
 
 /*9、链表的常用函数：判空*/
@@ -425,29 +475,31 @@ int main()
 	printf("在表尾以后插方式插入元素500,%s\n", insertElem(&L3, length(L3) + 1, 500) ? "成功" : "失败");
 	printf("在链表倒数第二个位置以后插方式插入元素600,%s\n", insertElem(&L3, length(L3), 600) ? "成功" : "失败");
 	printList(L3);
-	return 0;
 
 	// 6、L3删除元素，分别删除表头、表尾、表中元素
 	printf("开始测试L3删除元素\n");
-	printf("删除表头元素：%s\n", deleteElem(L3, 1) ? "成功" : "失败");
-	printf("删除表尾元素：%s\n", deleteElem(L3, length(L3)) ? "成功" : "失败");
-	printf("删除表中元素：%s\n", deleteElem(L3, length(L3) / 2) ? "成功" : "失败");
+	printf("删除表头元素：%s\n", deleteElem(&L3, 1) ? "成功" : "失败");
+	printList(L3);
+	printf("删除表尾元素：%s\n", deleteElem(&L3, length(L3)) ? "成功" : "失败");
+	printList(L3);
+	printf("删除表中元素：%s\n", deleteElem(&L3, length(L3) / 2) ? "成功" : "失败");
 	printList(L3);
 
 	// 7、销毁三个链表
 	printf("开始销毁三个链表,为了测试销毁空表，先将L1置为空表\n");
 	while (!isEmpty(L1))
 	{
-		deleteElem(L1, 1);
+		deleteElem(&L1, 1);
 	}
-	printf("销毁L1：%s\n", destroyList(L1) ? "成功" : "失败");
-	printf("销毁L2：%s\n", destroyList(L2) ? "成功" : "失败");
-	printf("销毁L3：%s\n", destroyList(L3) ? "成功" : "失败");
+	printf("销毁L1：%s\n", destroyList(&L1) ? "成功" : "失败");
+	printf("销毁L2：%s\n", destroyList(&L2) ? "成功" : "失败");
+	printf("销毁L3：%s\n", destroyList(&L3) ? "成功" : "失败");
 	printList(L1);
 	printList(L2);
 	printList(L3);
 
 	// 8、结束语
 	printf("测试结束\n");
+	return 0;
 
 }
