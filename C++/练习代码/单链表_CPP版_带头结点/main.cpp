@@ -159,6 +159,12 @@ void LinkList<T>::initListByHead()
 			break;
 		}
 		LNode<T> *newNode = createNewNode(e);		// 创建新结点
+		if(newNode == nullptr)						// 创建失败
+		{
+			cerr << "创建新结点失败" << endl;
+			clearList();							// 清空链表
+			return;
+		}
 		newNode->next = m_dymmyNode->next;			// 新结点指向头结点的后继结点
 		m_dymmyNode->next = newNode;				// 头结点指向新结点
 		++m_length;									// 长度加1

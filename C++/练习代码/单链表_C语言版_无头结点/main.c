@@ -343,12 +343,6 @@ bool deleteElem(LinkList* L, int i)
 		return false;
 	}
 
-	if(L == NULL)
-	{
-		printf("链表指针为空\n");
-		return false;
-	}
-
 	if(isEmpty(*L))	// 如果链表为空
 	{
 		printf("链表为空\n");
