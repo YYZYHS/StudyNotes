@@ -81,6 +81,9 @@ Python中的ord()函数。在下面的例子中,首先，我们用chr()函数将
 ## Python0019 print函数----使用print()函数输出复杂的数据
 使用print()函数输出复杂的数据时，可以利用s e p参数和e n d参数。函数原型是：print(*objects, s e p='空格', e n d = '换行符', file=s y s点s t d out, flush=False)。例如，执行print("Hello", "World!","哈哈哈", s e p="星号 星号 星号", e n d="换行符")这行代码时，会输出Hello星号 星号 星号World!星号 星号 星号哈哈哈。为了在同一行输出多行内容，可以在print函数中使用e n d参数，例如print("Hello", e n d="右箭头")这行代码会输出Hello右箭头，接着执行print("World!")，输出World!。
 
+## Python0020 input函数基本语法
+input函数基本语法是这样的：使用input函数时，可以通过在括号内提供一个提示文字来引导用户输入。例如，input('提示文字')。无论用户输入什么内容，input函数返回的数据类型始终是字符串类型。
+
 ## Python0021 input函数的使用
 input函数的使用非常简单。首先，我们可以通过input函数获取用户的输入，例如，使用name = input("请输入你的名字：")来提示用户输入他们的名字，然后使用print("你好，" + name)来输出问候语。接着，我们可以通过input函数获取用户的年龄，并将其转换为整数。具体来说，首先提示用户输入他们的年龄，age = input("请输入你的年龄：")，然后打印输出用户输入的年龄，接着使用age = int(age)将输入的字符串转换为整数，再次输出转换后的年龄。
 
