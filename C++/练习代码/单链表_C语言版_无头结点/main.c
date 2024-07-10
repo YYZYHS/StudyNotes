@@ -303,6 +303,8 @@ bool insertElem(LinkList* L, int i, ElemType e)
 		return false;
 	}
 	
+	// 当插入首元素时，直接插入到表头
+	// 当链表为空时,插入位置只能为1,否则会出现插入位置不合法的报错
 	if (i == 1)
 	{
 		LNode* newNode = createNewNode(e);							// 创建新结点
@@ -314,8 +316,9 @@ bool insertElem(LinkList* L, int i, ElemType e)
 		newNode->next = *L;											// 将新结点插入到表头
 		*L = newNode;												// 更新头指针
 		return true;
-
 	}
+
+	// 链表不为空且插入位置不在表头时
 	LNode* p = getElem(*L, i - 1);									// 获取第i-1个结点
 	return insertNextNode(p, e);									// 在第i-1个结点后插入新结点
 }
@@ -329,6 +332,23 @@ bool insertElemByHead(LinkList* L, int i, ElemType e)
 		return false;
 	}
 
+	// 当插入首元素时，直接插入到表头
+	// 当链表为空时,插入位置只能为1,否则会出现插入位置不合法的报错
+	if(i == 1)														// 插入位置为1
+	{
+		LNode* newNode = createNewNode(e);							// 创建新结点
+		if(NULL == newNode)											// 创建失败
+		{
+			printf("内存分配失败!插入失败！\n");
+			return false;
+		}
+		newNode->next = *L;											// 将新结点插入到表头
+		*L = newNode;												// 更新头指针
+		return true;
+	}
+
+	// 此处的正常情况为i>1
+	// 隐含失败情况为链表为空时，插入位置不为1,此时会出现插入位置不合法的报错
 	LNode* p = getElem(*L, i);										// 获取第i个结点
 	return insertPreNode(L, p, e);									// 在第i个结点前插入新结点
 }
