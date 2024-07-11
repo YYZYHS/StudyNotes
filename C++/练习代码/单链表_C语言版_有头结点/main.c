@@ -149,8 +149,8 @@ LNode* getElem(LinkList L, int i)
 	{
 		return NULL;
 	}
-	LNode* p = L;				//p指向第一个结点
-	int j = 0;					//j为计数器,代表当前结点的位序
+	LNode* p = L->next;				//p指向第一个结点
+	int j = 1;					//j为计数器,代表当前结点的位序
 	while (p != NULL && j < i)	//循环查找第i个结点
 	{
 		p = p->next;			//p指向下一个结点

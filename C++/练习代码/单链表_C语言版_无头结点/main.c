@@ -1,6 +1,6 @@
-#include <stdlib.h>				// 标准库函数,包含了一些常用的函数,如malloc(),free(),exit()等
-#include <stdio.h>				// 标准输入输出库函数,包含了一些常用的输入输出函数,如printf(),scanf()等
-#include <stdbool.h>			// C99b标准引入的头文件,定义了bool、true、false等宏
+#include <stdlib.h>	 // 标准库函数,包含了一些常用的函数,如malloc(),free(),exit()等
+#include <stdio.h>	 // 标准输入输出库函数,包含了一些常用的输入输出函数,如printf(),scanf()等
+#include <stdbool.h> // C99b标准引入的头文件,定义了bool、true、false等宏
 
 /*
  *		这是C语言版不带头结点的单链表的简单实现案例
@@ -9,66 +9,65 @@
  *		由于不带头结点,所以在插入、删除等操作时需要特别注意处理头结点的情况
  */
 
- /*1、前置准备*/
-typedef int ElemType;		// 定义链表存储的数据类型,这里为整型
+/*1、前置准备*/
+typedef int ElemType; // 定义链表存储的数据类型,这里为整型
 typedef struct LNode
 {
-	ElemType data;			// 数据域
-	struct LNode* next;		// 指针域
-}LNode, * LinkList;			// LNode为结点类型,LinkList为结点指针类型
+	ElemType data;		// 数据域
+	struct LNode *next; // 指针域
+} LNode, *LinkList;		// LNode为结点类型,LinkList为结点指针类型
 
 /*2、链表操作函数声明*/
-void printList(LinkList L);								// 打印输出链表
-LNode* createNewNode(ElemType e);						// 创建新结点
-bool initList(LinkList* L);								// 初始化一个空表
-bool initListByHeadInsert(LinkList* L);					// 用前插法初始化一个链表
-bool initListByTailInsert(LinkList* L);					// 用尾插法初始化一个链表
-LNode* getElem(LinkList L, int i);						// 按位查找
-int locateElem(LinkList L, ElemType e);					// 按值查找
-bool insertPreNode(LinkList* L, LNode* p, ElemType e);	// 在指定结点的前面插入新结点
-bool insertNextNode(LNode* p, ElemType e);				// 在指定结点的后面插入新结点
-bool insertElem(LinkList* L, int i, ElemType e);			// 按位插入---后插法
-bool insertElemByHead(LinkList* L, int i, ElemType e);	// 按位插入---前插法
-bool deleteElem(LinkList* L, int i);						// 删除
-bool destroyList(LinkList *L);							// 销毁
-bool isEmpty(LinkList L);								// 判空
-int length(LinkList L);									// 获取长度
-
+void printList(LinkList L);							   // 打印输出链表
+LNode *createNewNode(ElemType e);					   // 创建新结点
+bool initList(LinkList *L);							   // 初始化一个空表
+bool initListByHeadInsert(LinkList *L);				   // 用前插法初始化一个链表
+bool initListByTailInsert(LinkList *L);				   // 用尾插法初始化一个链表
+LNode *getElem(LinkList L, int i);					   // 按位查找
+int locateElem(LinkList L, ElemType e);				   // 按值查找
+bool insertPreNode(LinkList *L, LNode *p, ElemType e); // 在指定结点的前面插入新结点
+bool insertNextNode(LNode *p, ElemType e);			   // 在指定结点的后面插入新结点
+bool insertElem(LinkList *L, int i, ElemType e);	   // 按位插入---后插法
+bool insertElemByHead(LinkList *L, int i, ElemType e); // 按位插入---前插法
+bool deleteElem(LinkList *L, int i);				   // 删除
+bool destroyList(LinkList *L);						   // 销毁
+bool isEmpty(LinkList L);							   // 判空
+int length(LinkList L);								   // 获取长度
 
 /*3、链表的常用函数：打印输出*/
 void printList(LinkList L)
 {
-	if(NULL == L)											// 如果链表为空
+	if (NULL == L) // 如果链表为空
 	{
 		printf("链表为空\n");
 		return;
 	}
-	LNode* p = L;											// 从头结点开始遍历
-	while (p != NULL)										// 遍历链表
+	LNode *p = L;	  // 从头结点开始遍历
+	while (p != NULL) // 遍历链表
 	{
-		printf("%d-->", p->data);							// 输出结点数据
-		p = p->next;										// 移动到下一个结点
+		printf("%d-->", p->data); // 输出结点数据
+		p = p->next;			  // 移动到下一个结点
 	}
-	printf("NULL\n");										// 输出链表结束标志
+	printf("NULL\n"); // 输出链表结束标志
 }
 
 /*4、链表的基本操作：初始化*/
 // 创建新结点
-LNode* createNewNode(ElemType e)
+LNode *createNewNode(ElemType e)
 {
-	LNode* newNode = (LNode*)malloc(sizeof(LNode));			// 为新结点分配内存
-	if (newNode == NULL)									// 内存分配失败
+	LNode *newNode = (LNode *)malloc(sizeof(LNode)); // 为新结点分配内存
+	if (newNode == NULL)							 // 内存分配失败
 	{
 		printf("内存分配失败\n");
 		exit(0);
 	}
-	newNode->data = e;										// 将数据存入新结点
-	newNode->next = NULL;									// 将新结点的指针域置空
-	return newNode;											// 返回新结点
+	newNode->data = e;	  // 将数据存入新结点
+	newNode->next = NULL; // 将新结点的指针域置空
+	return newNode;		  // 返回新结点
 }
 
 // 初始化一个空表
-bool  initList(LinkList* L)
+bool initList(LinkList *L)
 {
 	// 因为不带头结点，所以初始化时不需要分配头结点，直接将头指针置空即可
 	*L = NULL;
@@ -76,69 +75,69 @@ bool  initList(LinkList* L)
 }
 
 // 用前插法初始化一个链表
-bool initListByHeadInsert(LinkList* L)
+bool initListByHeadInsert(LinkList *L)
 {
-	if(*L != NULL)														// 如果链表不为空，先置空
+	if (*L != NULL) // 如果链表不为空，先置空
 	{
 		*L = NULL;
 	}
 
-	ElemType data = 9999;												// 用于存放输入的数据
-	while (true)														// 循环输入数据
+	ElemType data = 9999; // 用于存放输入的数据
+	while (true)		  // 循环输入数据
 	{
 		printf("请输入一个元素的值,输入9999视作结束创建动作：");
-		int len = scanf("%d", &data);									// 输入数据
+		int len = scanf("%d", &data); // 输入数据
 		if (data == 9999)
 		{
 			break;
 		}
-		LNode* newNode = createNewNode(data);							// 创建新结点
-		if(NULL == newNode)												// 创建失败
+		LNode *newNode = createNewNode(data); // 创建新结点
+		if (NULL == newNode)				  // 创建失败
 		{
 			printf("内存分配失败!创建链表失败！\n");
-			destroyList(*L);											// 销毁已创建的链表
+			destroyList(*L); // 销毁已创建的链表
 			return false;
 		}
-		newNode->next = *L;												// 将新结点插入到表头
-		*L = newNode;													// 更新头指针
+		newNode->next = *L; // 将新结点插入到表头
+		*L = newNode;		// 更新头指针
 	}
 	printf("链表创建成功\n");
 	return true;
 }
 
 // 用尾插法初始化一个链表
-bool initListByTailInsert(LinkList* L)
+bool initListByTailInsert(LinkList *L)
 {
-	if(NULL != *L)														// 如果链表不为空，先置空
+	if (NULL != *L) // 如果链表不为空，先置空
 	{
 		*L = NULL;
 	}
-	ElemType data = 9999;												// 用于存放输入的数据
-	LNode *tail = NULL;													// 尾指针
-	while (true)														// 循环输入数据
+	ElemType data = 9999; // 用于存放输入的数据
+	LNode *tail = NULL;	  // 尾指针
+	while (true)		  // 循环输入数据
 	{
 		printf("请输入一个元素的值,输入9999视作结束创建动作：");
-		int len = scanf("%d", &data);									// 输入数据
+		int len = scanf("%d", &data); // 输入数据
 		if (data == 9999)
 		{
 			break;
 		}
-		LNode* newNode = createNewNode(data);							// 创建新结点
-		if(NULL == newNode)												// 创建失败
+		LNode *newNode = createNewNode(data); // 创建新结点
+		if (NULL == newNode)				  // 创建失败
 		{
 			printf("内存分配失败!创建链表失败！\n");
-			destroyList(*L);											// 销毁已创建的链表
+			destroyList(*L); // 销毁已创建的链表
 			return false;
 		}
-		if(NULL == *L)													// 如果是第一个结点
+		if (NULL == *L) // 如果是第一个结点
 		{
-			*L = newNode;												// 更新头指针
-			tail = newNode;												// 更新尾指针
+			*L = newNode;	// 更新头指针
+			tail = newNode; // 更新尾指针
 		}
 		else
 		{
-			tail->next = newNode;										// 将新结点插入到表尾
-			tail = newNode;												// 更新尾指针
+			tail->next = newNode; // 将新结点插入到表尾
+			tail = newNode;		  // 更新尾指针
 		}
 	}
 	printf("链表创建成功\n");
@@ -147,56 +146,43 @@ bool initListByTailInsert(LinkList* L)
 
 /*5、链表的基本操作：查找*/
 // 按位查找
-LNode* getElem(LinkList L, int i)
+LNode *getElem(LinkList L, int i)
 {
-	if(isEmpty(L))													// 如果链表为空
-	{
-		printf("链表为空\n");
-		return NULL;
-	}
-	if(i < 1)														// 位置不合法
+	if (i < 1) // 位置不合法
 	{
 		printf("位置不合法\n");
 		return NULL;
 	}
-	LNode* p = L;													// 从头结点开始遍历
-	int j = 1;														// 计数器
-	while (p != NULL && j < i)										// 遍历链表
+	LNode *p = L;			   // 从头结点开始遍历
+	int j = 1;				   // 计数器
+	while (p != NULL && j < i) // 遍历链表
 	{
-		p = p->next;												// 移动到下一个结点
-		j++;														// 计数器加1
+		p = p->next; // 移动到下一个结点
+		j++;		 // 计数器加1
 	}
-	if(j == i && NULL != p)											// 找到了第i个结点
-	{
-		return p;													// 返回该结点
-	}
-	else															// 没找到
-	{
-		printf("第%d个元素不存在\n", i);
-		return NULL;
-	}
+	return p; // 返回第i个结点的指针
 }
 
 // 按值查找
 int locateElem(LinkList L, ElemType e)
 {
-	if(isEmpty(L))													// 如果链表为空
+	if (isEmpty(L)) // 如果链表为空
 	{
 		printf("链表为空\n");
 		return -1;
 	}
-	LNode* p = L;													// 从头结点开始遍历
-	int i = 1;														// 计数器
-	while (p != NULL && p->data != e)								// 遍历链表
+	LNode *p = L;					  // 从头结点开始遍历
+	int i = 1;						  // 计数器
+	while (p != NULL && p->data != e) // 遍历链表
 	{
-		p = p->next;												// 移动到下一个结点
-		i++;														// 计数器加1
+		p = p->next; // 移动到下一个结点
+		i++;		 // 计数器加1
 	}
-	if(p != NULL)													// 找到了元素
+	if (p != NULL) // 找到了元素
 	{
-		return i;													// 返回元素位置
+		return i; // 返回元素位置
 	}
-	else															// 没找到
+	else // 没找到
 	{
 		printf("元素%d不存在\n", e);
 		return -1;
@@ -205,9 +191,9 @@ int locateElem(LinkList L, ElemType e)
 
 /*6、链表的基本操作：插入*/
 // 在指定结点的前面插入新结点
-bool insertPreNode(LinkList* L, LNode* p, ElemType e)
+bool insertPreNode(LinkList *L, LNode *p, ElemType e)
 {
-	if(NULL == p)													// 如果指定结点为空
+	if (NULL == p) // 如果指定结点为空
 	{
 		printf("指定结点为空\n");
 		return false;
@@ -252,81 +238,81 @@ bool insertPreNode(LinkList* L, LNode* p, ElemType e)
 	*/
 
 	// 前插法插入新结点方法二，时间复杂度O(1)
-	LNode* newNode = createNewNode(e);								// 创建新结点
-	if(NULL == newNode)												// 创建失败
+	LNode *newNode = createNewNode(e); // 创建新结点
+	if (NULL == newNode)			   // 创建失败
 	{
 		printf("内存分配失败!插入失败！\n");
 		return false;
 	}
-	if(p == *L)														// 如果指定结点是头结点
+	if (p == *L) // 如果指定结点是头结点
 	{
-		newNode->next = *L;											// 将新结点插入到表头
-		*L = newNode;												// 更新头指针
+		newNode->next = *L; // 将新结点插入到表头
+		*L = newNode;		// 更新头指针
 		return true;
 	}
 	else
 	{
 		// 先以后插法插入新结点，然后交换数据域
-		newNode->next = p->next;									// 后插法插入新结点
+		newNode->next = p->next; // 后插法插入新结点
 		p->next = newNode;
-		ElemType temp = p->data;									// 交换数据域
+		ElemType temp = p->data; // 交换数据域
 		p->data = newNode->data;
 		newNode->data = temp;
 	}
 }
 
 // 在指定结点的后面插入新结点
-bool insertNextNode(LNode* p, ElemType e)
+bool insertNextNode(LNode *p, ElemType e)
 {
-	if(NULL == p)													// 如果指定结点为空
+	if (NULL == p) // 如果指定结点为空
 	{
 		printf("指定结点为空\n");
 		return false;
 	}
-	LNode* newNode = createNewNode(e);								// 创建新结点
-	if(NULL == newNode)												// 创建失败
+	LNode *newNode = createNewNode(e); // 创建新结点
+	if (NULL == newNode)			   // 创建失败
 	{
 		printf("内存分配失败!插入失败！\n");
 		return false;
 	}
-	newNode->next = p->next;										// 将新结点插入到指定结点的后面
-	p->next = newNode;												// 更新指定结点的指针域
+	newNode->next = p->next; // 将新结点插入到指定结点的后面
+	p->next = newNode;		 // 更新指定结点的指针域
 	return true;
 }
 
 // 按位插入 --- 后插法
-bool insertElem(LinkList* L, int i, ElemType e)
+bool insertElem(LinkList *L, int i, ElemType e)
 {
-	if (i < 1)														// 位置不合法
+	if (i < 1) // 位置不合法
 	{
 		printf("插入位置不合法\n");
 		return false;
 	}
-	
+
 	// 当插入首元素时，直接插入到表头
 	// 当链表为空时,插入位置只能为1,否则会出现插入位置不合法的报错
 	if (i == 1)
 	{
-		LNode* newNode = createNewNode(e);							// 创建新结点
-		if (NULL == newNode)											// 创建失败
+		LNode *newNode = createNewNode(e); // 创建新结点
+		if (NULL == newNode)			   // 创建失败
 		{
 			printf("内存分配失败!插入失败！\n");
 			return false;
 		}
-		newNode->next = *L;											// 将新结点插入到表头
-		*L = newNode;												// 更新头指针
+		newNode->next = *L; // 将新结点插入到表头
+		*L = newNode;		// 更新头指针
 		return true;
 	}
 
 	// 链表不为空且插入位置不在表头时
-	LNode* p = getElem(*L, i - 1);									// 获取第i-1个结点
-	return insertNextNode(p, e);									// 在第i-1个结点后插入新结点
+	LNode *p = getElem(*L, i - 1); // 获取第i-1个结点
+	return insertNextNode(p, e);   // 在第i-1个结点后插入新结点
 }
 
 // 按位插入 --- 前插法
-bool insertElemByHead(LinkList* L, int i, ElemType e)
+bool insertElemByHead(LinkList *L, int i, ElemType e)
 {
-	if(i < 1)														// 位置不合法
+	if (i < 1) // 位置不合法
 	{
 		printf("插入位置不合法\n");
 		return false;
@@ -334,80 +320,78 @@ bool insertElemByHead(LinkList* L, int i, ElemType e)
 
 	// 当插入首元素时，直接插入到表头
 	// 当链表为空时,插入位置只能为1,否则会出现插入位置不合法的报错
-	if(i == 1)														// 插入位置为1
+	if (i == 1) // 插入位置为1
 	{
-		LNode* newNode = createNewNode(e);							// 创建新结点
-		if(NULL == newNode)											// 创建失败
+		LNode *newNode = createNewNode(e); // 创建新结点
+		if (NULL == newNode)			   // 创建失败
 		{
 			printf("内存分配失败!插入失败！\n");
 			return false;
 		}
-		newNode->next = *L;											// 将新结点插入到表头
-		*L = newNode;												// 更新头指针
+		newNode->next = *L; // 将新结点插入到表头
+		*L = newNode;		// 更新头指针
 		return true;
 	}
 
 	// 此处的正常情况为i>1
 	// 隐含失败情况为链表为空时，插入位置不为1,此时会出现插入位置不合法的报错
-	LNode* p = getElem(*L, i);										// 获取第i个结点
-	return insertPreNode(L, p, e);									// 在第i个结点前插入新结点
+	LNode *p = getElem(*L, i);	   // 获取第i个结点
+	return insertPreNode(L, p, e); // 在第i个结点前插入新结点
 }
 
-
 /*7、链表的基本操作：删除*/
-bool deleteElem(LinkList* L, int i)
+bool deleteElem(LinkList *L, int i)
 {
-	if(i < 1)	// 位置不合法
+	if (i < 1) // 位置不合法
 	{
 		printf("删除位置不合法\n");
 		return false;
 	}
 
-	if(isEmpty(*L))	// 如果链表为空
+	if (isEmpty(*L)) // 如果链表为空
 	{
 		printf("链表为空\n");
 		return false;
 	}
 
-	if(i == 1)	// 删除头结点
+	if (i == 1) // 删除头结点
 	{
-		LNode* p = *L;	// 保存头结点
-		*L = (*L)->next;	// 更新头指针
-		free(p);	// 释放头结点
+		LNode *p = *L;	 // 保存头结点
+		*L = (*L)->next; // 更新头指针
+		free(p);		 // 释放头结点
 		return true;
 	}
 	else
 	{
-		LNode* p = getElem(*L, i - 1);	// 获取第i-1个结点
-		if(p == NULL || p->next == NULL)	// 如果第i-1个结点不存在或者第i个结点不存在
+		LNode *p = getElem(*L, i - 1);	  // 获取第i-1个结点
+		if (p == NULL || p->next == NULL) // 如果第i-1个结点不存在或者第i个结点不存在
 		{
 			printf("删除位置不合法\n");
 			return false;
 		}
-		LNode* q = p->next;	// 保存第i个结点
+		LNode *q = p->next; // 保存第i个结点
 		p->next = q->next;	// 删除第i个结点
-		free(q);	// 释放第i个结点
+		free(q);			// 释放第i个结点
 		return true;
 	}
 }
 
-
 /*8、链表的基本操作：销毁*/
 bool destroyList(LinkList *L)
 {
-	if(NULL == L)	// 如果链表指针为空
+	if (NULL == L) // 如果链表指针为空
 	{
 		printf("链表指针为空\n");
 		return false;
 	}
-	LNode* p = *L;	// 从头结点开始销毁
+	LNode *p = *L; // 从头结点开始销毁
 	while (p != NULL)
 	{
-		LNode* q = p->next;	// 保存下一个结点
-		free(p);	// 释放当前结点
-		p = q;	// 移动到下一个结点
+		LNode *q = p->next; // 保存下一个结点
+		free(p);			// 释放当前结点
+		p = q;				// 移动到下一个结点
 	}
-	*L = NULL;	// 头指针置空
+	*L = NULL; // 头指针置空
 	return true;
 }
 
@@ -421,7 +405,7 @@ bool isEmpty(LinkList L)
 int length(LinkList L)
 {
 	int len = 0;
-	LNode* p = L;
+	LNode *p = L;
 	while (p != NULL)
 	{
 		len++;
@@ -461,10 +445,10 @@ int main()
 
 	// 3、L2按位查找，分别测试首尾元素和中间的元素
 	printf("开始测试L2按位查找\n");
-	LNode* p1 = getElem(L2, 1);
-	LNode* p2 = getElem(L2, 3);
-	LNode* p3 = getElem(L2, length(L2));
-	LNode* p4 = getElem(L2, length(L2) + 1);
+	LNode *p1 = getElem(L2, 1);
+	LNode *p2 = getElem(L2, 3);
+	LNode *p3 = getElem(L2, length(L2));
+	LNode *p4 = getElem(L2, length(L2) + 1);
 	printf("L2第1个元素：%d\n", p1->data);
 	printf("L2第3个元素：%d\n", p2->data);
 	printf("L2最后一个元素：%d\n", p3->data);
@@ -515,5 +499,4 @@ int main()
 	// 8、结束语
 	printf("测试结束\n");
 	return 0;
-
 }
