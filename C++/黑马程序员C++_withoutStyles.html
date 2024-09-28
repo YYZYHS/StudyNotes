@@ -465,6 +465,112 @@ int main()
 	return 0;
 }
 </code></pre>
-<p>&nbsp;</p>
+<h3 id='25-转义字符'>2.5 转义字符</h3>
+<p>作用：用于表示一些不能<code>显示出来的ASCII字符</code></p>
+<p>现阶段我们常用的转义字符有：<code>\n  \\  \t</code></p>
+<p>下面是常用的转义字符表：</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>转义字符</th><th>含义</th><th>ASCII码值（十进制）</th><th>ASCII码值（十六进制）</th></tr></thead>
+<tbody><tr><td><strong>\n</strong></td><td><strong>换行符</strong></td><td><strong>10</strong></td><td><strong>0A</strong></td></tr><tr><td>\r</td><td>回车符</td><td>13</td><td>0D</td></tr><tr><td><strong>\t</strong></td><td><strong>制表符</strong></td><td><strong>9</strong></td><td><strong>09</strong></td></tr><tr><td>\b</td><td>退格符</td><td>8</td><td>08</td></tr><tr><td>\f</td><td>换页符</td><td>12</td><td>0C</td></tr><tr><td><strong>\\</strong></td><td><strong>反斜杠</strong></td><td><strong>92</strong></td><td><strong>5C</strong></td></tr><tr><td>&quot;</td><td>双引号</td><td>34</td><td>22</td></tr><tr><td>&#39;</td><td>单引号</td><td>39</td><td>27</td></tr><tr><td>\0</td><td>空字符（NULL）</td><td>0</td><td>00</td></tr></tbody>
+</table></figure>
+<p>这些转义字符在编程语言中用来表示特定的控制字符和特殊符号。</p>
+<p><strong>特殊的：</strong></p>
+<ul>
+<li><p><code>\ddd</code> 和 <code>\xhh</code> 是用于表示字符的转义序列，它们在不同的编程语言中用于插入特定的字符。下面是它们的详细解释：</p>
+<ul>
+<li><p><code>\ddd</code></p>
+<ul>
+<li><strong>含义</strong>：<code>\ddd</code> 是一种八进制转义序列，用于表示字符的 ASCII 码值。</li>
+
+</ul>
+<ul>
+<li><strong>格式</strong>：其中 <code>ddd</code> 是一个或多个八进制数字（0-7）。</li>
+
+</ul>
+<ul>
+<li><strong>用法</strong>：可以用来插入任意字符。例如，<code>\065</code> 表示 ASCII 码值为 65 的字符，即字母 <code>A</code>。</li>
+
+</ul>
+</li>
+
+</ul>
+<ul>
+<li><p><code>\xhh</code></p>
+<ul>
+<li><strong>含义</strong>：<code>\xhh</code> 是一种十六进制转义序列，用于表示字符的 ASCII 码值。</li>
+
+</ul>
+<ul>
+<li><strong>格式</strong>：其中 <code>hh</code> 是一个或两个十六进制数字（0-9 和 A-F）。</li>
+
+</ul>
+<ul>
+<li><strong>用法</strong>：可以用来插入任意字符。例如，<code>\x41</code> 表示 ASCII 码值为 65 的字符，即字母 <code>A</code>。</li>
+
+</ul>
+</li>
+
+</ul>
+<ul>
+<li><p>示例</p>
+<ul>
+<li><code>\065</code>：表示 ASCII 码值为 65 的字符 <code>A</code>。</li>
+
+</ul>
+<ul>
+<li><code>\x41</code>：同样表示 ASCII 码值为 65 的字符 <code>A</code>。</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<p>这些转义序列在编程中可以用来插入特定的字符，尤其是在字符编码系统不易直接输入时。</p>
+<pre><code class='language-c++' lang='c++'>#include &lt;iostream&gt;
+using namespace std;
+
+// 这是一个展示转义字符使用方法的例子
+int main() {
+
+	// 转义字符
+
+	// 换行符 \n
+	cout &lt;&lt; &quot;Hello, World!\n&quot;;
+
+	// 反斜杠 \\ 
+	cout &lt;&lt; &quot;This is a backslash: \\ &quot; &lt;&lt; endl;
+
+	// 水平制表符 \t
+	// 水平制表符用来对齐文本或数据
+	// 一个水平制表符通常等于四个空格
+	cout &lt;&lt; &quot;Name\tAge\tGender&quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot;Tom\t20\tMale&quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot;Jerry\t22\tFemale&quot; &lt;&lt; endl;
+
+	// \ddd 八进制转义字符
+	// \ddd 八进制转义字符表示一个八进制数
+	// 八进制数的范围是 0-7
+	cout &lt;&lt; &quot;This is an octal number: \101&quot; &lt;&lt; endl;
+
+	// \xhh 十六进制转义字符
+	// \xhh 十六进制转义字符表示一个十六进制数
+	// 十六进制数的范围是 0-9, A-F, a-f
+	cout &lt;&lt; &quot;This is a hexadecimal number: \x41&quot; &lt;&lt; endl;
+    
+    return 0;
+}
+</code></pre>
+<blockquote><p>代码输出：</p>
+<p>Hello, World!
+This is a backslash: \
+Name    Age     Gender
+Tom     20      Male
+Jerry   22      Female
+This is an octal number: A
+This is a hexadecimal number: A</p>
+</blockquote>
 </body>
 </html>
