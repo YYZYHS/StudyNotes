@@ -38,3 +38,11 @@
 /Qt/StudyCode/build-*
 草稿纸.js
 /书籍扫描版
+*.vcxproj.user
+*.log
+**/Debug/
+
+# idea配置文件
+**/.idea/
+**/.vscode/
+**/.venv/
