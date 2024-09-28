@@ -31,8 +31,9 @@
 *.exe
 *.out
 *.app
-/x64/
+**/.vs/
+**/x64/
 草稿纸
-/.idea
+**/.idea
 /Qt/StudyCode/build-*
 草稿纸.js
