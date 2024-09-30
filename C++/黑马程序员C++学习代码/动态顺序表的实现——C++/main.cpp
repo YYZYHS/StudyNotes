@@ -17,7 +17,7 @@ class DSeqList		// D - Dynamic Se-Sequence
 {
 public:
 // 基本操作
-	DSeqList(int capacity = 10);	/// 有参构造函数
+	DSeqList(int capacity = 10);	/// 有参构造函数，默认容量为10
 	~DSeqList();	/// 析构函数
 	bool init();	/// 初始化
 	bool destroy();	/// 销毁
@@ -87,7 +87,8 @@ int main()
 *		注意：
 *			1. 该函数是构造函数，不需要返回值。
 *			2. 该函数在动态顺序表对象创建时被自动调用，无需用户手动调用。
-*			3. 该函数的参数用来指定动态顺序表初始容量，若不指定则默认为10。
+*			3. 该函数的参数用来指定动态顺序表初始容量，若不指定则默认为10（在函数声明时已经指定了默认值）。
+*			4. 当用户自定义了有参构造函数时，系统不会再提供无参构造函数，因此如果需要用无参构造函数生成对象，需要显式定义无参构造函数。
 */
 template<class T>
 DSeqList<T>::DSeqList(int capacity)
@@ -167,7 +168,7 @@ bool DSeqList<T>::init()
 * 		注意：
 * 			1. 销毁操作会改变动态顺序表的状态，因此不设置为常成员函数。
 * 			2. 销毁操作时间复杂度为O(1)，空间复杂度为O(1)。
-* 			3. 销毁操作会释放动态顺序表的数据区，因此在销毁前需要判断数据区是否为空。
+* 			3. 销毁操作会释放动态顺序表的数据区，因此在销毁前需要判断数据区指针是否合法，如果指针为NULL则不需要释放。
 */
 template<class T>
 bool DSeqList<T>::destroy()
@@ -197,7 +198,7 @@ bool DSeqList<T>::destroy()
 * 		注意：
 * 			1. 清空操作会改变动态顺序表的状态，因此不设置为常成员函数。
 * 			2. 清空操作时间复杂度为O(1)，空间复杂度为O(1)。
-* 			3. 该清空操作为逻辑上的清空，不会释放数据区，因此数据区的内存空间不会释放。
+* 			3. 该清空操作为逻辑上的清空，因此数据区的内存空间（即m_data）不会被释放。
 */
 template<class T>
 bool DSeqList<T>::clear()
@@ -215,7 +216,7 @@ bool DSeqList<T>::clear()
 * 		函数功能：
 * 			本函数用于判断动态顺序表是否为空。
 * 		函数思路：
-* 			1. 顺序表有成员变量m_size记录当前元素个数，若m_size为0则顺序表为空，因此直接返回m_size是否为0即可。
+* 			1. 顺序表有成员变量m_size记录当前元素个数，若m_size为0则表示顺序表为空，因此直接返回m_size是否为0即可。
 * 	    注意：
 * 			1. 因为判空操作不会改变动态顺序表的状态，因此设置为常成员函数。
 * 			2. 判空操作时间复杂度为O(1)，空间复杂度为O(1)。
@@ -254,7 +255,7 @@ int DSeqList<T>::length() const
  * @return 返回动态顺序表的容量
  * @note
  *		函数功能：
- *			本函数用于求动态顺序表的容量。
+ *			本函数用于求动态顺序表的容量（即表的最大长度）。
  *      函数思路：
  *			1. 顺序表有成员变量m_capacity记录当前容量，直接返回m_capacity即可。
  *		注意：
@@ -297,6 +298,10 @@ bool DSeqList<T>::increase(int len)
 		return false;
 	}
 	// 将原数据区的元素复制到新数据区
+	// 方法一：使用内存拷贝函数memcpy
+	// memcpy(new_data, m_data, m_size * sizeof(T));
+
+	// 方法二：通过for循环逐个复制
 	for (int i = 0; i < m_size; i++)
 	{
 		new_data[i] = m_data[i];
@@ -856,7 +861,8 @@ void test5()
 	cout << endl << endl << "[INFO] ↓========================↓" << endl << "[INFO] 输出当前动态顺序表的内容" << endl;
 	list.print();
 	cout << endl << endl << "[INFO] ↓========================↓" << endl << "[INFO] 测试排序操作" << endl;
-	list.sortByQuick();
+	//list.sortByQuick();
+	list.sortByInsert();
 	cout << endl << endl << "[INFO] ↓========================↓" << endl << "[INFO] 输出排序后的动态顺序表的内容" << endl;
 	list.print();
 	cout << endl << endl << "[INFO] ↓========================↓" << endl << "[INFO] 测试逆置操作" << endl;

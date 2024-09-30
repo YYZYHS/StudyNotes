@@ -617,3 +617,53 @@ int main() {
 > Jerry   22      Female
 > This is an octal number: A
 > This is a hexadecimal number: A
+
+### 2.6 字符串类型
+
+- 作用：用于表示一串字符
+
+- 两种风格的字符串型
+
+  1. C风格字符串：`char 变量名[] = "字符串值"`
+
+     示例：
+
+     ```cpp
+     #include <iostream>
+     using namespace std;
+     int main()
+     {
+     	// 1、C风格字符串
+     	// char 字符串名[] = "字符串内容";
+     	// 注意事项：字符串名后面的中括号不能省略，中括号中也不能写数字，否则会报错
+     	char str1[] = "Hello, World!";
+     	cout << str1 << endl;
+     	return 0;
+     }
+     ```
+
+  2. C++风格字符串：`string 变量名 = "字符串值"`
+
+     示例：
+
+     ```cpp
+     #include <iostream>
+     #include <string> // 字符串类
+     using namespace std;
+     int main()
+     {
+     	// 2、C++风格字符串
+     	// string 字符串名 = "字符串内容";
+     	// 注意：string 类型需要包含头文件 #include <string>
+     	string str2 = "Hello, C++!";
+     	cout << str2 << endl;
+     
+     	return 0;
+     }
+     ```
+
+  3. **注意：**
+
+    - 使用C++风格的字符串需要包含头文件`<string>`，并使用`std`命名空间。
+    - C风格的字符串是字符数组，末尾以`\0`表示字符串结束，需要手动管理内存和注意边界。
+    - 两种类型的字符串值都需要用`双引号`包含起来。

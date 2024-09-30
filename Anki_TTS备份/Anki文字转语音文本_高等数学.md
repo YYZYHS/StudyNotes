@@ -30,3 +30,19 @@
 
 ## 高等数学0008 极限定义2 $(\epsilon - \delta )$公式
 设函数 f(x) 在 x 等于 x0 的去心领域中有定义。如果对于任意的正数 epsilon ，都存在一个正数 delta ，使得当 x 减 x0的绝对值，大于0，小于delta 时， |f(x) 减 A| 的绝对值，小于 epsilon 恒成立，那么我们就说 f(x) 在 x0 处的极限是 A ，记作 limit，x趋向于x0时， f(x) 等于 A 。
+
+## 高等数学0009 左右极限的定义及其引申出的注意点
+设函数 f(x) 在 x 等于 X0 的去心邻域中有定义。如果对于任意正数 Epsilon，都存在一个正的 delta 1，当 x 位于从 a 减 delta 1 到 a 的区间内时，绝对值 f(x) 减 A 小于 Epsilon 恒成立，那么就有函数在 x 趋近于 a 的左极限等于 A，或者写作 f 括号 a 减零 等于 A。同样地，如果对于任意正数 Epsilon，都存在一个正的 delta 2，当 x 位于从 a 到 a 加 delta 2 的区间内时，绝对值 f(x) 减 B 小于 Epsilon 恒成立，那么函数在 x 趋近于 a 的右极限等于 B，或者写作 f 括号 a 加零 等于 B。由此引申出，当且仅当左极限和右极限都存在且相等时，函数在 x 趋近于 a 时的极限才会存在。
+## 高等数学0010 极限定义3
+极限epsilon，X ，公式有三种情况，分别是当 x 趋向正无穷、x 趋向负无穷和 x 趋向无穷。当对于任意正数 epsilon，存在一个正数 x0，使得当 x 大于 x0 时，f(x)减A的绝对值恒小于 epsilon，那么当 x 趋于正无穷时，函数 f(x) 的极限等于 A。同样的，如果当 x 小于 负x0 时，f(x)减A的绝对值恒小于 epsilon，那么当 x 趋于负无穷时，f(x) 的极限等于 A。最后，如果对于任意正数 epsilon，存在一个正数 x0，使得当x的绝对值大于 x0 时，f(x)减A的绝对值恒小于 epsilon，那么当 x 趋于无穷时，f(x) 的极限等于 A。
+
+## 高等数学0011 无穷小的定义
+如果当 x 接近 a 时，alpha(x) 的极限是 0，那么我们就说 alpha(x) 在 x 趋近于 a 时是无穷小。
+## 高等数学0012 无穷小的性质
+假设我们把函数  alpha(x)  和  beta(x)  简称为  alpha  和  beta 。当  x  趋近于  a  时， alpha  和  beta  都趋近于零，也就是说，它们都是无穷小。
+
+第一种情况是：如果当  x  接近  a  时， beta  除以  alpha  的值趋近于零，也就是  beta  比  alpha  小得多，那么我们就说  beta  是比  alpha  高阶的无穷小，记作  beta = 小O(alpha) 。
+
+第二种情况是：如果当  x  接近  a  时， beta  除以  alpha  的值趋近于一个不为零也不为无穷大的常数  k ，也就是说， beta  和  alpha  的大小差不多，那么我们称  beta  和  alpha  是同阶无穷小，记作  beta = 大O(alpha) 。
+
+第三种情况是：如果当  x  接近  a  时， beta  除以  alpha  的值趋近于 1，也就是  beta  和  alpha  基本相等，那么我们就说  beta  和  alpha  是等价的无穷小，记作  beta 等价于 alpha 。
