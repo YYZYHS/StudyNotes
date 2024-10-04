@@ -1,0 +1,2545 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>数据结构_第2章_线性表_2.2_线性表的顺序表示</title>
+</head>
+<body><center style="font-family: 华文新魏"><font size="12px" color="#4870ac">王道408 数据结构</font></center>
+<div>[TOC]</div>
+<h1 id='第2章-线性表'>第2章 线性表</h1>
+<h2 id='22-线性表的顺序表示'>2.2 线性表的顺序表示</h2>
+<h3 id='221-顺序表的定义'>2.2.1 顺序表的定义</h3>
+<ul>
+<li><p>顺序表：用<code>顺序存储</code>的方式实现的<code>线性表</code></p>
+</li>
+<li><p>顺序存储：把<code>逻辑上相邻的元素</code>存储在<code>物理位置上也相邻</code>的<code>存储单元</code>中，元素之间的关系由<code>存储单元的邻接关系</code>来体现。</p>
+</li>
+<li><p>设线性表第一个元素的存放位置是<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="8.287ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 3663 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-18-TEX-I-1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path><path id="MJX-18-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-18-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-18-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-18-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43F" xlink:href="#MJX-18-TEX-I-1D43F"></use></g><g data-mml-node="mi" transform="translate(681,0)"><use data-c="1D442" xlink:href="#MJX-18-TEX-I-1D442"></use></g><g data-mml-node="mi" transform="translate(1444,0)"><use data-c="1D436" xlink:href="#MJX-18-TEX-I-1D436"></use></g><g data-mml-node="mo" transform="translate(2204,0)"><use data-c="28" xlink:href="#MJX-18-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(2593,0)"><use data-c="1D43F" xlink:href="#MJX-18-TEX-I-1D43F"></use></g><g data-mml-node="mo" transform="translate(3274,0)"><use data-c="29" xlink:href="#MJX-18-TEX-N-29"></use></g></g></g></svg></mjx-container><script type="math/tex">LOC(L)</script>（LOC是location的缩写），则第i位元素的地址为：</p>
+<div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1401" cid="n1401" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-math-container"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="39.836ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 17607.5 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-16-TEX-I-1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path><path id="MJX-16-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-16-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-16-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-16-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-16-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-16-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-16-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-16-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43F" xlink:href="#MJX-16-TEX-I-1D43F"></use></g><g data-mml-node="mi" transform="translate(681,0)"><use data-c="1D442" xlink:href="#MJX-16-TEX-I-1D442"></use></g><g data-mml-node="mi" transform="translate(1444,0)"><use data-c="1D436" xlink:href="#MJX-16-TEX-I-1D436"></use></g><g data-mml-node="mo" transform="translate(2204,0)"><use data-c="28" xlink:href="#MJX-16-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(2593,0)"><use data-c="1D456" xlink:href="#MJX-16-TEX-I-1D456"></use></g><g data-mml-node="mo" transform="translate(2938,0)"><use data-c="29" xlink:href="#MJX-16-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(3604.8,0)"><use data-c="3D" xlink:href="#MJX-16-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(4660.6,0)"><use data-c="1D43F" xlink:href="#MJX-16-TEX-I-1D43F"></use></g><g data-mml-node="mi" transform="translate(5341.6,0)"><use data-c="1D442" xlink:href="#MJX-16-TEX-I-1D442"></use></g><g data-mml-node="mi" transform="translate(6104.6,0)"><use data-c="1D436" xlink:href="#MJX-16-TEX-I-1D436"></use></g><g data-mml-node="mo" transform="translate(6864.6,0)"><use data-c="28" xlink:href="#MJX-16-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(7253.6,0)"><use data-c="1D43F" xlink:href="#MJX-16-TEX-I-1D43F"></use></g><g data-mml-node="mo" transform="translate(7934.6,0)"><use data-c="29" xlink:href="#MJX-16-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(8545.8,0)"><use data-c="2B" xlink:href="#MJX-16-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(9546,0)"><use data-c="1D456" xlink:href="#MJX-16-TEX-I-1D456"></use></g><g data-mml-node="mo" transform="translate(10113.2,0)"><use data-c="D7" xlink:href="#MJX-16-TEX-N-D7"></use></g><g data-mml-node="mtext" transform="translate(11113.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">数</text></g><g data-mml-node="mtext" transform="translate(12048.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">据</text></g><g data-mml-node="mtext" transform="translate(12966.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">元</text></g><g data-mml-node="mtext" transform="translate(13901.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">素</text></g><g data-mml-node="mtext" transform="translate(14836.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">的</text></g><g data-mml-node="mtext" transform="translate(15754.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">大</text></g><g data-mml-node="mtext" transform="translate(16689.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">小</text></g></g></g></svg></mjx-container></div></div>
+</li>
+<li><p>c语言通过<code>sizeof(ElemType)</code>函数知道一个数据元素的大小，其中，ElemType就是顺序表中存放的数据元素类型</p>
+</li>
+
+</ul>
+<h3 id='222-顺序表的实现方式'>2.2.2 顺序表的实现方式</h3>
+<div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n1405" cid="n1405" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-math-container"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="126.134ex" height="21.267ex" role="img" focusable="false" viewBox="0 -4950 55751.3 9400" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -10.068ex;"><defs><path id="MJX-17-TEX-S4-23A7" d="M712 899L718 893V876V865Q718 854 704 846Q627 793 577 710T510 525Q510 524 509 521Q505 493 504 349Q504 345 504 334Q504 277 504 240Q504 -2 503 -4Q502 -8 494 -9T444 -10Q392 -10 390 -9Q387 -8 386 -5Q384 5 384 230Q384 262 384 312T383 382Q383 481 392 535T434 656Q510 806 664 892L677 899H712Z"></path><path id="MJX-17-TEX-S4-23A9" d="M718 -893L712 -899H677L666 -893Q542 -825 468 -714T385 -476Q384 -466 384 -282Q384 3 385 5L389 9Q392 10 444 10Q486 10 494 9T503 4Q504 2 504 -239V-310V-366Q504 -470 508 -513T530 -609Q546 -657 569 -698T617 -767T661 -812T699 -843T717 -856T718 -876V-893Z"></path><path id="MJX-17-TEX-S4-23A8" d="M389 1159Q391 1160 455 1160Q496 1160 498 1159Q501 1158 502 1155Q504 1145 504 924Q504 691 503 682Q494 549 425 439T243 259L229 250L243 241Q349 175 421 66T503 -182Q504 -191 504 -424Q504 -600 504 -629T499 -659H498Q496 -660 444 -660T390 -659Q387 -658 386 -655Q384 -645 384 -425V-282Q384 -176 377 -116T342 10Q325 54 301 92T255 155T214 196T183 222T171 232Q170 233 170 250T171 268Q171 269 191 284T240 331T300 407T354 524T383 679Q384 691 384 925Q384 1152 385 1155L389 1159Z"></path><path id="MJX-17-TEX-S4-23AA" d="M384 150V266Q384 304 389 309Q391 310 455 310Q496 310 498 309Q502 308 503 298Q504 283 504 150Q504 32 504 12T499 -9H498Q496 -10 444 -10T390 -9Q386 -8 385 2Q384 17 384 150Z"></path><path id="MJX-17-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-17-TEX-N-2035" d="M12 501Q12 527 31 542T63 558Q73 560 77 560Q114 560 128 528Q133 518 188 293T244 61Q244 56 223 50T195 43Q192 43 190 45T102 263T14 486Q12 496 12 501Z"></path><path id="MJX-17-TEX-N-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-17-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-17-TEX-S3-7B" d="M618 -943L612 -949H582L568 -943Q472 -903 411 -841T332 -703Q327 -682 327 -653T325 -350Q324 -28 323 -18Q317 24 301 61T264 124T221 171T179 205T147 225T132 234Q130 238 130 250Q130 255 130 258T131 264T132 267T134 269T139 272T144 275Q207 308 256 367Q310 436 323 519Q324 529 325 851Q326 1124 326 1154T332 1205Q369 1358 566 1443L582 1450H612L618 1444V1429Q618 1413 616 1411L608 1406Q599 1402 585 1393T552 1372T515 1343T479 1305T449 1257T429 1200Q425 1180 425 1152T423 851Q422 579 422 549T416 498Q407 459 388 424T346 364T297 318T250 284T214 264T197 254L188 251L205 242Q290 200 345 138T416 3Q421 -18 421 -48T423 -349Q423 -397 423 -472Q424 -677 428 -694Q429 -697 429 -699Q434 -722 443 -743T465 -782T491 -816T519 -845T548 -868T574 -886T595 -899T610 -908L616 -910Q618 -912 618 -928V-943Z"></path><path id="MJX-17-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-17-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-17-TEX-I-1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path id="MJX-17-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-17-TEX-I-1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path><path id="MJX-17-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-17-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-17-TEX-I-1D464" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z"></path><path id="MJX-17-TEX-I-1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path id="MJX-17-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-17-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-17-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-17-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-17-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-17-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-17-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-17-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">顺</text></g><g data-mml-node="mtext" transform="translate(934.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">序</text></g><g data-mml-node="mtext" transform="translate(1853.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">表</text></g><g data-mml-node="mrow" transform="translate(2954.6,0)"><g data-mml-node="mo"><use data-c="23A7" xlink:href="#MJX-17-TEX-S4-23A7" transform="translate(0,4051)"></use><use data-c="23A9" xlink:href="#MJX-17-TEX-S4-23A9" transform="translate(0,-3551)"></use><use data-c="23A8" xlink:href="#MJX-17-TEX-S4-23A8" transform="translate(0,0)"></use><svg width="889" height="3081" y="1060" x="0" viewBox="0 543 889 3081"><use data-c="23AA" xlink:href="#MJX-17-TEX-S4-23AA" transform="scale(1,15.152)"></use></svg><svg width="889" height="3081" y="-3641" x="0" viewBox="0 543 889 3081"><use data-c="23AA" xlink:href="#MJX-17-TEX-S4-23AA" transform="scale(1,15.152)"></use></svg></g><g data-mml-node="mtable" transform="translate(889,0)"><g data-mml-node="mtr" transform="translate(0,2800)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">实</text></g><g data-mml-node="mtext" transform="translate(934.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">现</text></g><g data-mml-node="mtext" transform="translate(1869.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">方</text></g><g data-mml-node="mtext" transform="translate(2804.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">式</text></g><g data-mml-node="mrow" transform="translate(3905.9,0)"><g data-mml-node="mo"><use data-c="23A7" xlink:href="#MJX-17-TEX-S4-23A7" transform="translate(0,1251)"></use><use data-c="23A9" xlink:href="#MJX-17-TEX-S4-23A9" transform="translate(0,-751)"></use><use data-c="23A8" xlink:href="#MJX-17-TEX-S4-23A8" transform="translate(0,0)"></use><svg width="889" height="281" y="1060" x="0" viewBox="0 49.5 889 281"><use data-c="23AA" xlink:href="#MJX-17-TEX-S4-23AA" transform="scale(1,1.382)"></use></svg><svg width="889" height="281" y="-841" x="0" viewBox="0 49.5 889 281"><use data-c="23AA" xlink:href="#MJX-17-TEX-S4-23AA" transform="scale(1,1.382)"></use></svg></g><g data-mml-node="mtable" transform="translate(889,0)"><g data-mml-node="mtr" transform="translate(0,1400)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">静</text></g><g data-mml-node="mtext" transform="translate(934.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">态</text></g><g data-mml-node="mtext" transform="translate(1869.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">分</text></g><g data-mml-node="mtext" transform="translate(2804.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">配</text></g><g data-mml-node="mo" transform="translate(4017,0)"><use data-c="2192" xlink:href="#MJX-17-TEX-N-2192"></use></g><g data-mml-node="mtext" transform="translate(5294.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">使</text></g><g data-mml-node="mtext" transform="translate(6229.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">用</text></g><g data-mml-node="mo" transform="translate(7147.9,0)"><g data-c="2036"><use data-c="2035" xlink:href="#MJX-17-TEX-N-2035"></use><use data-c="2035" xlink:href="#MJX-17-TEX-N-2035" transform="translate(275,0)"></use></g></g><g data-mml-node="mtext" transform="translate(7697.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">静</text></g><g data-mml-node="mtext" transform="translate(8632.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">态</text></g><g data-mml-node="mtext" transform="translate(9567.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">数</text></g><g data-mml-node="mtext" transform="translate(10502.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">组</text></g><g data-mml-node="mo" transform="translate(11437.1,0)"><g data-c="2033"><use data-c="2032" xlink:href="#MJX-17-TEX-N-2032"></use><use data-c="2032" xlink:href="#MJX-17-TEX-N-2032" transform="translate(275,0)"></use></g></g><g data-mml-node="mtext" transform="translate(11987.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">实</text></g><g data-mml-node="mtext" transform="translate(12921.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">现</text></g><g data-mml-node="mo" transform="translate(13856.7,0)"><use data-c="2C" xlink:href="#MJX-17-TEX-N-2C"></use></g><g data-mml-node="mtext" transform="translate(14301.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">大</text></g><g data-mml-node="mtext" transform="translate(15236.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">小</text></g><g data-mml-node="mtext" transform="translate(16154.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">一</text></g><g data-mml-node="mtext" transform="translate(17089.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">旦</text></g><g data-mml-node="mtext" transform="translate(18007.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">确</text></g><g data-mml-node="mtext" transform="translate(18925.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">定</text></g><g data-mml-node="mtext" transform="translate(19844.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">就</text></g><g data-mml-node="mtext" transform="translate(20779,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">无</text></g><g data-mml-node="mtext" transform="translate(21713.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">法</text></g><g data-mml-node="mtext" transform="translate(22648.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">改</text></g><g data-mml-node="mtext" transform="translate(23583.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">变</text></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">动</text></g><g data-mml-node="mtext" transform="translate(918.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">态</text></g><g data-mml-node="mtext" transform="translate(1853.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">分</text></g><g data-mml-node="mtext" transform="translate(2787.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">配</text></g><g data-mml-node="mo" transform="translate(4000.5,0)"><use data-c="2192" xlink:href="#MJX-17-TEX-N-2192"></use></g><g data-mml-node="mtext" transform="translate(5278.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">使</text></g><g data-mml-node="mtext" transform="translate(6213.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">用</text></g><g data-mml-node="mo" transform="translate(7131.4,0)"><g data-c="2036"><use data-c="2035" xlink:href="#MJX-17-TEX-N-2035"></use><use data-c="2035" xlink:href="#MJX-17-TEX-N-2035" transform="translate(275,0)"></use></g></g><g data-mml-node="mtext" transform="translate(7681.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">动</text></g><g data-mml-node="mtext" transform="translate(8599.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">态</text></g><g data-mml-node="mtext" transform="translate(9534.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">数</text></g><g data-mml-node="mtext" transform="translate(10469.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">组</text></g><g data-mml-node="mo" transform="translate(11404.1,0)"><g data-c="2033"><use data-c="2032" xlink:href="#MJX-17-TEX-N-2032"></use><use data-c="2032" xlink:href="#MJX-17-TEX-N-2032" transform="translate(275,0)"></use></g></g><g data-mml-node="mtext" transform="translate(11954.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">实</text></g><g data-mml-node="mtext" transform="translate(12888.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">现</text></g><g data-mml-node="mrow" transform="translate(13990.3,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7B" xlink:href="#MJX-17-TEX-S3-7B"></use></g><g data-mml-node="mtable" transform="translate(750,0)"><g data-mml-node="mtr" transform="translate(0,700)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">顺</text></g><g data-mml-node="mtext" transform="translate(934.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">序</text></g><g data-mml-node="mtext" transform="translate(1853.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">表</text></g><g data-mml-node="mtext" transform="translate(2787.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">存</text></g><g data-mml-node="mtext" transform="translate(3722.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">满</text></g><g data-mml-node="mtext" transform="translate(4657.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">时</text></g><g data-mml-node="mi" transform="translate(5575.8,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="917.8px" font-family="serif" font-style="italic">，</text></g><g data-mml-node="mtext" transform="translate(6494.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">可</text></g><g data-mml-node="mtext" transform="translate(7428.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">再</text></g><g data-mml-node="mtext" transform="translate(8363.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">用</text></g><g data-mml-node="mi" transform="translate(9282,0)"><use data-c="1D45A" xlink:href="#MJX-17-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(10160,0)"><use data-c="1D44E" xlink:href="#MJX-17-TEX-I-1D44E"></use></g><g data-mml-node="mi" transform="translate(10689,0)"><use data-c="1D459" xlink:href="#MJX-17-TEX-I-1D459"></use></g><g data-mml-node="mi" transform="translate(10987,0)"><use data-c="1D459" xlink:href="#MJX-17-TEX-I-1D459"></use></g><g data-mml-node="mi" transform="translate(11285,0)"><use data-c="1D45C" xlink:href="#MJX-17-TEX-I-1D45C"></use></g><g data-mml-node="mi" transform="translate(11770,0)"><use data-c="1D450" xlink:href="#MJX-17-TEX-I-1D450"></use></g><g data-mml-node="mtext" transform="translate(12203,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">函</text></g><g data-mml-node="mtext" transform="translate(13121.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">数</text></g><g data-mml-node="mtext" transform="translate(14056.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">或</text></g><g data-mml-node="mi" transform="translate(14990.9,0)"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g><g data-mml-node="mi" transform="translate(15590.9,0)"><use data-c="1D452" xlink:href="#MJX-17-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(16056.9,0)"><use data-c="1D464" xlink:href="#MJX-17-TEX-I-1D464"></use></g><g data-mml-node="mtext" transform="translate(16772.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">关</text></g><g data-mml-node="mtext" transform="translate(17707.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">键</text></g><g data-mml-node="mtext" transform="translate(18642.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">字</text></g><g data-mml-node="mtext" transform="translate(19577.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">动</text></g><g data-mml-node="mtext" transform="translate(20495.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">态</text></g><g data-mml-node="mtext" transform="translate(21430.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">拓</text></g><g data-mml-node="mtext" transform="translate(22365.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">展</text></g><g data-mml-node="mtext" transform="translate(23300,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">顺</text></g><g data-mml-node="mtext" transform="translate(24234.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">序</text></g><g data-mml-node="mtext" transform="translate(25153.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">表</text></g><g data-mml-node="mtext" transform="translate(26087.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">的</text></g><g data-mml-node="mtext" transform="translate(27006.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">最</text></g><g data-mml-node="mtext" transform="translate(27941,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">大</text></g><g data-mml-node="mtext" transform="translate(28875.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">容</text></g><g data-mml-node="mtext" transform="translate(29810.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">量</text></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">需</text></g><g data-mml-node="mtext" transform="translate(918.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">要</text></g><g data-mml-node="mtext" transform="translate(1853.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">将</text></g><g data-mml-node="mtext" transform="translate(2787.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">数</text></g><g data-mml-node="mtext" transform="translate(3722.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">据</text></g><g data-mml-node="mtext" transform="translate(4641,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">元</text></g><g data-mml-node="mtext" transform="translate(5575.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">素</text></g><g data-mml-node="mtext" transform="translate(6510.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">复</text></g><g data-mml-node="mtext" transform="translate(7445.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">制</text></g><g data-mml-node="mtext" transform="translate(8363.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">到</text></g><g data-mml-node="mtext" transform="translate(9282,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">新</text></g><g data-mml-node="mtext" transform="translate(10216.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">的</text></g><g data-mml-node="mtext" transform="translate(11135.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">存</text></g><g data-mml-node="mtext" transform="translate(12069.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">储</text></g><g data-mml-node="mtext" transform="translate(13004.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">区</text></g><g data-mml-node="mtext" transform="translate(13923,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">域</text></g><g data-mml-node="mi" transform="translate(14857.8,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="917.8px" font-family="serif" font-style="italic">，</text></g><g data-mml-node="mtext" transform="translate(15776.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">并</text></g><g data-mml-node="mtext" transform="translate(16710.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">用</text></g><g data-mml-node="mi" transform="translate(17629.2,0)"><use data-c="1D453" xlink:href="#MJX-17-TEX-I-1D453"></use></g><g data-mml-node="mi" transform="translate(18179.2,0)"><use data-c="1D45F" xlink:href="#MJX-17-TEX-I-1D45F"></use></g><g data-mml-node="mi" transform="translate(18630.2,0)"><use data-c="1D452" xlink:href="#MJX-17-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(19096.2,0)"><use data-c="1D452" xlink:href="#MJX-17-TEX-I-1D452"></use></g><g data-mml-node="mtext" transform="translate(19562.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">函</text></g><g data-mml-node="mtext" transform="translate(20480.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">数</text></g><g data-mml-node="mtext" transform="translate(21415.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">或</text></g><g data-mml-node="mi" transform="translate(22350.1,0)"><use data-c="1D451" xlink:href="#MJX-17-TEX-I-1D451"></use></g><g data-mml-node="mi" transform="translate(22870.1,0)"><use data-c="1D452" xlink:href="#MJX-17-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(23336.1,0)"><use data-c="1D459" xlink:href="#MJX-17-TEX-I-1D459"></use></g><g data-mml-node="mi" transform="translate(23634.1,0)"><use data-c="1D452" xlink:href="#MJX-17-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(24100.1,0)"><use data-c="1D461" xlink:href="#MJX-17-TEX-I-1D461"></use></g><g data-mml-node="mi" transform="translate(24461.1,0)"><use data-c="1D452" xlink:href="#MJX-17-TEX-I-1D452"></use></g><g data-mml-node="mtext" transform="translate(24927.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">关</text></g><g data-mml-node="mtext" transform="translate(25861.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">键</text></g><g data-mml-node="mtext" transform="translate(26796.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">字</text></g><g data-mml-node="mtext" transform="translate(27731.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">释</text></g><g data-mml-node="mtext" transform="translate(28666.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">放</text></g><g data-mml-node="mtext" transform="translate(29601.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">原</text></g><g data-mml-node="mtext" transform="translate(30519.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">区</text></g><g data-mml-node="mtext" transform="translate(31437.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">域</text></g></g></g></g><g data-mml-node="mo" transform="translate(33122.5,0) translate(0 250)"></g></g></g></g></g><g data-mml-node="mo" transform="translate(48001.9,0) translate(0 250)"></g></g></g></g><g data-mml-node="mtr" transform="translate(0,-2100)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">特</text></g><g data-mml-node="mtext" transform="translate(934.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">点</text></g><g data-mml-node="mrow" transform="translate(2019.8,0)"><g data-mml-node="mo"><use data-c="23A7" xlink:href="#MJX-17-TEX-S4-23A7" transform="translate(0,1951)"></use><use data-c="23A9" xlink:href="#MJX-17-TEX-S4-23A9" transform="translate(0,-1451)"></use><use data-c="23A8" xlink:href="#MJX-17-TEX-S4-23A8" transform="translate(0,0)"></use><svg width="889" height="981" y="1060" x="0" viewBox="0 172.9 889 981"><use data-c="23AA" xlink:href="#MJX-17-TEX-S4-23AA" transform="scale(1,4.825)"></use></svg><svg width="889" height="981" y="-1541" x="0" viewBox="0 172.9 889 981"><use data-c="23AA" xlink:href="#MJX-17-TEX-S4-23AA" transform="scale(1,4.825)"></use></svg></g><g data-mml-node="mtable" transform="translate(889,0)"><g data-mml-node="mtr" transform="translate(0,2100)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">随</text></g><g data-mml-node="mtext" transform="translate(934.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">机</text></g><g data-mml-node="mtext" transform="translate(1869.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">访</text></g><g data-mml-node="mtext" transform="translate(2804.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">问</text></g><g data-mml-node="mo" transform="translate(4000.5,0)"><use data-c="2192" xlink:href="#MJX-17-TEX-N-2192"></use></g><g data-mml-node="mtext" transform="translate(5278.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">能</text></g><g data-mml-node="mtext" transform="translate(6213.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">在</text></g><g data-mml-node="mi" transform="translate(7147.9,0)"><use data-c="1D442" xlink:href="#MJX-17-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(7910.9,0)"><use data-c="28" xlink:href="#MJX-17-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(8299.9,0)"><use data-c="31" xlink:href="#MJX-17-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(8799.9,0)"><use data-c="29" xlink:href="#MJX-17-TEX-N-29"></use></g><g data-mml-node="mtext" transform="translate(9188.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(10107.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">间</text></g><g data-mml-node="mtext" transform="translate(11025.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">内</text></g><g data-mml-node="mtext" transform="translate(11943.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">找</text></g><g data-mml-node="mtext" transform="translate(12862,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">到</text></g><g data-mml-node="mtext" transform="translate(13780.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">第</text></g><g data-mml-node="mi" transform="translate(14698.6,0)"><use data-c="1D456" xlink:href="#MJX-17-TEX-I-1D456"></use></g><g data-mml-node="mtext" transform="translate(15043.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">个</text></g><g data-mml-node="mtext" transform="translate(15978.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">元</text></g><g data-mml-node="mtext" transform="translate(16913.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">素</text></g></g></g><g data-mml-node="mtr" transform="translate(0,700)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">存</text></g><g data-mml-node="mtext" transform="translate(934.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">储</text></g><g data-mml-node="mtext" transform="translate(1869.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">密</text></g><g data-mml-node="mtext" transform="translate(2787.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">度</text></g><g data-mml-node="mtext" transform="translate(3706.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">高</text></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">拓</text></g><g data-mml-node="mtext" transform="translate(934.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">展</text></g><g data-mml-node="mtext" transform="translate(1869.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">容</text></g><g data-mml-node="mtext" transform="translate(2804.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">量</text></g><g data-mml-node="mtext" transform="translate(3739.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">不</text></g><g data-mml-node="mtext" transform="translate(4674,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">方</text></g><g data-mml-node="mtext" transform="translate(5608.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">便</text></g></g></g><g data-mml-node="mtr" transform="translate(0,-2100)"><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">插</text></g><g data-mml-node="mtext" transform="translate(934.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">入</text></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1869.6,0)"><g data-mml-node="mo"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">、</text></g></g><g data-mml-node="mtext" transform="translate(2787.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">删</text></g><g data-mml-node="mtext" transform="translate(3706.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">除</text></g><g data-mml-node="mtext" transform="translate(4641,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">数</text></g><g data-mml-node="mtext" transform="translate(5575.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">据</text></g><g data-mml-node="mtext" transform="translate(6494.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">元</text></g><g data-mml-node="mtext" transform="translate(7428.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">素</text></g><g data-mml-node="mtext" transform="translate(8363.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">不</text></g><g data-mml-node="mtext" transform="translate(9298.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">方</text></g><g data-mml-node="mtext" transform="translate(10233.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="917.8px" font-family="serif">便</text></g></g></g></g><g data-mml-node="mo" transform="translate(18737,0) translate(0 250)"></g></g></g></g></g><g data-mml-node="mo" transform="translate(52796.7,0) translate(0 250)"></g></g></g></g></g></g></g></svg></mjx-container></div></div>
+<ul>
+<li><p>顺序表的<code>静态分配</code>和<code>动态分配</code>是两种不同的<code>内存管理方式</code>。</p>
+</li>
+<li><p><strong>静态分配</strong>：</p>
+<ul>
+<li><p><strong>定义：</strong>
+在静态分配中，数组的大小在<code>编译</code>时确定，程序在<code>运行前</code>就会为数组分配<code>固定大小的内存空间</code>。</p>
+</li>
+<li><p><strong>优点：</strong></p>
+<ol start='' >
+<li><code>速度较快</code>：数组的大小是<code>确定</code>的，不需要额外的<code>内存分配操作</code>，因此访问元素的速度较快。</li>
+<li><code>简单</code>：不需要额外的内存管理操作，代码相对<code>简单</code>。</li>
+
+</ol>
+</li>
+<li><p><strong>缺点：</strong></p>
+<ol start='' >
+<li><code>内存浪费</code>：数组的大小是固定的，可能会浪费内存空间。</li>
+<li><code>大小固定</code>：数组的大小在编译时确定，无法根据实际需要动态调整大小。</li>
+
+</ol>
+</li>
+
+</ul>
+</li>
+<li><p><strong>动态分配</strong>：</p>
+<ul>
+<li><p><strong>定义：</strong>
+在动态分配中，数组的大小是在<code>运行</code>时<code>动态分配</code>的，程序可以根据需要<code>动态申请和释放内存空间</code>。</p>
+</li>
+<li><p><strong>优点：</strong></p>
+<ol start='' >
+<li><code>内存利用率高</code>：可以根据实际需要动态调整数组的大小，节省内存空间。</li>
+<li><code>灵活性高</code>：数组大小可动态调整，适应性强。</li>
+
+</ol>
+</li>
+<li><p><strong>缺点：</strong></p>
+<ol start='' >
+<li><code>复杂性</code>：需要额外的内存管理操作，可能增加程序的复杂性。</li>
+<li><code>内存碎片化</code>：频繁分配和释放内存可能会导致内存碎片问题。</li>
+
+</ol>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<h3 id='223-静态顺序表的代码实现以c语言为例'>2.2.3 静态顺序表的代码实现（以C语言为例）</h3>
+<h4 id='2231-数据元素的代码描述'>2.2.3.1 数据元素的代码描述</h4>
+<p>顺序表的特点是表中元素的<code>逻辑顺序</code>与其<code>物理顺序</code>相同，顺序表中的任一数据元素都可以<code>随机存取</code>，所以线性表的顺序存储结构是一种<code>随机存取的存储结构</code>。通常用高级程序设计语言中的<code>数组</code>来描述线性表的顺序存储结构。</p>
+<p>假定线性表的元素类型为ElemType，则线性表的顺序存储类型描述如下：</p>
+<pre><code class='language-c' lang='c'>// ====================数据类型别名========================
+// 别名的好处是可以简化代码，提高代码的可读性
+typedef int Elemtype;/// 静态顺序表的数据类型，此处为整型
+
+// ====================全局变/常量========================
+// 在静态顺序表中，其容量会在代码编译时即确定，代码运行时不可更改
+#define MAX_SIZE 15	/// 静态顺序表的最大长度，用来规定顺序表的最大容量
+
+// ====================结构体定义====================
+/// 静态顺序表的结构体
+typedef struct SqList
+{
+	Elemtype m_data[MAX_SIZE];/// 静态顺序表的数据域
+	int m_length;/// 静态顺序表的长度
+}SqList;/// 静态顺序表的别名
+</code></pre>
+<h4 id='2232-静态顺序表的初始化'>2.2.3.2 静态顺序表的初始化</h4>
+<ul>
+<li><p>函数名：<code>bool initList(SqList* L)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>初始化一个静态顺序表</code>，将其长度<code>置为0</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>判断参数是否合法，如果顺序表的指针<code>无效（即为NULL）</code>，则初始化失败</li>
+<li>将静态顺序表的长度<code>置为0</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>因为要修改静态顺序表的数据，所以此处传入的是一个<code>指向静态顺序表的指针</code>，这样在函数内部修改静态顺序表的数据才会<code>影响到外部</code>。</li>
+<li>静态顺序表的初始化操作的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>因为静态顺序表的存储空间是在<code>栈</code>上分配的，所以无需考虑<code>内存的释放问题</code>，当静态顺序表<code>所在的函数或者代码块</code>执行完毕后，静态顺序表的存储空间会<code>自动释放</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 初始化静态顺序表
+* @param L 待初始化的静态顺序表
+* @return 初始化成功返回true，否则返回false
+*/
+bool initList(SqList* L)
+{
+	printf(&quot;[INFO] initList() is called!\n&quot;);
+	// 判断参数是否合法
+	if (NULL == L)
+	{
+		printf(&quot;[ERROR] initList() 参数错误,L为空，初始化失败！\n&quot;);
+		return false;
+	}
+	// 初始化长度
+	L-&gt;m_length = 0;
+	printf(&quot;[INFO] 静态顺序表初始化成功！\n&quot;);
+	return true;
+}
+
+</code></pre>
+<h4 id='2233-静态顺序的输出'>2.2.3.3 静态顺序的输出</h4>
+<ul>
+<li><p>函数名：<code>bool printList(const SqList* L)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>输出静态顺序表的元素</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>判断<code>参数是否合法</code>，如果静态顺序表的指针<code>有效(即L不为NULL)</code>，则输出失败。</li>
+<li>如果静态顺序表<code>为空</code>，则<code>无需输出</code>，直接<code>返回true</code>。</li>
+<li>如果静态顺序表<code>不为空</code>，则<code>依次输出静态顺序表的元素</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>输出操作本身<code>不需要修改</code>静态顺序表的数据，所以传入的是一个<code>指向静态顺序表的常量指针（const SqList *）</code>，传入<code>指针</code>是为了<code>减少内存开销</code>，传入<code>常量</code>是为了<code>防止在不需要修改的情况下修改了数据</code>。</li>
+<li>输出操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>静态顺序表的位序是<code>从1开始</code>的，而数组的下标是<code>从0开始</code>的，不要混淆</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 输出静态顺序表
+* @param L 待输出的静态顺序表
+* @return 输出成功返回true，否则返回false
+*/
+bool printList(const SqList* L)
+{
+	printf(&quot;[INFO] printList() is called!\n&quot;);
+	if(NULL == L)
+	{
+		printf(&quot;[ERROR] printList() 参数错误,L为空，输出失败！\n&quot;);
+		return false;
+	}
+	if(L-&gt;m_length == 0)
+	{
+		printf(&quot;[INFO] 静态顺序表为空，无需输出！\n&quot;);
+		return true;
+	}
+	printf(&quot;[INFO] 静态顺序表的元素为：&quot;);
+	for(int i = 0; i &lt; L-&gt;m_length; i++)
+	{
+		printf(&quot;%d, &quot;, L-&gt;m_data[i]);
+	}
+	printf(&quot;end\n&quot;);
+	return true;
+}
+</code></pre>
+<h4 id='2234-静态顺序的表长'>2.2.3.4 静态顺序的表长</h4>
+<ul>
+<li><p>函数名称：<code>int length(const SqList* L)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>获取静态顺序表的长度</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>判断参数是否合法，如果静态顺序表的指针<code>有效(即L不为NULL)</code>，则获取长度失败，返回<code>-1</code>。</li>
+<li>合法性判断通过后，直接返回<code>静态顺序表的长度</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>获取长度操作本身<code>不需要修改</code>静态顺序表的数据，所以传入的是<code>一个指向静态顺序表的常量指针（const SqList *）</code>，传入指针是为了<code>减少内存开销</code>，传入常量是为了<code>防止在不需要修改的情况下修改了数据</code>。</li>
+<li>获取长度操作的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>静态顺序表的长度是指<code>静态顺序表中元素的个数</code>，而不是静态顺序表的容量。</li>
+<li>静态顺序表的位序是<code>从1开始</code>的，而数组的下标是<code>从0开始</code>的，不要混淆。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 输出静态顺序表的长度
+* @param L 待输出的静态顺序表
+* @return 返回静态顺序表的长度
+*/
+int length(const SqList* L)
+{
+	printf(&quot;[INFO] length() is called!\n&quot;);
+	if(NULL == L)
+	{
+		printf(&quot;[ERROR] length() 参数错误,L为空，获取长度失败！\n&quot;);
+		return -1;
+	}
+	return L-&gt;m_length;
+}
+</code></pre>
+<h4 id='2235-静态顺序表的判空'>2.2.3.5 静态顺序表的判空</h4>
+<ul>
+<li><p>函数名：<code>bool isEmpty(const SqList *L)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>判断静态顺序表是否为空</code>，如果静态顺序表为空，则返回<code>true</code>，否则返回<code>false</code>。</li>
+
+</ul>
+</li>
+<li><p>思路：</p>
+<ol start='' >
+<li>判断参数是否合法，如果静态顺序表的指针<code>有效(即L不为NULL)</code>，则<code>判空失败</code>，返回<code>false</code>。</li>
+<li>如果静态顺序表的长度<code>为0</code>，则静态顺序表<code>为空</code>，返回<code>true</code>，否则返回<code>false</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>判空操作本身<code>不需要修改</code>静态顺序表的数据，所以传入的是一个<code>指向静态顺序表的常量指针（const SqList *）</code>，传入指针是为了<code>减少内存开销</code>，传入常量是为了<code>防止在不需要修改的情况下修改了数据</code>。</li>
+<li>判空操作的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表判空操作
+* @param L 待判断的静态顺序表
+* @return 静态顺序表为空返回true，否则返回false
+*/
+bool isEmpty(const SqList *L)
+{
+	printf(&quot;[INFO] isEmpty() is called!\n&quot;);
+	if(NULL == L)
+	{
+		printf(&quot;[ERROR] isEmpty() 参数错误,L为空，判空失败！\n&quot;);
+		return false;
+	}
+	return L-&gt;m_length == 0;
+}
+</code></pre>
+<h4 id='2236-静态顺序表的按位查找算法'>2.2.3.6 静态顺序表的按位查找算法</h4>
+<ul>
+<li><p>函数名：<code>bool getElem(const SqList* L, int i, Elemtype* e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>查找静态顺序表中第i个位置的元素</code>，并<code>将其存储到e中</code>。</li>
+
+</ul>
+</li>
+<li><p>思路：</p>
+<ol start='' >
+<li>判断参数是否合法，包括静态顺序表的指针是否<code>有效（即L不为NULL）</code>，顺序表是否<code>为空</code>，查找位置是否<code>合法</code>，只要有一个条件不满足，则<code>查找失败</code>。</li>
+<li>查找元素，将<code>第i个位置</code>的元素（即<code>数组下标为i-1</code>的元素）存储到<code>e</code>中。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ul>
+<li>查找操作本身<code>不需要修改</code>静态顺序表的数据，所以传入的是一个<code>指向静态顺序表的常量指针（const SqList *）</code>，传入指针是为了<code>减少内存开销</code>，传入常量是为了<code>防止在不需要修改的情况下修改了数据</code>。</li>
+<li>顺序表的查找操作的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>参数i指的是<code>元素的位序</code>，<code>从1开始</code>，而数组下标是<code>从0开始</code>的，不要混淆</li>
+
+</ul>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表的按位查找
+* @param L 待查找的静态顺序表
+* @param i 待查找的位置
+* @param e 查找到的元素
+* @return 查找成功返回true，否则返回false
+*/
+bool getElem(const SqList* L, int i, Elemtype* e)
+{
+	printf(&quot;[INFO] getElem() is called：尝试查找第%d位的元素\n&quot;, i);
+	// 判断参数是否合法
+	if(NULL == L)
+	{
+		printf(&quot;[ERROR] getElem() 参数错误,L为空，查找失败！\n&quot;);
+		return false;
+	}
+	// 判断查找位置是否合法，该判断中已经隐含了静态顺序表是否为空的判断
+	if(i &lt; 1 || i &gt; L-&gt;m_length)
+	{
+		printf(&quot;[ERROR] getElem() 参数错误,查找位置不合法，查找失败！\n&quot;);
+		return false;
+	}
+	// 查找元素
+	*e = L-&gt;m_data[i - 1];
+	return true;
+}
+</code></pre>
+<h4 id='2237-静态顺序表的按值查找算法'>2.2.3.7 静态顺序表的按值查找算法</h4>
+<ul>
+<li><p>函数名：<code>bool locateElem(const SqList* L, Elemtype e, int* i)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>查找静态顺序表中元素值为e的元素</code>，并<code>将其位置存储到参数i中</code>。</li>
+
+</ul>
+</li>
+<li><p>思路：</p>
+<ol start='' >
+<li>判断参数是否合法，包括静态顺序表指针是否<code>有效（即L不为NULL）</code>，顺序表是否<code>不为空</code>，只要有一个合法条件不满足，则查找失败。</li>
+<li>查找元素，从第一个元素<code>开始遍历</code>，查找<code>值为e的元素</code>，如果找到，则<code>将其位置存储到i中</code>，返回<code>true</code>，否则返回<code>false</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>查找操作本身<code>不需要修改</code>静态顺序表的数据，所以传入的是一个<code>指向静态顺序表的常量指针（const SqList *）</code>，传入指针是为了<code>减少内存开销</code>，传入常量是为了<code>防止在不需要修改的情况下修改了数据</code>。</li>
+<li>最基础的按值查找有其<code>局限性</code>，即<code>只能找到第一个符合条件的元素</code>，如果有多个符合条件的元素，只会返回第一个符合的元素的位序。</li>
+<li>查找操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>顺序表的位序是<code>从1开始</code>的，而数组的下标是<code>从0开始</code>的，不要混淆</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表的按值查找
+* @param L 待查找的静态顺序表
+* @param e 待查找的元素
+* @param i 查找到的位置
+* @return 查找成功返回true，否则返回false
+*/
+bool locateElem(const SqList* L, Elemtype e, int* i)
+{
+	printf(&quot;[INFO] locateElem() is called：尝试查找元素值为%d的元素\n&quot;, e);
+	// 判断参数是否合法
+	if(NULL == L)
+	{
+		printf(&quot;[ERROR] locateElem() 参数错误,L为空，查找失败！\n&quot;);
+		return false;
+	}
+	// 查找元素，for循环中已经隐含了静态顺序表是否为空的判断，即L-&gt;m_length == 0时，不会进入for循环
+	for(*i = 0; *i &lt; L-&gt;m_length; (*i)++)
+	{
+		if(L-&gt;m_data[*i] == e)
+		{
+			(*i)++; // 位序从1开始
+			return true;
+		}
+	}
+	printf(&quot;[ERROR] 未找到值为%d的元素！\n&quot;, e);
+	return false;
+}
+</code></pre>
+<h4 id='2238-静态顺序表的按位插入算法'>2.2.3.8 静态顺序表的按位插入算法</h4>
+<ul>
+<li><p>函数名：<code>bool insertList(SqList* L, int i, Elemtype e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>在静态顺序表的第i个位置插入元素e</code>，如果<code>插入位置不合法</code>或者<code>静态顺序表已满</code>，则插入失败。</li>
+
+</ul>
+</li>
+<li><p>思路：</p>
+<ol start='' >
+<li>判断参数是否合法，包括静态顺序表是否<code>有效（即L不为NULL）</code>，插入位置是否<code>合法</code>，静态顺序表是否<code>未满</code>，只要有一个条件不满足，则插入失败。</li>
+<li><code>将第i个元素及之后的元素依次后移</code>，为新元素腾出位置。</li>
+<li>将新元素<code>插入到第i个位置</code>。</li>
+<li>静态顺序表的<code>长度加1</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>在顺序表中，位序i<code>从1开始</code>，而数组下标<code>从0开始</code>，不要混淆。</li>
+<li>因为需要修改静态顺序表的数据，所以此处顺序表传入的是<code>指针</code>，这样在函数内部修改静态顺序表的数据会影响到外部。</li>
+<li>插入操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>在移动元素的for循环中，j的本质是<code>数组下标</code>，当需要用j表示元素位序时，应该<code>+1</code>，所以根据“将第i个元素及之后的元素后移”这句话，位序j+1的范围为<code>[i,m_length]</code>，所以数组下标j的范围为<code>[i-1,m_length-1]</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表的按位插入
+* @param L 待插入的静态顺序表
+* @param i 待插入的位置
+* @param e 待插入的元素
+* @return 插入成功返回true，否则返回false		   
+*/
+bool insertList(SqList* L, int i, Elemtype e)
+{
+	printf(&quot;[INFO] insertList() is called：尝试在第%d位插入新元素%d\n&quot;, i, e);
+	// 判断参数是否合法
+	if (NULL == L) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[ERROR] insertList() 参数错误,L为空，插入失败！\n&quot;);
+		return false;
+	}
+	if (i &lt; 0 || i &gt; L-&gt;m_length + 1) // 判断插入位置是否合法
+	{
+		printf(&quot;[ERROR] insertList() 参数错误,插入位置不合法，插入失败！\n&quot;);
+		return false;
+	}
+	if (L-&gt;m_length &gt;= MAX_SIZE) // 判断静态顺序表是否已满
+	{
+		printf(&quot;[ERROR] insertList() 参数错误,静态顺序表已满，插入失败！\n&quot;);
+		return false;
+	}
+	// 插入元素
+	for(int j = L-&gt;m_length-1; j &gt; i; j--) // 将第i个元素及之后的元素后移
+	{
+		L-&gt;m_data[j+1] = L-&gt;m_data[j];
+	}
+	L-&gt;m_data[i-1] = e; // 插入新元素
+	L-&gt;m_length++;	// 表长加一
+	printf(&quot;[INFO] 静态顺序表插入元素成功！\n&quot;);
+	return true;
+}
+</code></pre>
+<h4 id='2239-静态顺序表的按位删除算法'>2.2.3.9 静态顺序表的按位删除算法</h4>
+<ul>
+<li><p>函数名：<code>bool deleteList(SqList* L, int i, Elemtype* e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>删除静态顺序表中第i个位置的元素</code>，并<code>将被删除元素存储到e中</code>。</li>
+
+</ul>
+</li>
+<li><p>思路：</p>
+<ol start='' >
+<li>判断参数是否合法，包括静态顺序表是否<code>有效（即L不为NULL）</code>，静态顺序表是否<code>不为空</code>，删除位置是否<code>合法</code>，只要有一个条件不满足，则删除失败。</li>
+<li>若通过合法性检查，则<code>将待删除元素存储到e中</code>。</li>
+<li>将第<code>i</code>个元素之后的元素<code>依次前移一位</code>。</li>
+<li>静态顺序表的<code>表长减一</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>在顺序表中，位序i<code>从1开始</code>，而数组下标<code>从0开始</code>，不要混淆。</li>
+<li>因为需要修改静态顺序表的数据，所以此处顺序表传入的是<code>指针</code>，这样在函数内部修改静态顺序表的数据会<code>影响到外部</code>。</li>
+<li>在for循环中，j的本质是<code>数组下标</code>，当用j来表示元素位序时，应该<code>+1</code>，所以根据“将第i个元素之后的元素依次前移一位”这句话，位序j+1的范围为<code>[i+1,m_length]</code>,因此，数组下标j的范围为<code>[i,m_length-1]</code>。</li>
+<li>删除操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief 静态顺序表的删除操作
+ * @param L 待删除的静态顺序表
+ * @param i 待删除的位置
+ * @param e 删除的元素
+ * @return 删除成功返回true，否则返回false
+ */
+bool deleteList(SqList* L, int i, Elemtype* e)
+{
+	printf(&quot;[INFO] deleteList() is called：尝试删除第%d位的元素\n&quot;, i);
+	// 判断参数是否合法
+	if (NULL == L) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[ERROR] deleteList() 参数错误,L为空，删除失败！\n&quot;);
+		return false;
+	}
+	if (i &lt; 1 || i &gt; L-&gt;m_length) // 判断删除位置是否合法
+	{
+		printf(&quot;[ERROR] deleteList() 参数错误,删除位置不合法，删除失败！\n&quot;);
+		return false;
+	}
+	// 删除元素
+	*e = L-&gt;m_data[i - 1]; // 保存删除的元素
+	for(int j = i; j &lt;= L-&gt;m_length - 1; j++) // 将第i个元素之后的元素前移
+	{
+		L-&gt;m_data[j - 1] = L-&gt;m_data[j];
+	}
+
+	L-&gt;m_length--; // 表长减一
+	printf(&quot;[INFO] 静态顺序表删除元素成功！\n&quot;);
+	return true;
+}
+</code></pre>
+<h4 id='22310-静态顺序表的销毁算法'>2.2.3.10 静态顺序表的销毁算法</h4>
+<ul>
+<li><p>函数名：<code>bool destoryList(SqList *L)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>销毁一个静态顺序表</code>，因为静态顺序表的特殊性，此函数和<code>清空顺序表</code>的功能相同。</li>
+
+</ul>
+</li>
+<li><p>思路：</p>
+<ol start='' >
+<li>判断参数是否合法，如果静态顺序表的指针<code>无效（即为NULL）</code>，则销毁失败。</li>
+<li>因为静态顺序表的存储空间是<code>在栈上分配</code>的，所以<code>不需要手动释放内存</code>，只需要将静态顺序表的<code>长度置为0</code>，以此表示静态顺序中已经没有元素即可。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>因为要修改静态顺序表的数据，所以此处传入的是一个指向静态顺序表的<code>指针</code>，这样在函数内部修改静态顺序表的数据会<code>影响到外部</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief 销毁静态顺序表
+ * @param L 待销毁的静态顺序表
+ * @return 销毁成功返回true，否则返回false
+ */
+bool destoryList(SqList *L)
+{
+	printf(&quot;[INFO] destoryList() is called!\n&quot;);
+	// 判断参数是否合法
+	if (NULL == L)
+	{
+		printf(&quot;[ERROR] destoryList() 参数错误,L为空，销毁失败！\n&quot;);
+		return false;
+	}
+	// 销毁静态顺序表
+	L-&gt;m_length = 0;
+	printf(&quot;[INFO] 静态顺序表销毁成功！\n&quot;);
+	return true;
+}
+</code></pre>
+<h4 id='22311-扩展1静态顺序表的头插法'>2.2.3.11 扩展1：静态顺序表的头插法</h4>
+<ul>
+<li><p>函数名：<code>bool push_front(SqList* L, Elemtype e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>在静态顺序表的表头插入元素e</code>，如果静态顺序表<code>已满</code>，则插入失败。</li>
+
+</ul>
+</li>
+<li><p>思路：</p>
+<ol start='' >
+<li>判断顺序表的指针是否<code>有效（即L不为NULL）</code>，如果无效，则插入失败。</li>
+<li>判断静态顺序表是否<code>已满</code>，如果已满，则插入失败。</li>
+<li>如果通过了安全性检查，将静态顺序表中的元素<code>依次后移</code>，为新元素腾出位置。</li>
+<li>将新元素插入到<code>第1个位置</code>。</li>
+<li>静态顺序表的长度<code>加1</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>头插操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>头插操作是在静态顺序表的<code>表头</code>插入元素，所以插入后，原来的第1个元素变成了第2个元素，原来的第2个元素变成了第3个元素，以此类推。</li>
+<li>静态顺序表的位序是<code>从1开始</code>的，而数组的下标是<code>从0开始</code>的，不要混淆。</li>
+<li>因为需要修改静态顺序表的数据，所以此处传入的是一个指向静态顺序表的<code>指针</code>，这样在<code>函数内部</code>修改静态顺序表的数据会<code>影响到函数外部</code>。</li>
+<li>在for循环中，j的本质是<code>数组下标</code>，当需要用j表示元素位序时，应该<code>+1</code>，所以根据“将第i个元素及之后的元素后移”这句话，位序j+1的范围为<code>[i,m_length]</code>,所以数组下标j的范围为<code>[i-1,m_length-1]</code>，这里i=1，所以数组下标j的范围为<code>[0,m_length-1</code>]。</li>
+<li>在实际的开发中，头插法其实可以直接<code>调用insertList()函数</code>，将i设置为<code>1</code>即可，这里只是为了演示头插法的实现而特意写出算法的实现过程。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表的头插
+* @param L 待插入的静态顺序表
+* @param e 待插入的元素
+* @return 插入成功返回true，否则返回false
+*/
+bool push_front(SqList* L, Elemtype e)
+{
+	printf(&quot;[INFO] push_back() is called：尝试在表头插入新元素%d\n&quot;, e);
+	// 判断参数是否合法
+	if (NULL == L) // 判断静态顺序表指针是否有效
+	{
+		printf(&quot;[ERROR] push_back() 参数错误,L为空，插入失败！\n&quot;);
+		return false;
+	}
+	if (L-&gt;m_length &gt;= MAX_SIZE) // 判断静态顺序表是否已满
+	{
+		printf(&quot;[ERROR] push_back() 参数错误,静态顺序表已满，插入失败！\n&quot;);
+		return false;
+	}
+	// 插入元素
+	for(int j = L-&gt;m_length-1; j &gt;= 0; j--) // 将第i个元素及之后的元素后移
+	{
+		L-&gt;m_data[j+1] = L-&gt;m_data[j];
+	}
+	L-&gt;m_data[0] = e; // 插入新元素
+	L-&gt;m_length++;	// 表长加一
+	printf(&quot;[INFO] 静态顺序表表头插入元素成功！\n&quot;);
+	return true;
+}
+</code></pre>
+<h4 id='22312-扩展2静态顺序表的尾插法'>2.2.3.12 扩展2：静态顺序表的尾插法</h4>
+<ul>
+<li><p>函数名：<code>bool push_back(SqList* L, Elemtype e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>在静态顺序表的表尾插入元素e</code>，如果静态顺序表<code>已满</code>，则插入失败。</li>
+
+</ul>
+</li>
+<li><p>思路：</p>
+<ol start='' >
+<li>判断顺序表的指针是否有效，如果<code>无效（即L为NULL）</code>，则插入失败。</li>
+<li>判断静态顺序表是否已满，如果<code>已满</code>，则插入失败。</li>
+<li>将新元素插入到第<code>m_length+1</code>个位置（即数组的第<code>m_length</code>个位置）。</li>
+<li>静态顺序表的长度<code>加1</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>尾插操作的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>尾插操作是在静态顺序表的表尾插入元素，因为顺序表支持<code>随机访问</code>，所以<code>直接在表尾插入元素即可</code>。</li>
+<li>静态顺序表的位序是<code>从1开始</code>的，而数组的下标是<code>从0开始</code>的，不要混淆。</li>
+<li>因为需要修改静态顺序表的数据，所以此处传入的是一个指向静态顺序表的<code>指针</code>，这样在<code>函数内部</code>修改静态顺序表的数据会<code>影响到外部</code>。</li>
+<li>在实际的开发中，尾插法其实可以直接调用<code>insertList()</code>函数，将i设置为<code>m_length+1</code>即可，这里只是为了演示尾插法的实现而特意写出算法的实现过程。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表的尾插
+* @param L 待插入的静态顺序表
+* @param e 待插入的元素
+* @return 插入成功返回true，否则返回false
+*/
+
+bool push_back(SqList* L, Elemtype e)
+{
+	printf(&quot;[INFO] push_back() is called：尝试在表尾插入新元素%d\n&quot;, e);
+	// 判断参数是否合法
+	if (NULL == L) // 判断静态顺序表指针是否有效
+	{
+		printf(&quot;[ERROR] push_back() 参数错误,L为空，插入失败！\n&quot;);
+		return false;
+	}
+	if (L-&gt;m_length &gt;= MAX_SIZE) // 判断静态顺序表是否已满
+	{
+		printf(&quot;[ERROR] push_back() 参数错误,静态顺序表已满，插入失败！\n&quot;);
+		return false;
+	}
+	// 插入元素
+	L-&gt;m_data[L-&gt;m_length] = e; // 插入新元素
+	L-&gt;m_length++;	// 表长加一
+	printf(&quot;[INFO] 静态顺序表表尾插入元素成功！\n&quot;);
+	return true;
+}
+</code></pre>
+<h4 id='22313-扩展3静态顺序表的头删法'>2.2.3.13 扩展3：静态顺序表的头删法</h4>
+<ul>
+<li><p>函数名：<code>bool pop_front(SqList* L, Elemtype* e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>删除静态顺序表的表头元素</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>判断参数是否合法，如果静态顺序表的指针<code>无效（即L为NULL）</code>，则删除失败。</li>
+<li>判断静态顺序表是否为空，如果<code>为空</code>，则删除失败。</li>
+<li>通过合法性测试后，<code>将静态顺序表中的元素依次前移</code>，覆盖掉第1个元素。</li>
+<li>静态顺序表的<code>长度减1</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>头删操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>头删操作是删除静态顺序表的<code>表头元素</code>，删除后，原来的第2个元素变成了第1个元素，原来的第3个元素变成了第2个元素，以此类推。</li>
+<li>静态顺序表的位序是<code>从1开始</code>的，而数组的下标是<code>从0开始</code>的，不要混淆。</li>
+<li>因为需要修改静态顺序表的数据，所以此处传入的是一个指向静态顺序表的<code>指针</code>，这样在<code>函数内部</code>修改静态顺序表的数据会<code>影响到外部</code>。</li>
+<li>在for循环中，j的本质是<code>数组下标</code>，当需要用j表示元素位序时，应该<code>+1</code>，所以根据“将第i个元素之后的元素前移”这句话，位序j+1的范围为<code>[i+1,m_length]</code>，所以数组下标j的范围为<code>[i,m_length-1]</code>，这里i=1，所以数组下标j的范围为<code>[1,m_length-1]</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表的头删操作
+* @param L 待删除的静态顺序表
+* @param e 被删除的元素
+* @return 删除成功返回true，否则返回false 			   
+*/
+bool pop_front(SqList* L, Elemtype* e)
+{
+	printf(&quot;[INFO] pop_front() is called：尝试删除表头元素\n&quot;);
+	// 判断参数是否合法
+	if (NULL == L) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[ERROR] pop_front() 参数错误,L为空，删除失败！\n&quot;);
+		return false;
+	}
+	if (L-&gt;m_length == 0) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[ERROR] pop_front() 参数错误,静态顺序表为空，删除失败！\n&quot;);
+		return false;
+	}
+	// 删除元素
+	*e = L-&gt;m_data[0]; // 保存被删除的元素
+	for(int j = 1; j &lt;= L-&gt;m_length-1; j++) // 将第i个元素之后的元素前移
+	{
+		L-&gt;m_data[j-1] = L-&gt;m_data[j];
+	}
+	L-&gt;m_length--;	// 表长减一
+	printf(&quot;[INFO] 静态顺序表表头删除元素成功！\n&quot;);
+	return true;
+}
+</code></pre>
+<h4 id='22314-扩展4静态顺序表的尾删法'>2.2.3.14 扩展4：静态顺序表的尾删法</h4>
+<ul>
+<li><p>函数名：<code>bool pop_back(SqList* L, Elemtype* e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>删除静态顺序表的表尾元素</code>。</li>
+
+</ul>
+</li>
+<li><p>思路：</p>
+<ol start='' >
+<li>判断参数是否合法，如果静态顺序表的指针<code>无效（即L为NULL）</code>，则删除失败。</li>
+<li>判断静态顺序表是否为空，如果<code>为空</code>，则删除失败。</li>
+<li>通过合法性测试后，直接<code>返回静态顺序表的最后一个元素</code>，<code>静态顺序表的长度减1</code>即可。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>尾删操作的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>尾删操作是删除静态顺序表的<code>表尾元素</code>，因为顺序表支持<code>随机访问</code>，所以直接删除表尾元素即可。</li>
+<li>静态顺序表的位序是<code>从1开始</code>的，而数组的下标是<code>从0开始</code>的，不要混淆。</li>
+<li>因为需要修改静态顺序表的数据，所以此处传入的是<code>一个指向静态顺序表的指针</code>，这样在<code>函数内部</code>修改静态顺序表的数据会<code>影响到外部</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表的尾删操作
+* @param L 待删除的静态顺序表
+* @param e 被删除的元素
+* @return 删除成功返回true，否则返回false
+*/
+bool pop_back(SqList* L, Elemtype* e)
+{
+	printf(&quot;[INFO] pop_back() is called：尝试删除表尾元素\n&quot;);
+	// 判断参数是否合法
+	if (NULL == L) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[ERROR] pop_back() 参数错误,L为空，删除失败！\n&quot;);
+		return false;
+	}
+	if (L-&gt;m_length == 0) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[ERROR] pop_back() 参数错误,静态顺序表为空，删除失败！\n&quot;);
+		return false;
+	}
+	// 删除元素
+	*e = L-&gt;m_data[L-&gt;m_length-1]; // 保存被删除的元素
+	L-&gt;m_length--;	// 表长减一
+	printf(&quot;[INFO] 静态顺序表表尾删除元素成功！\n&quot;);
+	return true;
+}
+
+</code></pre>
+<h4 id='22315-扩展5静态顺序表的冒泡排序算法'>2.2.3.15 扩展5：静态顺序表的冒泡排序算法</h4>
+<ul>
+<li><p>函数名：<code>bool sortListByBubble(SqList* L)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于对静态顺序表进行<code>冒泡排序</code></li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>判断参数是否合法，如果静态顺序表的指针<code>无效（即L为NULL）</code>，则排序失败。</li>
+<li>通过合法性测试后，如果静态顺序表<code>为空</code>，则<code>无需排序</code>，直接<code>返回true</code>。</li>
+<li>如果静态顺序表不为空，则<code>依次比较相邻的两个元素</code>，如果前一个元素<code>大于（或小于）</code>后一个元素，则<code>交换两个元素的位置</code>。</li>
+<li>一轮比较下来，最大（或小于）的元素被交换到了<code>最后的位置</code>。</li>
+<li>重复上述步骤，直到<code>所有元素都有序</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>冒泡排序的时间复杂度为<code>O(n^2)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>冒泡排序是一种<code>稳定</code>的排序算法，即<code>相同元素的相对位置在排序前后不会发生变化</code>。</li>
+<li>冒泡排序是一种<code>原地</code>排序算法，即<code>不需要额外的辅助空间</code>。</li>
+<li>冒泡排序是一种<code>交换</code>排序算法，即通过不断的<code>交换相邻的元素</code>，将最大（或最小）的元素交换到<code>最后的位置</code>。</li>
+<li>冒泡排序是一种简单的排序算法，适用于元素个数较少的情况。</li>
+<li>冒泡排序的第一层循环控制<code>比较的轮数</code>，即需要比较<code>n-1</code>轮，因为最后一轮只剩下一个元素，不需要比较，因此其循环不变量i的范围为<code>[0,m_length-2]</code>。</li>
+<li>冒泡排序的第二层循环控制<code>每轮比较的次数</code>，即每轮比较<code>n-1-i</code>次，因为每轮比较后，最大（或最小）的元素已经被交换到了最后的位置，不需要再比较， 因此其循环不变量j的范围为<code>[0,m_length-2-i]</code>。</li>
+<li>注意，6和7中的i，j都是用来表示<code>数组下标</code>的，如果需要用来表示元素位序，应该<code>+1</code>。</li>
+<li>此处的冒泡排序是<code>升序</code>排序，如果需要降序排序，只需要将if语句中的比较符号由<code>&gt;</code>改为<code>&lt;</code>即可。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表的冒泡排序操作
+* @param L 待排序的静态顺序表
+* @return 排序成功返回true，否则返回false
+*/
+bool sortListByBubble(SqList* L)
+{
+	printf(&quot;[INFO] sortListByBubble() is called：尝试对静态顺序表进行冒泡排序\n&quot;);
+	// 判断参数是否合法
+	if (NULL == L) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[ERROR] sortListByBubble() 参数错误,L为空，排序失败！\n&quot;);
+		return false;
+	}
+	if (L-&gt;m_length == 0) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[INFO] sortListByBubble() 参数错误,静态顺序表为空，无需排序！\n&quot;);
+		return true;
+	}
+	// 排序
+	for(int i = 0; i &lt; L-&gt;m_length-1; i++) // 外层循环控制比较的轮数
+	{
+		for(int j = 0; j &lt; L-&gt;m_length-1-i; j++) // 内层循环控制每轮比较的次数
+		{
+			if(L-&gt;m_data[j] &gt; L-&gt;m_data[j+1]) // 如果前一个元素大于后一个元素，则交换两个元素的位置
+			{
+				Elemtype tmp = L-&gt;m_data[j];
+				L-&gt;m_data[j] = L-&gt;m_data[j+1];
+				L-&gt;m_data[j+1] = tmp;
+			}
+		}
+	}
+	printf(&quot;[INFO] 静态顺序表冒泡排序成功！\n&quot;);
+	return true;
+}
+
+</code></pre>
+<h4 id='22316-扩展6静态顺序表的选择排序算法'>2.2.3.16 扩展6：静态顺序表的选择排序算法</h4>
+<ul>
+<li><p>函数名：<code>bool sortListBySelect(SqList* L)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于对静态顺序表进行<code>选择排序</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>判断参数是否合法，如果静态顺序表的指针<code>无效（即L为NULL）</code>，则排序失败。</li>
+<li>通过合法性测试后，如果静态顺序表<code>为空</code>，则<code>无需排序</code>，直接<code>返回true</code>。</li>
+<li>如果静态顺序表<code>不为空</code>，依次找到静态顺序表中的<code>最小（或最大）元素</code>，将其与<code>第i个元素</code>交换位置。</li>
+<li>重复上述步骤，直到所有元素都有序。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>选择排序的时间复杂度为<code>O(n^2)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>选择排序是一种<code>不稳定</code>的排序算法，即<code>相同元素的相对位置在排序前后可能发生变化</code>。</li>
+<li>选择排序是一种<code>原地</code>排序算法，即<code>不需要额外的辅助空间</code>。</li>
+<li>选择排序是一种<code>交换</code>排序算法，即通过不断的<code>交换元素的位置</code>，将最小（或最大）的元素交换到<code>最前面</code>。</li>
+<li>选择排序是一种简单的排序算法，适用于元素个数较少的情况。</li>
+<li>选择排序的第一层循环控制<code>比较的轮数</code>，即需要比较<code>n-1</code>轮，因为最后一轮只剩下一个元素，不需要比较，因此其循环不变量i的范围为<code>[0,m_length-2]</code>。</li>
+<li>选择排序的第二层循环控制<code>每轮比较的次数</code>，因为每轮比较后，最小（或最大）的元素已经被交换到了<code>最前面</code>，不需要再比较，因此每轮比较的下标从<code>未比较过的元素</code>开始，即从<code>i+1</code>开始，而结束点一直为<code>m_length-1</code>，因此其循环不变量j的范围为<code>[i+1,m_length-1]</code>。</li>
+<li>注意，6和7中的i，j都是用来表示<code>数组下标</code>的，如果需要用来表示元素位序，应该<code>+1</code>。</li>
+<li>此处的选择排序是<code>升序</code>排序，如果需要降序排序，只需要将if语句中的比较符号由<code>&lt;</code>改为<code>&gt;</code>即可。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 静态顺序表的选择排序操作
+* @param L 待排序的静态顺序表
+* @return 排序成功返回true，否则返回false
+*/
+bool sortListBySelect(SqList* L)
+{
+	printf(&quot;[INFO] sortListBySelect() is called：尝试对静态顺序表进行选择排序\n&quot;);
+	// 判断参数是否合法
+	if (NULL == L) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[ERROR] sortListBySelect() 参数错误,L为空，排序失败！\n&quot;);
+		return false;
+	}
+	if (L-&gt;m_length == 0) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[INFO] sortListBySelect() 参数错误,静态顺序表为空，无需排序！\n&quot;);
+		return true;
+	}
+	// 排序
+	for(int i = 0; i &lt; L-&gt;m_length-1; i++) // 外层循环控制比较的轮数
+	{
+		int min = i; // 记录最小元素的下标
+		for(int j = i+1; j &lt; L-&gt;m_length; j++) // 内层循环控制每轮比较的次数
+		{
+			if(L-&gt;m_data[j] &lt; L-&gt;m_data[min]) // 如果第j个元素小于第min个元素，则更新min的值
+			{
+				min = j;
+			}
+		}
+		if(min != i) // 如果min的值发生了变化，则交换两个元素的位置
+		{
+			Elemtype tmp = L-&gt;m_data[i];
+			L-&gt;m_data[i] = L-&gt;m_data[min];
+			L-&gt;m_data[min] = tmp;
+		}
+	}
+	printf(&quot;[INFO] 静态顺序表选择排序成功！\n&quot;);
+	return true;
+}
+</code></pre>
+<h4 id='22317-扩展7静态顺序表的合并'>2.2.3.17 扩展7：静态顺序表的合并</h4>
+<ul>
+<li><p>函数名：<code>bool mergeList(SqList* L1, SqList* L2, SqList* L3)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>将两个有序静态顺序表合并成一个有序静态顺序表</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>判断参数是否合法，如果静态顺序表的指针<code>无效（即L为NULL）</code>，则合并失败。</li>
+<li>判断两个顺序表L1、L2的<code>长度之和</code>是否<code>大于L3的容量</code>，如果大于，则合并失败。</li>
+<li>通过合法性测试后，如果静态顺序表L1<code>为空，</code>则<code>直接将L2复制到L3中</code>，合并成功。</li>
+<li>如果静态顺序表L2<code>为空</code>，则<code>直接将L1复制到L3中</code>，合并成功。</li>
+<li>如果L1、L2均<code>不为空</code>，则<code>依次比较</code>L1和L2中的元素，<code>将较小的元素插入到L3中</code>。</li>
+<li>如果L1中的元素已经全部插入到L3中，则<code>将L2中的剩余元素插入到L3中</code>。</li>
+<li>如果L2中的元素已经全部插入到L3中，则<code>将L1中的剩余元素插入到L3中</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>合并操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>合并操作是将两个<code>有序静态顺序表</code>合并成一个新的有序静态顺序表，所以合并后的静态顺序表也是<code>有序</code>的，且合并后的静态顺序表的长度等于两个静态顺序表的<code>长度之和</code>。</li>
+<li>合并操作是一种简单的合并算法，适用于两个静态顺序表的元素个数较少的情况。</li>
+<li>合并操作是一种<code>插入排序</code>的变种，即通过不断的<code>比较</code>两个静态顺序表的元素，将较小的元素插入到新的静态顺序表中。</li>
+<li>在合并算法中，需要维护<code>三个指针</code>，分别指向<code>三个静态顺序表的当前元素</code>，以便于比较和插入。</li>
+<li>静态顺序表的局限性：静态顺序表的容量是<code>固定</code>的，不支持<code>动态扩容</code>，所以在合并操作中，需要保证合并后的静态顺序表的<code>容量足够</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+* @brief 两个有序静态顺序表的合并操作
+* @param L1 第一个有序静态顺序表
+* @param L2 第二个有序静态顺序表
+* @param L3 合并后的有序静态顺序表
+* @return 合并成功返回true，否则返回false
+*/
+bool mergeList(SqList* L1, SqList* L2, SqList* L3)
+{
+	printf(&quot;[INFO] mergeList() is called：尝试合并两个有序静态顺序表\n&quot;);
+	// 判断参数是否合法
+	if (NULL == L1 || NULL == L2 || NULL == L3) // 判断静态顺序表是否为空
+	{
+		printf(&quot;[ERROR] mergeList() 参数错误,L1或L2或L3为空，合并失败！\n&quot;);
+		return false;
+	}
+	if (L1-&gt;m_length + L2-&gt;m_length &gt; MAX_SIZE) // 判断静态顺序表的长度之和是否大于L3的容量
+	{
+		printf(&quot;[ERROR] mergeList() 参数错误,静态顺序表的长度之和大于L3的容量，合并失败！\n&quot;);
+		return false;
+	}
+	// 合并
+	int pos1 = 0; // 指向L1的当前元素
+	int pos2 = 0; // 指向L2的当前元素
+	int pos3 = 0; // 指向L3的当前元素
+	while(pos1 &lt; L1-&gt;m_length &amp;&amp; pos2 &lt; L2-&gt;m_length) // 比较L1和L2中的元素
+	{
+		if(L1-&gt;m_data[pos1] &lt; L2-&gt;m_data[pos2]) // 如果L1中的元素小于L2中的元素，则将L1中的元素插入到L3中
+		{
+			L3-&gt;m_data[pos3++] = L1-&gt;m_data[pos1++];
+		}
+		else // 如果L1中的元素大于等于L2中的元素，则将L2中的元素插入到L3中
+		{
+			L3-&gt;m_data[pos3++] = L2-&gt;m_data[pos2++];
+		}
+	}
+	while(pos1 &lt; L1-&gt;m_length) // 如果L2中的元素已经全部插入到L3中，则将L1中的剩余元素插入到L3中
+	{
+		L3-&gt;m_data[pos3++] = L1-&gt;m_data[pos1++];
+	}
+	while(pos2 &lt; L2-&gt;m_length) // 如果L1中的元素已经全部插入到L3中，则将L2中的剩余元素插入到L3中
+	{
+		L3-&gt;m_data[pos3++] = L2-&gt;m_data[pos2++];
+	}
+	L3-&gt;m_length = L1-&gt;m_length + L2-&gt;m_length; // 合并后的静态顺序表的长度等于两个静态顺序表的长度之和
+	printf(&quot;[INFO] 静态顺序表合并成功！\n&quot;);
+}
+</code></pre>
+<h3 id='224-动态顺序表的代码实现以c++语言为例'>2.2.4 动态顺序表的代码实现（以C++语言为例）</h3>
+<h4 id='2241-动态顺序表类的基本定义'>2.2.4.1 动态顺序表类的基本定义</h4>
+<p>在实现数据结构时，C语言和C++语言有一些显著的不同。C语言是一种过程式编程语言，通常通过结构体和函数的组合来实现数据结构，使用手动内存管理（如 <code>malloc</code> 和 <code>free</code>），并没有类和对象的概念。而C++作为一种面向对象编程语言，允许使用<code>类</code>和<code>对象</code>来<code>封装数据结构的属性和操作</code>。通过构造函数和析构函数，C++能够更加灵活地管理资源，并支持模板类，从而使得数据结构可以适用于任意的数据类型，增强了代码的可重用性。</p>
+<p>在本节中，我们将以C++为例，介绍如何使用模板类实现一个支持任意数据类型的动态顺序表类。该类提供了顺序表的基本操作，包括插入、删除、查找、扩容等功能，并且提供了一些高级操作如去重、逆置和排序等。以下是动态顺序表类的基本定义：</p>
+<pre><code class='language-cpp' lang='cpp'>// ====================动态顺序表类定义====================
+// 这里使用模板类实现，支持任意数据类型
+template &lt;class T&gt;
+class DSeqList		// D - Dynamic Se-Sequence
+{
+public:
+    // 基本操作
+    DSeqList(int capacity = 10);	/// 有参构造函数，默认容量为10
+    ~DSeqList();	/// 析构函数
+    bool init();	/// 初始化
+    bool destroy();	/// 销毁
+    bool clear();	/// 清空
+    bool isEmpty() const;	/// 判空
+    int length() const;	/// 求长度
+    int capacity() const;	/// 求容量
+    bool increase(int len);	/// 扩容
+    bool insert(int i, T e);	/// 插入
+    bool remove(int i, T&amp; e);	/// 删除
+    bool locate(T e, int&amp; i) const;	/// 按值查找
+    bool get(int i, T&amp; e) const;	/// 按位查找
+    bool set(int i, T e);	/// 赋值
+    bool print() const;	/// 输出
+
+    // 拓展操作
+    bool push_front(T e);	/// 头插
+    bool pop_front(T&amp; e);	/// 头删
+    bool push_back(T e);	/// 尾插
+    bool pop_back(T&amp; e);	/// 尾删
+
+    // 高阶操作
+    bool removeDuplicate();	/// 去重
+    bool reverse();	/// 逆置
+    bool merge(const DSeqList&lt;T&gt;&amp; list);	/// 合并
+    bool sortByInsert();	/// 插入排序
+    bool swap(int i, int j);	/// 交换
+    bool sortByQuick(int left = 1, int right = -1);	/// 快速排序
+
+private:
+    T* m_data;		/// 数据区
+    int m_size;		/// 当前元素个数,即长度
+    int m_capacity;	/// 当前容量,即最大元素个数
+};
+</code></pre>
+<p>这个模板类 <code>DSeqList</code> 实现了一个支持动态扩容、插入、删除等操作的动态顺序表，它通过泛型模板支持任意类型的数据。</p>
+<h4 id='2242-动态顺序表的的有参构造函数'>2.2.4.2 动态顺序表的的有参构造函数</h4>
+<ul>
+<li><p>函数名：<code>template&lt;class T&gt; DSeqList&lt;T&gt;::DSeqList(int capacity)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数在动态顺序表对象创建时<code>被自动调用</code>，用于<code>初始化动态顺序表对象</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li><code>初始化动态顺序表的容量</code>。</li>
+<li>调用<code>init()函数</code>初始化动态顺序表，若初始化成功则什么都不做，否则<code>释放内存</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>该函数是构造函数，<code>不需要返回值</code>。</li>
+<li>该函数在动态顺序表对象创建时被自动调用，无需用户手动调用。</li>
+<li>该函数的参数用来<code>指定动态顺序表初始容量</code>，若不指定则默认为10（在<code>函数声明</code>时已经指定了默认值）。。</li>
+<li>当用户自定义了有参构造函数时，<code>系统不会再提供无参构造函数</code>，因此如果需要用无参构造函数生成对象，需要<code>显式定义无参构造函数</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 有参构造函数
+* @param capacity 动态顺序表的容量
+* @return 无，因为是构造函数，不需要返回值
+*/
+template&lt;class T&gt;
+DSeqList&lt;T&gt;::DSeqList(int capacity)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] 构造函数DSeqList(int capacity)被调用&quot; &lt;&lt; endl;
+	m_capacity = capacity;
+	if (!init())
+	{
+		m_data = NULL;
+		m_size = 0;
+		m_capacity = 0;
+	}
+}
+</code></pre>
+<h4 id='2243-动态顺序表的析构函数'>2.2.4.3 动态顺序表的析构函数</h4>
+<ul>
+<li><p>函数名：<code>template&lt;class T&gt; DSeqList&lt;T&gt;::~DSeqList()</code></p>
+</li>
+<li><p>函数功能：</p>
+<ol start='' >
+<li>本函数在动态顺序表对象销毁时<code>被自动调用</code>，用于<code>销毁动态顺序表对象</code>。</li>
+
+</ol>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>调用<code>destroy()</code>函数销毁动态顺序表对象。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>该函数是析构函数，<code>不需要返回值</code>。</li>
+<li>该函数在动态顺序表对象销毁时被自动调用，无需<code>用户手动调用</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 析构函数
+* @param 无
+* @return 无，因为是析构函数，不需要返回值
+*/
+template&lt;class T&gt;
+DSeqList&lt;T&gt;::~DSeqList()
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] 析构函数~DSeqList()被调用&quot; &lt;&lt; endl;
+	destroy();
+}
+</code></pre>
+<h4 id='2444-动态顺序表的初始化'>2.4.4.4 动态顺序表的初始化</h4>
+<ul>
+<li><p>函数名：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::init()</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>初始化动态顺序表</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li><code>申请动态顺序表的数据区</code>，若申请成功则初始化成功，否则初始化失败。</li>
+<li>如果初始化成功，则<code>将当前元素个数置为0</code>，即长度为0。</li>
+<li>返回初始化结果。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>初始化操作会<code>改变动态顺序表的状态</code>，因此<code>不设置为常成员函数</code>。</li>
+<li>初始化操作时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>初始化操作会将数据域创建到堆，该操作可能会失败，因此在申请内存后一定要<code>判断是否申请成功</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 初始化
+* @param 无
+* @return 初始化成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::init()
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] init()被调用&quot; &lt;&lt; endl;
+	m_data = new T[m_capacity];
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 内存分配失败，动态顺序表初始化失败！&quot; &lt;&lt; endl;
+		return false;
+	}
+	m_size = 0;
+	cout &lt;&lt; &quot;[INFO] 动态顺序表初始化成功！&quot; &lt;&lt; endl;
+	return true;
+}
+</code></pre>
+<h4 id='2445-动态顺序表的销毁'>2.4.4.5 动态顺序表的销毁</h4>
+<ul>
+<li><p>函数名：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::destroy()</code></p>
+</li>
+<li><p>函数功能：</p>
+<ol start='' >
+<li>本函数用于<code>销毁动态顺序表</code>。</li>
+
+</ol>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li><code>释放动态顺序表的数据区</code>，若释放成功则销毁成功，否则销毁失败。</li>
+<li>如果销毁成功，则<code>将当前元素个数置为0</code>，即长度为0。</li>
+<li>返回销毁结果。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>销毁操作<code>会</code>改变动态顺序表的状态，因此<code>不设置为常成员函数</code>。</li>
+<li>销毁操作时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>销毁操作会释放动态顺序表的数据区，因此在销毁前需要判<code>断数据区指针是否合法</code>，如果指针为NULL则<code>不需要释放</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 销毁
+* @param 无
+* @return 销毁成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::destroy()
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] destroy()被调用&quot; &lt;&lt; endl;
+	if (NULL != m_data)
+	{
+		delete[] m_data;
+		m_data = NULL;
+		m_size = 0;
+		m_capacity = 0;
+	}
+	cout &lt;&lt; &quot;[INFO] 动态顺序表销毁成功！&quot; &lt;&lt; endl;
+	return true;
+}
+</code></pre>
+<h4 id='2446-动态顺序表的清空'>2.4.4.6 动态顺序表的清空</h4>
+<ul>
+<li><p>函数名：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::clear()</code></p>
+</li>
+<li><p>函数功能：</p>
+<ol start='' >
+<li>本函数用于<code>清空动态顺序表</code>。</li>
+
+</ol>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>将当前元素个数<code>置为0</code>，即<code>长度为0</code>。</li>
+<li>清空成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>清空操作<code>会</code>改变动态顺序表的状态，因此<code>不设置</code>为常成员函数。</li>
+<li>清空操作时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>该清空操作是<code>逻辑上的清空</code>，因此<code>数据区的内存空间（即m_data）不会被释放</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 清空
+* @param 无
+* @return 清空成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::clear()
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] clear()被调用&quot; &lt;&lt; endl;
+	m_size = 0;
+	return true;
+}
+</code></pre>
+<h4 id='2447-动态顺序表的判空'>2.4.4.7 动态顺序表的判空</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::isEmpty() const</code></p>
+</li>
+<li><p>函数功能：</p>
+<ol start='' >
+<li>本函数用于<code>判断动态顺序表是否为空</code>。</li>
+
+</ol>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>顺序表有<code>成员变量m_size</code>记录<code>当前元素个数</code>，若m_size为0则表示顺序表为空，因此直接返回<code>m_size是否为0</code>即可。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>因为判空操作<code>不会</code>改变动态顺序表的状态，因此<code>设置</code>为<code>常成员函数</code>。</li>
+<li>判空操作时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c++' lang='c++'>/*
+* @brief 判空
+* @param 无
+* @return 若动态顺序表为空则返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::isEmpty() const
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] isEmpty()被调用&quot; &lt;&lt; endl;
+	return m_size == 0;
+}
+</code></pre>
+<h4 id='2448-动态顺序表的求长度操作'>2.4.4.8 动态顺序表的求长度操作</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; int DSeqList&lt;T&gt;::length() const</code></p>
+</li>
+<li><p>函数功能：</p>
+<ol start='' >
+<li>本函数用于<code>求动态顺序表的长度</code>。</li>
+
+</ol>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>顺序表有成员变量<code>m_size</code>记录当前元素个数，直接返回<code>m_size</code>即可。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>因为求长度操作<code>不会</code>改变动态顺序表的状态，因此设置为<code>常成员函数</code>。</li>
+<li>求长度操作时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 求长度
+* @param 无
+* @return 返回动态顺序表的长度
+*/
+template&lt;class T&gt;
+int DSeqList&lt;T&gt;::length() const
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] length()被调用&quot; &lt;&lt; endl;
+	return m_size;
+}
+</code></pre>
+<h4 id='2449-动态顺序表的求容量操作'>2.4.4.9 动态顺序表的求容量操作</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; int DSeqList&lt;T&gt;::capacity() const</code></p>
+</li>
+<li><p>函数功能：</p>
+<ol start='' >
+<li>本函数用于<code>求动态顺序表的容量（即表的最大长度）</code>。</li>
+
+</ol>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>顺序表有成员变量<code>m_capacity</code>记录当前容量，直接返回<code>m_capacity</code>即可。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>因为求容量操作<code>不会</code>改变动态顺序表的状态，因此设置为<code>常成员函数</code>。</li>
+<li>求容量操作时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+ * @brief 求容量
+ * @param 无
+ * @return 返回动态顺序表的容量
+ */
+template&lt;class T&gt;
+int DSeqList&lt;T&gt;::capacity() const
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] capacity()被调用&quot; &lt;&lt; endl;
+	return m_capacity;
+}
+</code></pre>
+<h4 id='24410-动态顺序表的扩容'>2.4.4.10 动态顺序表的扩容</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::increase(int len)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ol start='' >
+<li>本函数用于<code>扩容动态顺序表</code>。</li>
+
+</ol>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li><code>申请新的数据区，长度为原数据区长度加上扩容长度len</code>。</li>
+<li><code>将原数据区的元素复制到新数据区</code>。</li>
+<li><code>释放原数据区</code>。</li>
+<li><code>将新数据区的地址赋给原数据区</code>。</li>
+<li>扩容成功返回<code>true</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>扩容操作<code>会</code>改变动态顺序表的状态，因此<code>不设置</code>为常成员函数。</li>
+<li>扩容操作时间复杂度为<code>O(m_size)</code>，空间复杂度为<code>O(len)</code>,其中<code>m_size</code>为当前元素个数, <code>len</code>为扩容长度。</li>
+<li>扩容操作会<code>将数据域创建到堆</code>，该操作可能会<code>失败</code>，因此在申请内存后一定要<code>判断是否申请成功</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 扩容
+* @param len 扩容的长度
+* @return 扩容成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::increase(int len)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] increase(int len)被调用，扩容长度为&quot; &lt;&lt; len &lt;&lt; endl;
+	T* new_data = new T[m_capacity + len];
+	if (NULL == new_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 内存分配失败，动态顺序表扩容失败！&quot; &lt;&lt; endl;
+		return false;
+	}
+	// 将原数据区的元素复制到新数据区
+	// 方法一：使用内存拷贝函数memcpy
+	// memcpy(new_data, m_data, m_size * sizeof(T));
+
+	// 方法二：通过for循环逐个复制
+	for (int i = 0; i &lt; m_size; i++)
+	{
+		new_data[i] = m_data[i];
+	}
+	delete[] m_data;
+	m_data = new_data;
+	m_capacity += len;
+	cout &lt;&lt; &quot;[INFO] 动态顺序表扩容成功！&quot; &lt;&lt; endl;
+	return true;
+}
+</code></pre>
+<h4 id='24411-动态顺序表的按位插入'>2.4.4.11 动态顺序表的按位插入</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::insert(int i, T e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>在动态顺序表的第i个位置插入元素e</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>动态顺序表是否已初始化</code>，<code>插入位置是否合法</code>，只要有一个不合法则插入失败。</li>
+<li>判断动态顺序表是否<code>已满</code>，若已满则需要<code>先扩容再插入</code>，如果扩容失败则<code>插入失败</code>。</li>
+<li><code>从后往前</code>遍历，<code>将第i个位置及其后的元素依次后移一位</code>。</li>
+<li>将元素e<code>插入到第i个位置</code>。</li>
+<li><code>元素个数加1</code>。</li>
+<li>插入成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>在函数中，参数i是指<code>插入位置</code>，其本质为<code>顺序表的位序</code>，从<code>1</code>开始；</li>
+<li>而for循环中的j变量的本质是<code>数组的下标</code>，从<code>0</code>开始，因此当用j来表示顺序表的位序时，需要<code>加1</code>。因此，由“将第i个位置及其后的元素依次后移一位”这句话可知j+1的范围为<code>[i,m_size]</code>,所以j的范围为<code>[i-1,m_size-1]</code>，所以for循环的范围为<code>[j=m_size-1;j&gt;=i-1;j--]</code>。</li>
+<li>因为插入操作会改变动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>插入操作时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 按位插入
+* @param i 插入位置
+* @param e 插入元素
+* @return 插入成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::insert(int i, T e)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] insert(int i, T e)被调用，插入位置为&quot; &lt;&lt; i &lt;&lt; &quot;，插入元素为&quot; &lt;&lt; e &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (i &lt; 1 || i &gt; m_size + 1)
+	{
+		cout &lt;&lt; &quot;[ERROR] 插入位置不合法！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (m_size &gt;= m_capacity)
+	{
+		cout &lt;&lt; &quot;[INFO] 动态顺序表已满，开始默认扩容10个元素&quot; &lt;&lt; endl;
+		if (!increase(10))
+		{
+			cout &lt;&lt; &quot;[ERROR] 扩容失败，插入失败！&quot; &lt;&lt; endl;
+			return false;
+		}
+	}
+	for (int j = m_size - 1; j &gt;= i - 1; j--)
+	{
+		m_data[j + 1] = m_data[j];
+	}
+	m_data[i - 1] = e;
+	m_size++;
+	return true;
+}
+</code></pre>
+<h4 id='24412-动态顺序表的按位删除'>2.4.4.12 动态顺序表的按位删除</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::remove(int i, T&amp; e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>删除动态顺序表的第i个位置的元素</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>动态顺序表是否已初始化</code>，<code>删除位置是否合法</code>，只要有一个不合法则删除失败。</li>
+<li>若通过合法性检查，则<code>将被删除的元素赋值给e</code>。</li>
+<li><code>从前往后</code>遍历，<code>将第i+1个位置及其后的元素依次前移一位</code>。</li>
+<li>元素个数<code>减1</code>。</li>
+<li>删除成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>在函数中，参数i是指<code>删除位置</code>，其本质为<code>顺序表的位序</code>，从<code>1</code>开始；</li>
+<li>而for循环中的j变量的本质是<code>数组的下标</code>，从<code>0</code>开始，因此当用j来表示顺序表的位序时，需要<code>加1</code>。因此，由“将第i+1个位置及其后的元素依次前移一位”这句话可知j+1的范围为<code>[i+1,m_size]</code>,由于j是数组下标，所以j的范围为<code>[i,m_size-1]</code>，所以for循环的范围为<code>[j=i;j&lt;=m_size-1;j++]</code>。</li>
+<li>因为删除操作会改变动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>删除操作时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 按位删除
+* @param i 删除位置
+* @param e 被删除元素
+* @return 删除成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::remove(int i, T&amp; e)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] remove(int i, T&amp; e)被调用，删除位置为&quot; &lt;&lt; i &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (i &lt; 1 || i &gt; m_size)
+	{
+		cout &lt;&lt; &quot;[ERROR] 删除位置不合法！&quot; &lt;&lt; endl;
+		return false;
+	}
+	e = m_data[i - 1];
+	for (int j = i; j &lt; m_size; j++)
+	{
+		m_data[j - 1] = m_data[j];
+	}
+	m_size--;
+	return true;
+}
+</code></pre>
+<h4 id='24413-动态顺序表的按值查找'>2.4.4.13 动态顺序表的按值查找</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::locate(T e, int&amp; i) const</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>在动态顺序表中查找元素e的位序</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>动态顺序表是否已初始化</code>，如果未初始化则查找失败。</li>
+<li>从第一个元素开始<code>遍历</code>，若找到元素e则返回true，否则返回false。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>本函数无需<code>判空操作</code>，因为<code>for循环中已经包含了顺序表为空的情况</code>。</li>
+<li>按值查找操作时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>本函数不需要改变顺序表中的任何值，因此设置为<code>常成员函数</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 按值查找
+* @param e 要查找的元素
+* @param i 用于返回元素的位序
+* @return 查找成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::locate(T e, int&amp; i) const
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] locate(T e, int&amp; i)被调用，查找元素为&quot; &lt;&lt; e &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}for (i = 0; i &lt; m_size; i++)
+	{
+		if (m_data[i] == e)
+		{
+			cout &lt;&lt; &quot;[INFO] 元素&quot; &lt;&lt; e &lt;&lt; &quot;的位序为&quot; &lt;&lt; ++i &lt;&lt; endl; // i+1为元素的位序
+			return true;
+		}
+	}
+	cout &lt;&lt; &quot;[INFO] 元素&quot; &lt;&lt; e &lt;&lt; &quot;不存在！&quot; &lt;&lt; endl;
+	return false;
+}
+</code></pre>
+<h4 id='24414-动态顺序表的按位查找'>2.4.4.14 动态顺序表的按位查找</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::get(int i, T&amp; e) const</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>在动态顺序表中查找位序为i的元素</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>动态顺序表是否已初始化</code>，<code>查找位置是否合法</code>，只要有一个不合法则查找失败。</li>
+<li>若通过合法性检查，则<code>将第i个位置的元素赋值给e</code>。</li>
+<li>查找成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>本函数无需<code>判空操作</code>，因为在合法性检查中已经包含了<code>顺序表为空</code>的情况，即<code>（i &lt; 1 || i &gt; m_size）</code>中的<code>m_size为0</code>时。</li>
+<li>按位查找操作时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>本函数不需要改变顺序表中的任何值，因此设置为<code>常成员函数</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 按位查找
+* @param i 要查找的位序
+* @param e 用于返回元素
+* @return 查找成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::get(int i, T&amp; e) const
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] get(int i, T&amp; e)被调用，查找位序为&quot; &lt;&lt; i &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (i &lt; 1 || i &gt; m_size)
+	{
+		cout &lt;&lt; &quot;[ERROR] 查找位置不合法！&quot; &lt;&lt; endl;
+		return false;
+	}
+	e = m_data[i - 1];
+	cout &lt;&lt; &quot;[INFO] 位序为&quot; &lt;&lt; i &lt;&lt; &quot;的元素为&quot; &lt;&lt; e &lt;&lt; endl;
+	return true;
+}
+</code></pre>
+<h4 id='24415-动态顺序表的赋值操作'>2.4.4.15 动态顺序表的赋值操作</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::set(int i, T e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>将动态顺序表中第i个位置的元素赋值为e</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>动态顺序表是否已初始化</code>，<code>赋值位置是否合法</code>，只要有一个不合法则赋值失败。</li>
+<li>若通过合法性检查，则<code>将第i个位置的元素赋值为e</code>。</li>
+<li>赋值成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>本函数无需<code>判空操作</code>，因为在<code>合法性检查</code>中已经包含了<code>顺序表为空</code>的情况，即<code>（i &lt; 1 || i &gt; m_size）</code>中的<code>m_size为0</code>时。</li>
+<li>赋值操作时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>本函数会改变顺序表中的值，因此<code>不设置</code>为常成员函数。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 赋值
+* @param i 要赋值的位序
+* @param e 赋值的元素
+* @return 赋值成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::set(int i, T e)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] set(int i, T e)被调用，赋值位置为&quot; &lt;&lt; i &lt;&lt; &quot;，赋值元素为&quot; &lt;&lt; e &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (i &lt; 1 || i &gt; m_size)
+	{
+		cout &lt;&lt; &quot;[ERROR] 赋值位置不合法！&quot; &lt;&lt; endl;
+		return false;
+	}
+	m_data[i - 1] = e;
+	cout &lt;&lt; &quot;[INFO] 位序为&quot; &lt;&lt; i &lt;&lt; &quot;的元素赋值为&quot; &lt;&lt; e &lt;&lt; endl;
+	return true;
+}
+</code></pre>
+<h4 id='24416-动态顺序表的输出'>2.4.4.16 动态顺序表的输出</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::print() const</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>输出动态顺序表的所有元素</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>动态顺序表是否已初始化</code>，如果未初始化则输出失败。</li>
+<li>判断<code>动态顺序表是否为空</code>，如果为空则输出失败。</li>
+<li>如果不为空，则<code>从第一个元素开始遍历输出所有元素</code>。</li>
+<li>输出成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>输出操作<code>不会</code>改变动态顺序表的状态，因此设置为<code>常成员函数</code>。</li>
+<li>输出操作时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>顺序表的位序从<code>1</code>开始，而数组的下标从<code>0</code>开始，不要混淆。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 输出
+* @param 无
+* @return 输出成功返回true，否则返回false
+* @note
+* 		
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::print() const
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] print()被调用&quot; &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (isEmpty())
+	{
+		cout &lt;&lt; &quot;[INFO] 动态顺序表为空！&quot; &lt;&lt; endl;
+		return false;
+	}
+	cout &lt;&lt; &quot;[INFO] 动态顺序表的元素为：&quot;;
+	for (int i = 0; i &lt; m_size; i++)
+	{
+		cout &lt;&lt; m_data[i] &lt;&lt; &quot; &quot;;
+	}
+	cout &lt;&lt; endl;
+	return true;
+}
+</code></pre>
+<h4 id='24417-动态顺序表的头插元素'>2.4.4.17 动态顺序表的头插元素</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::push_front(T e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>在动态顺序表的头部插入元素e</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>动态顺序表是否已初始化</code>，<code>是否已满</code>，若未初始则插入失败,若已满则需要考虑扩容。</li>
+<li><code>从后往前</code>遍历，<code>将所有元素依次后移一位，空出第一个位置</code>。</li>
+<li><code>将元素e插入到顺序表的第一个位置</code>，即<code>数组下标为0</code>的位置。</li>
+<li>元素个数<code>加1</code>。</li>
+<li>插入成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>在for循环中，j的本质是<code>数组下标</code>，当需要用j表示元素位序时，应该<code>+1</code>，所以根据插入操作中“将第i个元素及之后的元素后移”这句话，位序j+1的范围为<code>[i,m_size]</code>，又因为该函数是头插操作，所以<code>i=1</code>，j+1的范围为<code>[1,m_size]</code>，所以j的范围为<code>[0,m_size-1]</code>，所以for循环的范围为<code>[j=m_size-1;j&gt;=0;j--]</code>。</li>
+<li>因为插入操作<code>会改变</code>动态顺序表的状态，所以不设置为常成员函数。</li>
+<li>该头插操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>在实际的开发中，头插法其实可以直接调用<code>insert(1,e)</code>来实现，这里只是为了演示头插法的实现原理而特意写出来的。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 头插元素
+* @param e 要插入的元素
+* @return 插入成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::push_front(T e)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] push_front(T e)被调用，插入元素为&quot; &lt;&lt; e &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (m_size &gt;= m_capacity)
+	{
+		cout &lt;&lt; &quot;[INFO] 动态顺序表已满，开始默认扩容10个元素&quot; &lt;&lt; endl;
+		if (!increase(10))
+		{
+			cout &lt;&lt; &quot;[ERROR] 扩容失败，插入失败！&quot; &lt;&lt; endl;
+			return false;
+		}
+	}
+	for (int j = m_size - 1; j &gt;= 0; j--)
+	{
+		m_data[j + 1] = m_data[j];
+	}
+	m_data[0] = e;
+	m_size++;
+	return true;
+}
+</code></pre>
+<h4 id='24417-动态顺序表的头删元素'>2.4.4.17 动态顺序表的头删元素</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::pop_front(T&amp; e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ol start='' >
+<li>本函数用于<code>删除动态顺序表的表头元素</code>。</li>
+
+</ol>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断动态顺序表<code>是否已初始化</code>，<code>是否为空</code>，若未初始化或为空则删除失败。</li>
+<li><code>将表头元素赋值给e</code>。</li>
+<li><code>从前往后</code>遍历，<code>将第2个位置及其后的元素依次前移一位</code>，覆盖掉第1个位置的元素。</li>
+<li>元素个数<code>减1</code>。</li>
+<li>删除成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>因为删除操作<code>会改变</code>动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>该头删操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>在for循环中，j的本质是<code>数组下标</code>，当需要用j表示元素位序时，应该<code>+1</code>，所以根据删除操作中“将第i+1个元素及之后的元素前移”这句话，位序j+1的范围为<code>[i+1,m_size]</code>，又因为该函数是头删操作，所以i=1，j+1的范围为<code>[2,m_size]</code>，所以j的范围为<code>[1,m_size-1]</code>，所以for循环的范围为<code>[j=1;j&lt;=m_size-1;j++]</code>。</li>
+<li>顺序表的头删操作其实可以直接调用<code>remove(1,e)</code>来实现，这里只是为了演示头删操作的实现原理而特意写出来的。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 头删元素
+* @param e 用于返回被删除的元素
+* @return 删除成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::pop_front(T&amp; e)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] pop_front(T&amp; e)被调用&quot; &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (isEmpty())
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表为空，删除失败！&quot; &lt;&lt; endl;
+		return false;
+	}
+	e = m_data[0];
+	for (int j = 1; j &lt; m_size; j++)
+	{
+		m_data[j - 1] = m_data[j];
+	}
+	m_size--;
+	return true;
+}
+</code></pre>
+<h4 id='24418-动态顺序表的尾插元素'>2.4.4.18 动态顺序表的尾插元素</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::push_back(T e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>在动态顺序表的尾部插入元素e</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断动态顺序表<code>是否已初始化</code>，<code>是否已满</code>，若未初始则插入失败,若已满则需要考虑扩容。</li>
+<li>将元素e插入到顺序表的第<code>m_size+1</code>个位置，即数组的第<code>m_size</code>个位置。</li>
+<li>元素个数<code>加1</code>。</li>
+<li>插入成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>在不考虑扩容操作的情况下，尾插操作的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>；如果需要扩容，则时间复杂度为<code>O(m_size)</code>，空间复杂度为<code>O(len)</code>，其中m_size为当前元素个数，len为扩容长度。</li>
+<li>顺序表的尾插操作其实可以直接调用<code>insert(m_size+1,e)</code>来实现，这里只是为了演示尾插操作的实现原理而特意写出来的。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 尾插元素
+* @param e 要插入的元素
+* @return 插入成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::push_back(T e)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] push_back(T e)被调用，插入元素为&quot; &lt;&lt; e &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (m_size &gt;= m_capacity)
+	{
+		cout &lt;&lt; &quot;[INFO] 动态顺序表已满，开始默认扩容10个元素&quot; &lt;&lt; endl;
+		if (!increase(10))
+		{
+			cout &lt;&lt; &quot;[ERROR] 扩容失败，插入失败！&quot; &lt;&lt; endl;
+			return false;
+		}
+	}
+	m_data[m_size] = e;
+	m_size++;
+	return true;
+}
+</code></pre>
+<h4 id='24419-动态顺序表的尾删元素'>2.4.4.19 动态顺序表的尾删元素</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::pop_back(T&amp; e)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>删除动态顺序表的表尾元素</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断动态顺序表<code>是否已初始化</code>，<code>是否为空</code>，若未初始化或为空则删除失败。</li>
+<li>将表尾元素赋值给e，即顺序表的第<code>m_size</code>个元素，数组下标为<code>m_size-1</code>的元素。</li>
+<li>元素个数<code>减1</code>。</li>
+<li>删除成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>因为删除操作<code>会改变</code>动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>该尾删操作的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>顺序表的尾删操作其实可以直接调用<code>remove(m_size,e)</code>来实现，这里只是为了演示尾删操作的实现原理而特意写出来的。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 尾删元素
+* @param e 用于返回被删除的元素
+* @return 删除成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::pop_back(T&amp; e)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] pop_back(T&amp; e)被调用&quot; &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (isEmpty())
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表为空，删除失败！&quot; &lt;&lt; endl;
+		return false;
+	}
+	e = m_data[m_size - 1];
+	m_size--;
+	return true;
+}
+</code></pre>
+<h4 id='24420-动态顺序表的去重'>2.4.4.20 动态顺序表的去重</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::removeDuplicate()</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>删除动态顺序表中的重复元素</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断动态顺序表<code>是否已初始化</code>，<code>是否不为空</code>，若未初始化或为空则删除失败。</li>
+<li>从第一个元素开始遍历，若<code>找到重复元素则删除</code>，否则继续遍历。</li>
+<li>删除成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>因为删除操作<code>会改变</code>动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>由于删除一个元素后，后面的元素会前移，所以需要<code>将j--</code>，否则<code>会漏掉一个元素</code>。</li>
+<li>该删除重复元素操作的时间复杂度为<code>O(n^2)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 删除重复元素
+* @param 无
+* @return 删除成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::removeDuplicate()
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] removeDuplicate()被调用&quot; &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (isEmpty())
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表为空，删除失败！&quot; &lt;&lt; endl;
+		return false;
+	}
+	for (int i = 0; i &lt; m_size; i++)
+	{
+		for (int j = i + 1; j &lt; m_size; j++)
+		{
+			if (m_data[i] == m_data[j])
+			{
+				T e;
+				remove(j + 1, e);// remove函数中已经会将m_size--，所以这里不需要再m_size--。
+				j--;
+			}
+		}
+	}
+	return true;
+}
+</code></pre>
+<h4 id='24421-动态顺序表的逆置'>2.4.4.21 动态顺序表的逆置</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::reverse()</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>逆置动态顺序表中的所有元素</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断动态顺序表<code>是否已初始化</code>，<code>是否不为空</code>，若未初始化或为空则逆置失败。</li>
+<li>从第一个元素开始遍历，<code>将第i个元素与第m_size-i个元素交换</code>。</li>
+<li>逆置成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>逆置操作<code>会改变</code>动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>如果顺序表的表长为<code>偶数</code>，则<code>正好逆置一半的元素</code>，如果表长为<code>奇数</code>，则<code>中间的元素不需要移动</code>，因为<code>它是对称点</code>。</li>
+<li>在c++中，整数的除法会<code>向下取整</code>，所以代码中的m_size/2会<code>取整</code>，例如m_size=5时，5/2=2，所以i的范围为[0,2)。</li>
+<li>交换元素位置时，需要<code>一个临时变量temp来存储交换的中间值</code>，将该变量写在<code>for循环外面</code>，可以<code>减少内存的分配和释放次数</code>，提高效率。</li>
+<li>该逆置操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 逆置
+* @param 无
+* @return 逆置成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::reverse()
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] reverse()被调用&quot; &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (isEmpty())
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表为空，逆置失败！&quot; &lt;&lt; endl;
+		return false;
+	}
+	// 开始逆置
+	T temp; // 将temp写在for循环外面，可以减少内存的分配和释放次数
+	for (int i = 0; i &lt; m_size / 2; i++)
+	{
+		temp = m_data[i];
+		m_data[i] = m_data[m_size - i - 1];
+		m_data[m_size - i - 1] = temp;
+	}
+	return true;
+}
+</code></pre>
+<h4 id='24422-动态顺序表的合并'>2.4.4.22 动态顺序表的合并</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::merge(const DSeqList&lt;T&gt;&amp; list)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>将两个有序的动态顺序表合并成一个有序的动态顺序表</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li><p>首先进行<code>合法性检查</code>，判断<code>两个动态顺序表的数据域是否有效</code>，若<code>有一个无效（即m_data == NULL）</code>则合并失败。</p>
+</li>
+<li><p>判断两个动态顺序表<code>是否为空</code></p>
+<ul>
+<li>若本顺序表为空，则<code>将list合并到本顺序表中</code>，若list为空，则<code>不需要合并</code>。</li>
+<li>若两个顺序表都为空，则<code>合并失败</code>。</li>
+
+</ul>
+</li>
+<li><p>申请<code>一片新的数组空间</code>，数组长度为<code>两个动态顺序表的长度之和</code>。</p>
+</li>
+<li><p>从第一个元素开始遍历，将两个动态顺序表中的元素<code>依次比较</code>，将<code>较小的元素</code>放入新的数组中。</p>
+</li>
+<li><p>若<code>有一个动态顺序表的元素已经全部放入新数组中</code>，则<code>将另一个动态顺序表的剩余元素依次放入新数组中</code>。</p>
+</li>
+<li><p>释放<code>原来的数组空间</code>，将新数组的地址赋值给<code>数据域指针m_data</code>。</p>
+</li>
+<li><p>修改动态顺序表的<code>表长</code>。</p>
+</li>
+<li><p>合并成功返回true。</p>
+</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>合并操作<code>会改变</code>动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>该合并操作的时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(n)</code>，其中n为<code>两个动态顺序表的长度之和</code>。</li>
+<li>与静态顺序表的合并相比，动态顺序表的合并操作更加灵活和通用， 因为<code>动态顺序表的容量是可以动态调整</code>的，而静态顺序表的容量是固定的，所以静态顺序表的合并操作需要考虑<code>容量</code>的问题。</li>
+<li>在合并算法中，需要维护<code>三个指针</code>，分别指向<code>两个动态顺序表和新数组</code>，以便于比较和插入操作。</li>
+<li>合并算法的局限性在于，只能合并<code>两个有序的动态顺序表</code>，如果两个动态顺序表是无序的，则需要<code>先排序再合并</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 合并
+* @param list 要合并的顺序表
+* @return 合并成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::merge(const DSeqList&lt;T&gt;&amp; list)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] merge(const DSeqList&lt;T&gt;&amp; list)被调用&quot; &lt;&lt; endl;
+	if (NULL == m_data || NULL == list.m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 两个动态顺序表中至少有一个未初始化，合并失败！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (isEmpty())
+	{
+		if (list.isEmpty())
+		{
+			cout &lt;&lt; &quot;[ERROR] 两个动态顺序表都为空，合并失败！&quot; &lt;&lt; endl;
+			return false;
+		}
+		cout &lt;&lt; &quot;[INFO] 本动态顺序表为空，将list合并到本动态顺序表中&quot; &lt;&lt; endl;
+		m_data = new T[list.m_capacity];
+		for (int i = 0; i &lt; list.m_size; i++)
+		{
+			m_data[i] = list.m_data[i];
+		}
+		m_size = list.m_size;
+		m_capacity = list.m_capacity;
+		return true;
+	}
+	if (list.isEmpty())
+	{
+		cout &lt;&lt; &quot;[INFO] list为空，不需要合并&quot; &lt;&lt; endl;
+		return true;
+	}
+	T* temp = new T[m_size + list.m_size];
+	// 创建三个变量，分别记录本顺序表的元素位置、list顺序表的元素位置、新数组的元素位置
+	int indexThis = 0, indexOther = 0, indexMerged = 0;
+	while (indexThis &lt; m_size &amp;&amp; indexOther &lt; list.m_size)
+	{
+		if (m_data[indexThis] &lt; list.m_data[indexOther])
+		{
+			temp[indexMerged++] = m_data[indexThis++];
+		}
+		else
+		{
+			temp[indexMerged++] = list.m_data[indexOther++];
+		}
+	}
+	while (indexThis &lt; m_size)
+	{
+		temp[indexMerged++] = m_data[indexThis++];
+	}
+	while (indexOther &lt; list.m_size)
+	{
+		temp[indexMerged++] = list.m_data[indexOther++];
+	}
+	delete[] m_data;
+	m_data = temp;
+	m_size = m_size + list.m_size;
+	m_capacity = m_size;
+	return true;
+}
+</code></pre>
+<h4 id='24423-动态顺序表的插入排序'>2.4.4.23 动态顺序表的插入排序</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::sortByInsert()</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>对动态顺序表中的元素进行插入排序</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断动态顺序表<code>是否已初始化</code>，若未初始化则排序失败。</li>
+<li>判断动态顺序表是否<code>为空</code>，若为空则<code>排序成功</code>。</li>
+<li>从第一个元素开始，该元素可以<code>认为已经被排序</code>。</li>
+<li>取出下一个元素，记为<code>temp</code>，在已经排序的元素序列中<code>从后向前扫描</code>。</li>
+<li>如果被扫描到的元素<code>大于temp</code>，则<code>将该元素后移一位，空出一个位置</code>。</li>
+<li>重复步骤5，直到找到<code>已排序的元素小于或者等于新元素</code>的位置。</li>
+<li>将<code>新元素插入到该位置</code>后。</li>
+<li>重复步骤3-7，直到<code>所有元素均排序完成</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，不要混淆。</li>
+<li>插入排序操作<code>会改变</code>动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>插入排序的核心思想是<code>将一个元素插入到已经排好序的元素中，使得插入后的元素仍然有序</code>。</li>
+<li>该插入排序操作的时间复杂度为<code>O(n^2)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>插入排序是一种<code>稳定</code>的排序算法，即相同元素的相对位置不会发生变化。</li>
+<li>插入排序是一种<code>原地</code>排序算法，即不需要额外的存储空间。</li>
+<li>插入排序是一种<code>简单</code>的排序算法，适用于<code>小规模的数据排序</code>。</li>
+<li>对于部分有序的数据，插入排序的效率<code>较高</code>，反之，插入排序的效率<code>较低</code>。</li>
+<li>代码中展示的是<code>升序排序</code>，若要降序排序，则需要将<code>temp &lt; m_data[j]</code>改为<code>temp &gt; m_data[j]</code>即可。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 插入排序
+* @param 无
+* @return 排序成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::sortByInsert()
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] sortByInsert()被调用&quot; &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (isEmpty())
+	{
+		cout &lt;&lt; &quot;[INFO] 动态顺序表为空，排序成功！&quot; &lt;&lt; endl;
+		return true;
+	}
+	T temp;
+	for (int i = 1; i &lt; m_size; i++)
+	{
+		temp = m_data[i]; // 取出当前要排序的元素
+		int j = i - 1;
+
+		// 在已经排序的元素序列中从后向前扫描
+		while (j &gt;= 0 &amp;&amp; temp &lt; m_data[j])
+		{
+			m_data[j + 1] = m_data[j]; // 当当前元素大于temp时，将当前元素后移一位
+			j--;
+		}
+		m_data[j + 1] = temp; // 将temp插入到合适的位置
+	}
+	return true;
+}
+</code></pre>
+<h4 id='24424-动态顺序表的元素位置交换操作'>2.4.4.24 动态顺序表的元素位置交换操作</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::swap(int i, int j)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>交换动态顺序表中的两个元素</code>，主要用于在<code>快排算法</code>中方便交换元素。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断动态顺序表<code>是否已初始化</code>，若未初始化则交换失败。</li>
+<li>判断动态顺序表是否<code>为空</code>，若为空则交换失败。</li>
+<li>判断<code>i和j是否合法</code>，即i和j的范围为<code>[1,m_size]</code>。</li>
+<li><code>交换两个元素的位置</code>。</li>
+<li>交换成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，函数参数表中的i和j是<code>元素的位序</code>，而不是<code>数组的下标</code>，注意不要混淆。</li>
+<li>交换操作<code>会改变</code>动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>该交换操作的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 元素交换
+* @param i 第一个元素的位序
+* @param j 第二个元素的位序
+* @return 交换成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::swap(int i, int j)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] swap(int &quot; &lt;&lt; i &lt;&lt; &quot;, int &quot; &lt;&lt; j &lt;&lt; &quot;)被调用&quot; &lt;&lt; endl;
+    	// 首先进行合法性检查
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	// 判断动态顺序表是否为空
+	if (isEmpty())
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表为空，交换失败！&quot; &lt;&lt; endl;
+		return false;
+	}
+	// 判断i和j是否合法
+    if (i &lt; 1 || i &gt; m_size || j &lt; 1 || j &gt; m_size)
+    {
+        cout &lt;&lt; &quot;[ERROR] 交换的元素位序不合法！&quot; &lt;&lt; endl;
+        return false;
+    }
+	T temp = m_data[i - 1];
+	m_data[i - 1] = m_data[j - 1];
+	m_data[j - 1] = temp;
+	return true;
+}
+</code></pre>
+<h4 id='24425-动态顺序表的快速排序'>2.4.4.25 动态顺序表的快速排序</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool DSeqList&lt;T&gt;::sortByQuick(int left, int right)</code></p>
+</li>
+<li><p>函数功能：</p>
+<ul>
+<li>本函数用于<code>对动态顺序表中的元素进行快速排序</code>。</li>
+
+</ul>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断动态顺序表<code>是否已初始化</code>，若未初始化则排序失败。</li>
+<li>判断动态顺序表是否为空，若为空则<code>排序成功</code>。</li>
+<li>选择一个<code>基准元素</code>，通常选择第一个元素，<code>用变量T pivot记录它</code>。</li>
+<li><code>从右向左</code>找到第一个<code>小于基准元素的</code>元素，将其放到<code>基准元素的位置</code>。</li>
+<li><code>从左向右</code>找到第一个<code>大于基准元素</code>的元素，将其放到<code>步骤4中空出的位置</code>。</li>
+<li>重复步骤4和5，直到<code>左右指针相遇</code>。</li>
+<li>将基准元素放到<code>最终的位置</code>，此时基准元素左边的元素都<code>小于它</code>，右边的元素都<code>大于它</code>。</li>
+<li><code>递归处理左右两个子序列</code>，直到<code>子序列的长度为1</code>。</li>
+<li>排序成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>顺序表的位序<code>从1开始</code>，而数组的下标<code>从0开始</code>，函数参数表中的left和right是<code>元素的位序</code>，而不是<code>数组的下标</code>，注意不要混淆。</li>
+<li>快速排序操作<code>会改变</code>动态顺序表的状态，所以<code>不设置为常成员函数</code>。</li>
+<li>该快速排序操作的时间复杂度为<code>O(nlogn)</code>，空间复杂度为<code>O(logn)</code>。</li>
+<li>快速排序是一种<code>不稳定</code>的排序算法，即相同元素的相对位置可能发生变化。</li>
+<li>快速排序是一种<code>递归</code>的排序算法，递归的最大深度为<code>logn</code>，所以空间复杂度为<code>O(logn)</code>。</li>
+<li>准确的说，快速排序是一种<code>分治</code>的排序算法，将一个大问题分解为<code>两个小问题</code>，然后<code>递归解决</code>。</li>
+<li>快速排序是一种<code>原地</code>排序算法，即不需要额外的存储空间。</li>
+<li>快速排序是一种<code>高效</code>的排序算法，适用于<code>大规模数据的排序</code>。</li>
+<li>快速排序的效率取决于<code>基准元素的选择</code>，通常选择第一个元素，但是如果顺序表是<code>有序的</code>，则选择第一个元素作为基准元素会导致<code>最坏情况的发生</code>。</li>
+<li>为了避免最坏情况的发生，可以<code>随机选择基准元素</code>，或者<code>选择中间位置的元素作为基准元素</code>。</li>
+<li>该快速排序算法是<code>升序排序</code>，若要降序排序，只需要<code>将两个while循环中的&gt;=和&lt;=对换位置</code>即可。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/*
+* @brief 快速排序
+* @param left 待排序序列的左边界
+* @param right 待排序序列的右边界, 若right为-1，则表示对整个顺序表进行排序
+* @return 排序成功返回true，否则返回false
+*/
+template&lt;class T&gt;
+bool DSeqList&lt;T&gt;::sortByQuick(int left, int right)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot;[INFO] sortByQuick(int &quot; &lt;&lt; left &lt;&lt; &quot;, int &quot; &lt;&lt; right &lt;&lt; &quot;)被调用&quot; &lt;&lt; endl;
+	if (NULL == m_data)
+	{
+		cout &lt;&lt; &quot;[ERROR] 动态顺序表未初始化！&quot; &lt;&lt; endl;
+		return false;
+	}
+	if (isEmpty())
+	{
+		cout &lt;&lt; &quot;[INFO] 动态顺序表为空，排序成功！&quot; &lt;&lt; endl;
+		return true;
+	}
+    // 若right为-1，则表示对整个顺序表进行排序
+	if(right == -1)
+	{
+		right = m_size;
+	}
+	// 子序列的长度为1时，递归结束
+	if (left &gt;= right)
+	{
+		return true; // 递归结束条件
+	}
+	T pivot = m_data[left-1]; // 选择基准元素
+	int low = left,  = right;
+	while (low &lt; high)
+	{
+		while (low &lt; high &amp;&amp; m_data[high-1] &gt;= pivot)
+		{
+			high--; // 从右向左找第一个小于pivot的元素
+		}
+		while (low &lt; high &amp;&amp; m_data[low - 1] &lt;= pivot)
+		{
+			low++; // 从左向右找第一个大于pivot的元素
+		}
+		if (low &lt; high)
+		{
+			swap(low, high); // 交换两个元素
+		}
+	}
+	swap(left, low); // 将pivot元素放到最终的位置
+	sortByQuick(left, low - 1); // 递归处理左边的子序列
+	sortByQuick(low + 1, right); // 递归处理右边的子序列
+	return true;
+}
+</code></pre>
+<p>&nbsp;</p>
+</body>
+</html>

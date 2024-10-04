@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>数据结构_第2章_线性表_2.3_线性表的链性表示</title>
+</head>
+<body><center style="font-family: 华文新魏"><font size="12px" color="#4870ac">王道408 数据结构</font></center>
+<div>[TOC]</div>
+<h1 id='第2章-线性表'>第2章 线性表</h1>
+<h2 id='23-线性表的链式表示'>2.3 线性表的链式表示</h2>
+<h3 id='231-单链表的基本概念'>2.3.1 单链表的基本概念</h3>
+<p>线性表的<code>链式存储结构</code>，也称为单链表，是指通过一组任意的存储单元来存储线性表中的数据元素的数据结构。为了维护数据元素之间的线性关系，每个链表结点不仅包含元素自身的信息，还包含一个指向其后继结点的指针。（即，<code>各结点间的先后关系通过指针来表示</code>）</p>
+<p>单链表结点的结构如下图所示：</p>
+<ul>
+<li><code>data（数据域）</code>：用于存放数据元素的值。</li>
+<li><code>next（指针域）</code>：用于存放后继结点的地址。</li>
+
+</ul>
+<p>这种结构使得单链表可以<code>动态地分配内存</code>，不需要事先确定数据元素的数量，并且在插入和删除操作时，能够灵活地调整数据元素的存储位置。</p>
+<p><img src="./%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%AC%AC2%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8_2.3_%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E6%80%A7%E8%A1%A8%E7%A4%BA.assets/1732cf9467852a03tplv-t2oaga2asx-jj-mark3024000q75.png" referrerpolicy="no-referrer" alt="单链表node结构"></p>
+<h4 id='2311-单链表的优缺点'>2.3.1.1 单链表的优缺点</h4>
+<ul>
+<li><p><strong>优点</strong></p>
+<ol start='' >
+<li><strong>动态内存分配</strong>：单链表可以根据需要动态地分配和释放内存，无需预先分配固定大小的存储空间，从而节省内存。</li>
+<li><strong>插入和删除操作高效</strong>：插入和删除操作只需修改相关结点的指针，不涉及大量数据元素的移动，因此在任意位置进行插入和删除操作的时间复杂度为 <code>O(1)</code>。</li>
+<li><strong>更高的灵活性</strong>：可以方便地调整链表的大小，适应不同数量的数据元素。</li>
+
+</ol>
+</li>
+
+</ul>
+<ul>
+<li><p><strong>缺点</strong></p>
+<ol start='' >
+<li><strong>访问速度较慢</strong>：由于单链表的元素不是连续存储的，访问某个特定位置的元素需要从头结点开始逐一遍历，时间复杂度为 <code>O(n)</code>，不如数组的随机访问效率高。</li>
+<li><strong>额外的存储空间</strong>：每个结点除了存储数据元素外，还需要存储一个指针，这些指针域占用了额外的存储空间。</li>
+<li><strong>不易实现逆向遍历</strong>：单链表只能<code>从前向后遍历</code>，逆向遍历较为困难，需要额外的数据结构（如双链表）或额外的存储来记录遍历路径。</li>
+<li><strong>增加编程复杂性</strong>：与数组相比，单链表的实现和操作相对复杂，尤其是在处理指针和内存管理时，需要更加小心。</li>
+
+</ol>
+</li>
+
+</ul>
+<p>总的来说，单链表适用于需要频繁插入和删除操作的应用场景，但在需要快速随机访问元素的情况下，效率不如数组。</p>
+<h4 id='2312-带头结点的单链表-vs-不带头结点的单链表'>2.3.1.2 带头结点的单链表 V.S. 不带头结点的单链表</h4>
+<p>带头结点的单链表和不带头结点的单链表之间有一些关键的区别，主要体现在结构和操作上：</p>
+<p><strong>带头结点的单链表</strong></p>
+<ol start='' >
+<li><p><strong>定义</strong>：</p>
+<ul>
+<li>包含一个额外的<code>头结点</code>, 不直接存储数据，主要用于简化链表操作。</li>
+
+</ul>
+</li>
+<li><p><strong>优点</strong>：</p>
+<ul>
+<li><strong>简化操作</strong>：插入和删除操作在链表的<code>头部</code>时不需要特殊处理。</li>
+<li><strong>统一处理</strong>：链表的所有操作（如查找、插入、删除）都可以统一处理，不需判断链表是否<code>为空</code>。</li>
+
+</ul>
+</li>
+<li><p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>内存开销</strong>：额外的<code>头结点</code>增加了内存消耗。</li>
+
+</ul>
+</li>
+
+</ol>
+<p><strong>不带头结点的单链表</strong></p>
+<ol start='' >
+<li><p><strong>定义</strong>：</p>
+<ul>
+<li>第一个结点直接存储<code>数据</code>, 没有<code>头结点</code>。</li>
+
+</ul>
+</li>
+<li><p><strong>优点</strong>：</p>
+<ul>
+<li><strong>内存节省</strong>：不需要额外的<code>头结点</code>, 节省内存。</li>
+
+</ul>
+</li>
+<li><p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>特殊处理</strong>：在链表<code>为空</code>或在头部进行插入和删除时需要特别处理，代码可能更复杂。</li>
+
+</ul>
+</li>
+
+</ol>
+<p><strong>总结</strong></p>
+<p>选择使用<code>带头结点</code>或<code>不带头结点</code>的单链表，主要取决于具体应用场景和需求。如果希望简化操作并统一处理，<code>带头结点</code>的链表更为适合；如果内存限制较为严格且链表操作相对简单，则<code>不带头结点</code>的链表可能更优。</p>
+<h4 id='2313-头结点和头指针的区分'>2.3.1.3 头结点和头指针的区分</h4>
+<p>在单链表数据结构中，头结点（head node）和头指针（head pointer）是两个容易混淆但又各自不同的重要概念。让我们详细解释它们的定义和容易混淆的点。</p>
+<p><strong>头结点（Head Node）</strong></p>
+<p>头结点是指<code>链表中的第一个结点</code>，通常存储链表中的第一个元素的数据。在链表结构中，头结点本身就是一个结点，包含<code>数据域和指向下一个结点的指针（即next指针）</code>。</p>
+<p><strong>头指针（Head Pointer）</strong></p>
+<p>头指针是一个<code>指针变量</code>，它指向链表的第一个结点（即头结点）。头指针本身不存储链表的数据，它只是一个指针，用于<code>存储头结点的地址，以便能够访问链表</code>。</p>
+<p>总结：不管带不带头结点，头指针始终指向链表的<code>第一个结点</code>，而头结点是带头结点链表中的第一个结点，结点内通常<code>不存储信息</code>。</p>
+<h4 id='2314-链表的扩展'>2.3.1.4 链表的扩展</h4>
+<p>链表是一种灵活的数据结构，具有许多扩展和变体，适用于不同的应用场景。</p>
+<p><code>双向链表</code>的每个结点有两个指针，分别指向<code>前一个结点</code>和<code>后一个结点</code>，可以更方便地在两端进行插入和删除操作，支持<code>从后向前</code>遍历。</p>
+<p><code>循环链表</code>的最后一个结点的指针指向链表的<code>头结点</code>, 形成一个闭环，处理某些需要持续遍历的场景时可以避免<code>空指针异常</code>。</p>
+<p><code>静态链表</code>使用数组模拟链表结构，通过下标进行链接，在内存管理上更简单，不需要动态分配内存，适用于<code>结点数固定</code>的场合。</p>
+<p>链表的扩展形式丰富多样，选择合适的链表类型可以提高<code>算法效率</code>和<code>实现的灵活性</code>，适应不同的数据处理需求。</p>
+<h3 id='232-单链表结点的代码描述以c语言为例'>2.3.2 单链表结点的代码描述(以C语言为例)</h3>
+<pre><code class='language-c' lang='c'>// 设置别名
+typedef int Elemtype;
+// 定义单链表结点结构体
+typedef struct LNode {
+    Elemtype data;         // 数据部分，可以根据实际需要定义不同类型的数据
+    struct LNode *next;  // 指针部分，指向下一个结点的地址
+} LNode, *LinkList;
+</code></pre>
+<p>在这个结构体中，<code>data</code> 是存储结点数据的变量，<code>next</code> 是一个指向 <code>struct LNode</code> 类型的指针，它指向链表中的下一个结点。通过这种方式，每个结点就能够存储自己的数据，并且通过 <code>next</code> 指针链接到下一个结点，从而形成一个链表。</p>
+<h4 id='2321-typedef关键字的用法'>2.3.2.1 typedef关键字的用法</h4>
+<p><code>typedef</code> 是C语言中的一个关键字，用于<code>为已有数据类型定义新的别名</code>。它的主要作用是增强代码的可读性和易用性，特别是在处理复杂的数据结构时，如结构体或者函数指针等。</p>
+<p><strong>单链表结点定义时，为什么要使用 <code>typedef</code>？</strong></p>
+<ul>
+<li><p>在单链表结点的定义中，使用 <code>typedef</code> 的主要原因有两点：</p>
+<ul>
+<li><strong>简化类型名称</strong>：定义单链表结点结构体时，结构体名 <code>struct LNode</code> 和指向该结构体的指针 <code>struct LNode *</code> 是比较冗长的。使用 <code>typedef</code> 可以为 <code>struct LNode</code> 定义一个更简洁的别名 <code>LNode</code>，使得代码更加清晰和简洁。</li>
+<li><strong>抽象数据类型</strong>：通过 <code>typedef</code>，可以将数据类型的实现与其名称分离开来。这样一来，如果需要修改数据类型或者在多个文件中使用相同的数据类型时，只需修改一处 <code>typedef</code> 定义即可，提高了代码的维护性和可重用性。</li>
+
+</ul>
+</li>
+
+</ul>
+<p><strong><code>typedef</code> 的语法</strong></p>
+<ul>
+<li><p><code>typedef</code> 的语法格式如下：</p>
+<pre><code class='language-c' lang='c'>typedef existing_type new_type_name;
+</code></pre>
+<ul>
+<li><code>existing_type</code> 是已有的数据类型，可以是基本数据类型（如 <code>int</code>, <code>float</code> 等），也可以是自定义的结构体、枚举类型等。</li>
+<li><code>new_type_name</code> 是为 <code>existing_type</code> 定义的新的别名。</li>
+
+</ul>
+</li>
+
+</ul>
+<h4 id='2322-lnode-vs-linklist'>2.3.2.2 <code>LNode</code> VS <code>LinkList</code></h4>
+<p>在这段代码中，<code>LNode</code>和<code>*LinkList</code>有不同的含义和用途：</p>
+<ol start='' >
+<li><p><code>LNode</code>：</p>
+<ul>
+<li>这是一个<code>结构体类型</code>，表示<code>单链表中的一个结点</code>。定义了结点的<code>data（数据部分）</code>和<code>next（指向下一个结点的指针）</code>。</li>
+
+</ul>
+</li>
+<li><p><code>LinkList</code>：</p>
+<ul>
+<li>这是一个指向<code>LNode</code>类型的<code>指针类型</code>。它代表了<code>一个指向链表的指针</code>，可以用来<code>方便地操作链表</code>，比如创建、插入、删除等。</li>
+
+</ul>
+</li>
+
+</ol>
+<p><strong>总结</strong></p>
+<p><code>LNode</code>是结点的具体类型，而<code>*LinkList</code>是一个指向该类型的指针，通常用来表示整个链表的头指针。</p>
+<h3 id='233-带头结点的单链表的实现以c语言为例'>2.3.3 带头结点的单链表的实现（以C语言为例）</h3>
+<h3 id='234-不带头结点的单链表的实现以c++语言为例'>2.3.4 不带头结点的单链表的实现（以C++语言为例）</h3>
+<h3 id='235-双链表的相关概念'>2.3.5 双链表的相关概念</h3>
+<h4 id='2351-双链表的基本概念'>2.3.5.1 双链表的基本概念</h4>
+<p><strong>单链表的局限</strong>：</p>
+<p>单链表只能从头节点到尾节点进行<code>单向遍历</code>，<code>不能反向遍历</code>。这导致在某些需要频繁访问前驱节点的操作中效率较低。此外，在单链表中插入或删除一个节点时，若需要访问前驱节点，也较为不便。</p>
+<p><strong>双链表的定义</strong>：</p>
+<p>双链表是一种链表结构，其中每个节点包含三个部分：一个<code>存储数据的字段</code>，一个<code>指向前驱节点的指针</code>，以及一个<code>指向后继节点的指针</code>。通过这两个指针，可以实现<code>从任一节点向前和向后的双向遍历</code>。</p>
+<p><img src="./%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%AC%AC2%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8_2.3_%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E6%80%A7%E8%A1%A8%E7%A4%BA.assets/image-20240806000438537.png" referrerpolicy="no-referrer" alt="image-20240806000438537"></p>
+<p><img src="./%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%AC%AC2%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8_2.3_%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E6%80%A7%E8%A1%A8%E7%A4%BA.assets/image-20240806000448242.png" referrerpolicy="no-referrer" alt="image-20240806000448242"></p>
+<p><strong>双链表 V.S. 单链表</strong>：</p>
+<p>双链表与单链表的主要区别在于<code>双链表的节点包含两个指针</code>，一个<code>指向前一个节点</code>，一个指向后一个节点。这使得双链表可以进行<code>双向遍历</code>，更加灵活。在<code>插入</code>和<code>删除</code>操作中，双链表也更为方便，因为<code>可以直接访问前驱节点</code>。然而，双链表比单链表占用更多的内存，因为每个节点需要额外存储一个指针（存储密度更低）。</p>
+<h4 id='2351-双链表结点的代码描述以c语言为例'>2.3.5.1 双链表结点的代码描述（以C语言为例）</h4>
+<p>在C语言中，双链表节点的结构体定义通常如下：</p>
+<pre><code class='language-c' lang='c'>// 定义双链表节点的结构体
+typedef struct DNode {
+    ElemType data;           	// 存储数据的字段
+    struct DNode* prev; 		// 指向前一个节点的指针
+    struct DNode* next; 		// 指向后一个节点的指针
+} DNode, *DLinkList;
+</code></pre>
+<p><strong>代码描述</strong>：</p>
+<ol start='' >
+<li><strong>定义结构体：</strong> 使用 <code>typedef struct</code> 关键字定义一个名为 <code>DNode</code> 的结构体。（D指Double）</li>
+<li><strong>数据字段：</strong> 在结构体中包含一个 <code>ElemType</code> 类型的字段 <code>data</code>，用于存储节点的数据。</li>
+<li><strong>前驱指针：</strong> 包含一个指向 <code>DNode</code> 结构体类型的指针 <code>prev</code>，用于指向前一个节点。</li>
+<li><strong>后继指针：</strong> 包含一个指向 <code>DNode</code> 结构体类型的指针 <code>next</code>，用于指向后一个节点。</li>
+<li><strong>类型定义：</strong> 使用 <code>typedef</code> 关键字，将 <code>struct DNode</code> 重命名为 <code>DNode</code>，并将 <code>struct DNode*</code> 重命名为 <code>DLinkList</code>，方便在代码中使用。</li>
+
+</ol>
+<p>通过这种定义方式，可以更简洁地使用 <code>DNode</code> 和 <code>DLinkList</code> 类型，而无需每次都写出完整的 <code>struct</code> 关键字。</p>
+<h3 id='236-带头结点的双链表的实现以c语言为例'>2.3.6 带头结点的双链表的实现（以C语言为例）</h3>
+<h3 id='237-不带头结点的双链表的实现以c++语言为例'>2.3.7 不带头结点的双链表的实现（以C++语言为例）</h3>
+<h3 id='238-循环双链表的相关概念'>2.3.8 循环双链表的相关概念</h3>
+<h1 id='第3章-栈队列和数组'>第3章 栈、队列和数组</h1>
+<h1 id='第4章-串'>第4章 串</h1>
+<h1 id='第5章-树和二叉树'>第5章 树和二叉树</h1>
+<h1 id='第6章-图'>第6章 图</h1>
+<h1 id='第7章-查找'>第7章 查找</h1>
+<h1 id='第8章-排序'>第8章 排序</h1>
+</body>
+</html>
