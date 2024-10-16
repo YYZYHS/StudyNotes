@@ -372,3 +372,6 @@ typedef 是 C 语言中的一个关键字，用于胃已有数据类型定义新
 typedef 的语法格式如下：  
 typedef existing_type new_type_name;  
 其中，existing_type 是已有的数据类型，可以是基本数据类型（如 int、float 等）或自定义的结构体、枚举类型等；new_type_name 是胃 existing_type 定义的新别名。
+
+## 数据结构0087 LNode VS LinkList
+在这段代码中，LNode 和 星号LinkList 的含义和用途不同。LNode 是一个结构体类型，表示单链表中的一个结点。每个结点有两部分，数据部分 data 和指针部分 next。数据部分用来存储结点的内容，比如在这个例子中是 int 类型，而指针部分 next 指向链表中的下一个结点，用于将链表中的各个结点连接起来。而 LinkList 是一个指向 LNode 类型的指针，表示链表的头指针。它本身并不是一个具体的结点，而是一个指针，用来指向链表中的第一个结点，通过这个指针，我们可以方便地操作整个链表，比如进行链表的创建、插入或删除操作。所以，LNode 是表示链表结点的类型，而 星号LinkList 是一个指向链表的头指针，用于对整个链表进行操作。
