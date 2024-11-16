@@ -46,3 +46,11 @@
 **/.idea/
 **/.vscode/
 **/.venv/
+
+# Qt
+*.stash
+*.idx
+*.Debug
+*.Release
+**/build
+*.user
