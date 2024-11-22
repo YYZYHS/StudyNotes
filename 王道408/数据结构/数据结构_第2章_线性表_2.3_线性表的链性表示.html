@@ -128,6 +128,7 @@ typedef struct LNode {
 </li>
 
 </ul>
+<p>&nbsp;</p>
 <p><strong><code>typedef</code> 的语法</strong></p>
 <ul>
 <li><p><code>typedef</code> 的语法格式如下：</p>
@@ -161,6 +162,86 @@ typedef struct LNode {
 <p><strong>总结</strong></p>
 <p><code>LNode</code>是结点的具体类型，而<code>*LinkList</code>是一个指向该类型的指针，通常用来表示整个链表的头指针。</p>
 <h3 id='233-带头结点的单链表的实现以c语言为例'>2.3.3 带头结点的单链表的实现（以C语言为例）</h3>
+<h4 id='2331-单链表的结构定义'>2.3.3.1 单链表的结构定义</h4>
+<p>单链表的结构体通常包含<code>一个数据域</code>和<code>一个指向下一个节点的指针</code>。每个节点的结构体通常如下定义：</p>
+<pre><code class='language-c' lang='c'>// ============================预处理信息============================
+typedef int bool;      // C语言没有bool类型，使用int模拟，0为false，非0为true
+#define true 1         // 定义true为1
+#define false 0        // 定义false为0
+typedef int ElemType;  // 定义链表数据类型为int
+
+// ============================单链表节点结构定义============================
+typedef struct LNode {
+    ElemType data;      // 数据
+    struct LNode *next; // 指向下一个节点
+} LNode, *LinkList;     // LNode为节点类型，LinkList为节点指针类型
+</code></pre>
+<p><strong>解释</strong>：</p>
+<ul>
+<li>C语言本身没有<code>bool</code> 类型，因此用 <code>typedef int bool;</code> 定义，同时定义<code>0</code> 表示 <code>false</code>，非零值（如 <code>1</code>）表示 <code>true</code>，以此模拟布尔类型。</li>
+<li><code>ElemType</code> 用于指定链表的数据类型，默认为 <code>int</code>，可以根据需要修改。</li>
+<li><code>LNode</code> 结构体表示链表节点，包含数据域 <code>data</code> 和指针 <code>next</code>，用于链接下一个节点。</li>
+<li><code>LinkList</code> 是指向链表头节点的指针类型，便于操作链表。</li>
+
+</ul>
+<h4 id='2332-单链表的初始化'>2.3.3.2 单链表的初始化</h4>
+<ul>
+<li><p>函数名称：<code>bool initList(LinkList *L)</code></p>
+</li>
+<li><p>函数功能：初始化一个带头结点的单链表。</p>
+</li>
+<li><p>函数思路：  </p>
+<ol start='' >
+<li>在堆上分配内存生成头结点。  </li>
+<li>判断<code>内存分配是否成功</code>，若失败则返回<code>false</code>。  </li>
+<li>头结点的<code>next</code>指针指向<code>NULL</code>。  </li>
+<li>初始化成功则返回<code>true</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<ul>
+<li><p>注意事项：  </p>
+<ol start='' >
+<li>参数L为<code>指向链表的指针</code>，其本质是一个<code>二级指针</code>，即<code>LNode **L</code>。</li>
+<li>在堆上分配内存的操作有可能失败，所以需要<code>判断是否分配成功</code>。</li>
+<li>头结点本身不存储数据，但遵循<code>定义变量即初始化</code>的原则，将头结点的<code>data域</code>初始化为0。</li>
+
+</ol>
+</li>
+<li><p>使用二级指针的原因</p>
+<ul>
+<li><code>L</code>是一个<code>指向指针的指针</code>，对<code>L</code>的操作会<code>改变L指向的地址的内容</code>。</li>
+<li><code>*L</code>是指<code>向链表的头指针</code>，即<code>头结点的地址</code>，对<code>*L</code>的操作会<code>改变头结点的内容</code>。</li>
+<li>因此，可以使用二级指针在函数内部改变<code>*L</code>的内容，从而改变<code>外部指针L指向的地址的内容</code>。</li>
+<li>如果参数是LinkList L（即LNode *L），即直接传递指针，那么只能改变<code>指针的内容</code>，无法改变<code>指针指向的地址的内容</code>。</li>
+
+</ul>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief 初始化带头结点的单链表
+ * @param LinkList *L 指向链表头指针的指针
+ * @return bool 成功返回true，失败返回false
+ */
+bool initList(LinkList *L)
+{
+    printf(&quot;[INFO] initList()函数被调用...\n&quot;);
+    *L = (LinkList)malloc(sizeof(LNode)); // 生成头结点
+    if(NULL == *L)
+    {
+        printf(&quot;[ERROR] 初始化链表失败！ErrorText: 在堆上分配内存失败！\n&quot;);
+        return false;
+    }
+    printf(&quot;[INFO] 初始化链表成功！\n&quot;);
+    (*L)-&gt;data = 0; // 头结点不存储数据,但初始化为0
+    (*L)-&gt;next = NULL;
+    return true;
+}
+</code></pre>
+<p>&nbsp;</p>
 <h3 id='234-不带头结点的单链表的实现以c++语言为例'>2.3.4 不带头结点的单链表的实现（以C++语言为例）</h3>
 <h3 id='235-双链表的相关概念'>2.3.5 双链表的相关概念</h3>
 <h4 id='2351-双链表的基本概念'>2.3.5.1 双链表的基本概念</h4>

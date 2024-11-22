@@ -2,7 +2,7 @@
  * @file main.c
  * @brief 本文件用于实现带头结点的单链表，包括链表的初始化、插入、删除、查找、销毁等操作。
  * @author YYZYHS
- * @date 2024-11-02
+ * @date 2024-11-19
  */
 
 #include <stdio.h>
@@ -34,21 +34,12 @@ int length(const LinkList L);     /// 求链表长度
 LNode *createNewNode(ElemType e); /// 创建新结点
 bool insertNextNode(LNode *p, ElemType e);     /// 在指定结点后插入结点
 bool insertList(LinkList L, int i, ElemType e);/// 常用的插入操作（后插）
-bool getElem(LinkList L, int i, ElemType *e); /// 按位查找
-int locateElem(LinkList L, ElemType e);       /// 按值查找
+LNode* getElem(LinkList L, int i); /// 按位查找
+LNode* locateElem(LinkList L, int *i, ElemType e);       /// 按值查找
 bool insertPriorNode(LNode *p, ElemType e);   /// 在指定结点前插入结点
 bool insertListByForward(LinkList L, int i, ElemType e);/// 常用的插入操作（前插）
 bool removeNode(LinkList L, int i, ElemType *e);   /// 删除结点
 bool setNode(LinkList L, int i, ElemType e); /// 修改结点
-// 高级操作
-bool push_front(LinkList L, ElemType e); /// 头插法
-bool push_back(LinkList L, ElemType e);  /// 尾插法
-bool pop_front(LinkList L, ElemType *e); /// 头删法
-bool pop_back(LinkList L, ElemType *e);  /// 尾删法
-bool mergeList(LinkList La, LinkList Lb, LinkList *Lc); /// 合并链表
-bool reverseList(LinkList L); /// 反转链表
-bool sortListByBubble(LinkList L); /// 冒泡排序
-bool sortListBySelect(LinkList L); /// 选择排序
 // 测试用例
 void test1(); /// 测试用例1
 void test2(); /// 测试用例2
@@ -137,7 +128,7 @@ void test2()
     printf("=\t测试清单：       \t=\n");
     printf("=\t1. 按位查找      \t=\n");
     printf("=\t2. 按值查找      \t=\n");
-    printf("=\t3. 按位插入(前插) \t=\n");
+    printf("=\t3. 按位插入(前插)\t=\n");
     printf("=\t4. 按位删除      \t=\n");
     printf("=\t5. 修改结点      \t=\n");
     printf("=========================================\n");
@@ -154,31 +145,24 @@ void test2()
     printf("[INFO] 打印链表...\n");
     printList(L);
     printf("[INFO] 按位查找结点...\n");
-    ElemType e = 0;
-    printf("[INFO] 查找表头元素...\n");
-    getElem(L, 1, &e);
-    printf("[INFO] 查找表尾元素...\n");
-    getElem(L, 5, &e);
-    printf("[INFO] 查找中间元素...\n");
-    getElem(L, 3, &e);
-    printf("[INFO] 查找非法位置元素...\n");
-    getElem(L, 0, &e);
-    getElem(L, 6, &e);
-    printf("[INFO] 按位查找结点完毕！\n");
+    LNode *p = NULL;    // 创建临时指针p
+    p = getElem(L, 0);  // 查找头结点
+    p = getElem(L, 1);  // 查找第一个元素
+    printf("[INFO] 当前p的数据为：%d\n", p->data);
+    p = getElem(L, 3);  // 查找中间元素
+    printf("[INFO] 当前p的数据为：%d\n", p->data);
+    p = getElem(L, length(L)); // 查找最后一个元素
+    printf("[INFO] 当前p的数据为：%d\n", p->data);
+
     printf("[INFO] 按值查找结点...\n");
-    printf("[INFO] 查找元素1...\n");
-    int pos = locateElem(L, 1);
-    printf("[INFO] pos = %d\n", pos);
-    printf("[INFO] 查找元素3...\n");
-    pos = locateElem(L, 3);
-    printf("[INFO] pos = %d\n", pos);
-    printf("[INFO] 查找元素5...\n");
-    pos = locateElem(L, 5);
-    printf("[INFO] pos = %d\n", pos);
-    printf("[INFO] 查找不存在的元素6...\n");
-    pos = locateElem(L, 6);
-    printf("[INFO] pos = %d\n", pos);
+    int i = 0;
+    p = locateElem(L, &i, getElem(L, 1)->data); // 查找第一个元素
+    printf("[INFO] 当前p的数据为：%d，位序为：%d\n", p->data, i);
+    p = locateElem(L, &i, 3); // 查找中间元素
+    printf("[INFO] 当前p的数据为：%d，位序为：%d\n", p->data, i);
+    p = locateElem(L, &i, getElem(L, length(L))->data); // 查找最后一个元素
     printf("[INFO] 按值查找结点完毕！\n");
+
     printf("[INFO] 按位插入结点(前插)...\n");
     insertListByForward(L, 1, 0); // 表头前插
     printf("[INFO] 打印链表...\n");
@@ -186,12 +170,56 @@ void test2()
     insertListByForward(L, 3, 8); // 中间前插
     printf("[INFO] 打印链表...\n");
     printList(L);
-    insertListByForward(L, 7, 6); // 表尾前插
+    insertListByForward(L, length(L) + 1, 9); // 表尾前插
     printf("[INFO] 打印链表...\n");
     printList(L);
-    insertListByForward(L, 8, 9); // 非法位置前插
+    insertListByForward(L, 0, 10); // 非法位置前插
     printf("[INFO] 打印链表...\n");
     printList(L);
+    insertListByForward(L, length(L) + 2, 11); // 非法位置前插
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+
+    printf("[INFO] 按位删除结点...\n");
+    ElemType e = 0;
+    removeNode(L, 1, &e); // 表头删除
+    printf("[INFO] 删除的结点数据为：%d\n", e);
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+    removeNode(L, 3, &e); // 中间删除
+    printf("[INFO] 删除的结点数据为：%d\n", e);
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+    removeNode(L, length(L), &e); // 表尾删除
+    printf("[INFO] 删除的结点数据为：%d\n", e);
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+    removeNode(L, 0, &e); // 非法位置删除
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+    removeNode(L, length(L) + 1, &e); // 非法位置删除
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+
+    printf("[INFO] 修改结点...\n");
+    setNode(L, 1, 100); // 修改表头结点
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+    setNode(L, 3, 200); // 修改中间结点
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+    setNode(L, length(L), 300); // 修改表尾结点
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+    setNode(L, 0, 400); // 非法位置修改
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+    setNode(L, length(L) + 1, 500); // 非法位置修改
+    printf("[INFO] 打印链表...\n");
+    printList(L);
+
+    printf("[INFO] test2执行完毕！\n");
+    return;
 }
 
 /**
@@ -217,6 +245,7 @@ void test2()
  *            因此，这么写的原理是在函数内部改变*L的内容，从而改变外部指针L指向的地址的内容。
  *            如果参数是LinkList L（即LNode *L），即直接传递指针，那么只能改变指针的内容，无法改变指针指向的地址的内容。
  *          2.在堆上分配内存的操作有可能失败，所以需要判断是否分配成功。
+ *          3.头结点本身不存储数据，但遵循定义变量即初始化的原则，将头结点的data域初始化为0。
  */
 bool initList(LinkList *L)
 {
@@ -228,6 +257,7 @@ bool initList(LinkList *L)
         return false;
     }
     printf("[INFO] 初始化链表成功！\n");
+    (*L)->data = 0; // 头结点不存储数据,但初始化为0
     (*L)->next = NULL;
     return true;
 }
@@ -245,19 +275,19 @@ bool initList(LinkList *L)
  *     函数功能
  *          本函数用于销毁一个带头结点的单链表。
  *     函数思路
- *          1.判断链表指针是否有效（即L和*L是否为NULL），如果无效则返回false。
- *          2.创建两个临时指针p和q，p指向头结点，q用于释放结点。
- *          3.循环遍历链表，释放每个结点的内存空间。
- *          4.释放完所有结点后，将头指针置为NULL。
- *          5.销毁成功返回true。
+ *          1. 判断链表指针是否有效（即L和*L是否为NULL），如果无效则返回false。
+ *          2. 创建两个临时指针p和q，p指向头结点，q用于释放结点。
+ *          3. 循环遍历链表，释放每个结点的内存空间。
+ *          4. 释放完所有结点后，将头指针置为NULL。
+ *          5. 销毁成功返回true。
  *     注意
- *          1.销毁链表时，需要释放每个结点的内存空间，否则会造成内存泄漏。
- *          2.代码中释放结点内存的过程是将首元素从链表中断开，原位于首元素之后的元素成为新的首元素，然后释放原首元素的内存，如此循环。
- *          3.销毁链表后，需要将头结点的内存空间也释放掉，同时将头指针置为NULL，否则在链表最终被销毁后，会导致有一块分配到堆区的内存空间没有被释放，造成内存泄漏。
- *          4.销毁算法的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。
- *          5.关于函数参数的说明，详见initList()函数的说明，
- *            简而言之，initList()和destoryList()函数都需要对指向链表的指针进行操作，所以参数必须是指向“指向链表的指针”的指针，
- *            而其他函数如printList()、insertList()等只需要对链表进行访问或操作，所以参数只需要是指向链表的指针即可。
+ *          1. 销毁链表时，需要释放每个结点的内存空间，否则会造成内存泄漏。
+ *          2. 代码中释放结点内存的过程是将首元素从链表中断开，原位于首元素之后的元素成为新的首元素，然后释放原首元素的内存，如此循环。
+ *          3. 销毁链表后，需要将头结点的内存空间也释放掉，同时将头指针置为NULL，否则在链表最终被销毁后，会导致有一块分配到堆区的内存空间没有被释放，造成内存泄漏。
+ *          4. 销毁算法的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。
+ *          5. 关于函数参数的说明，详见initList()函数的说明，
+ *             简而言之，initList()和destoryList()函数都需要对指向链表的指针进行操作，所以参数必须是指向“指向链表的指针”的指针，
+ *             而其他函数如printList()、insertList()等只需要对链表进行访问或操作，所以参数只需要是指向链表的指针即可。
  */
 bool destroyList(LinkList *L)
 {
@@ -298,7 +328,7 @@ bool destroyList(LinkList *L)
  *          3.循环遍历链表，打印每个元素的值。
  *          4.打印成功返回true。
  *      注意
- *          1.打印链表时，需要判断链表是否存在，否则会导致空指针异常。
+ *          1.打印链表前，需要判断链表是否存在，否则会导致空指针异常。
  *          2.打印链表的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。
  *          3.函数参数const LinkList L表示传递的是一个指向常量的指针，
  *          使用LinkList而不是LNode *L是为了增加代码的可读性，且传递指针可节省内存空间，
@@ -313,13 +343,13 @@ bool printList(const LinkList L)
         return false;
     }
     LinkList p = L->next; // 创建临时指针p指向链表中的第一个元素
-    printf("[INFO] 链表元素：");
+    printf("[INFO] 链表元素：[HNode]-->"); // 打印头结点
     while(p != NULL)
     {
-        printf("%d-->", p->data);
+        printf("[%d]-->", p->data);
         p = p->next;
     }
-    printf("NULL\n");
+    printf("[NULL]\n");
     return true;
 }
 
@@ -348,7 +378,7 @@ bool isEmpty(const LinkList L)
     printf("[INFO] isEmpty()函数被调用...\n");
     if(NULL == L || NULL == L->next)
     {
-        printf("[INFO] 链表为空！\n");
+        printf("[INFO] 链表不存在或为空！\n");
         return true;
     }
     else
@@ -482,6 +512,121 @@ bool insertNextNode(LNode *p, ElemType e)
 }
 
 /**
+ * @brief getElem
+ *     按位查找
+ * @param LinkList L
+ *      链表
+ * @param int i
+ *      位置
+ * @note
+ *     函数功能
+ *          本函数用于按位查找链表中的元素。
+ *     函数思路
+ *          1.判断链表是否存在，如果不存在则返回NULL。
+ *          2.判断位置i是否合法，如果不合法则返回NULL。
+ *          3.特殊情况：获取头结点，即i=0时，直接返回头结点。
+ *          4.创建一个临时指针p指向链表中的第一个元素，创建一个变量pos用于记录当前遍历的元素位序。
+ *          5.循环遍历链表，直到找到第i个元素。
+ *          6.判断是否找到第i个元素，如果没有找到则返回NULL。
+ *          7.找到第i个元素后，返回该结点的指针。
+ *     注意
+ *          1.按位查找的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。
+ *          2.链表的位序从1开始。
+ */
+LNode* getElem(LinkList L, int i)
+{
+    printf("[INFO] getElem()函数被调用...\n");
+    printf("[INFO] 尝试获取链表的第%d个元素...\n", i);
+    // 合法性检查
+    if(NULL == L)
+    {
+        printf("[ERROR] 获取结点失败！ErrorText: 链表不存在！\n");
+        return NULL;
+    }
+    if(i < 0)
+    {
+        printf("[ERROR] 获取结点失败！ErrorText: 位置i非法（小于0）！\n");
+        return NULL;
+    }
+    // 特殊情况：获取头结点
+    if(0 == i)
+    {
+        printf("[INFO] 待查找位置为0，即头结点！\n");
+        return L;
+    }
+    // 遍历链表，直到找到第i个元素
+    LNode *p = L->next; // 创建临时指针p指向链表中的第一个元素
+    int pos = 1;        // 创建变量pos用于记录当前遍历的元素位序
+    while(NULL != p && pos < i) // 遍历链表
+    {
+        p = p->next;
+        pos++;
+    }
+    // 判断是否找到第i个元素
+    if(NULL == p)
+    {
+        printf("[ERROR] 获取结点失败！ErrorText: 未找到第%d个元素！\n", i);
+        return NULL;
+    }
+    printf("[INFO] 获取结点成功！结点数据为：%d\n", p->data);
+    return p;
+}
+
+
+/**
+ * @brief locateElem
+ *      按值查找
+ * @param LinkList L
+ *      链表
+ * @param int *i
+ *      位置
+ * @param ElemType e
+ *      结点数据
+ * @return LNode*
+ *      要查找的结点的指针，如果查找失败则返回NULL
+ * @note
+ *      函数功能
+ *          本函数用于按值查找链表中的元素。
+ *      函数思路
+ *          1.首先进行合法性检查，判断链表是否存在，如果不存在则返回NULL。
+ *          2.创建一个临时指针p指向链表中的第一个元素，创建一个变量pos用于记录当前遍历的元素位序。
+ *          3.遍历链表，直到找到数据域为e的元素。
+ *          4.判断是否找到数据域为e的元素，如果没有找到则返回NULL。
+ *          5.找到数据域为e的元素后，返回该结点的指针。
+ *      注意
+ *          1.按值查找的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。
+ */
+LNode* locateElem(LinkList L,int *i, ElemType e)
+{
+    printf("[INFO] locateElem()函数被调用...\n");
+    printf("[INFO] 尝试查找链表中数据为%d的元素...\n", e);
+    // 合法性检查
+    if(NULL == L)
+    {
+        printf("[ERROR] 查找结点失败！ErrorText: 链表不存在！\n");
+        return NULL;
+    }
+    // 创建临时指针p指向链表中的第一个元素
+    LNode *p = L->next;
+    int pos = 1; // 创建变量pos用于记录当前遍历的元素位序
+    // 遍历链表，直到找到数据域为e的元素
+    while(NULL != p && p->data != e)
+    {
+        p = p->next;
+        pos++;
+    }
+    // 判断是否找到数据域为e的元素
+    if(NULL == p)
+    {
+        printf("[ERROR] 查找结点失败！ErrorText: 未找到数据域为%d的元素！\n", e);
+        return NULL;
+    }
+    *i = pos;
+    printf("[INFO] 查找结点成功！结点位序为：%d\n", pos);
+    return p;
+}
+
+/**
  * @brief insertList
  *      常用的插入操作（后插）
  * @param L
@@ -497,12 +642,10 @@ bool insertNextNode(LNode *p, ElemType e)
  *      函数功能
  *          本函数是常用的插入操作，即在指定位置i后插入结点。
  *      函数思路
- *          1.判断位置i是否合法，如果不合法则返回false。
- *          2.创建一个指针p指向链表的头结点，创建一个变量j用于记录当前位置。
- *          3.循环遍历链表，直到找到位置i的前一个结点，或者遍历到链表末尾。
- *          4.判断是否找到位置i的前一个结点，如果没有找到则返回false。
- *          5.调用insertNextNode()函数在找到的结点后插入新结点。
- *          6.插入成功返回true。
+ *          1.首先进行合法性检查，判断链表是否存在，如果不存在则返回false。
+ *          2.判断位置i是否合法，如果不合法则返回false。
+ *          3.调用getElem()函数查找第i-1个元素，即指定结点的前驱结点，如果找不到则返回false。
+ *          4.调用insertNextNode()函数插入新结点。
  *      注意
  *          1.在指定结点之后插入新结点的时间复杂度为O(1),但按位插入需要遍历链表，所以时间复杂度为O(n)，其中n为链表的长度。
  *          2.插入操作不需要额外的内存空间，所以空间复杂度为O(1)。
@@ -523,14 +666,7 @@ bool insertList(LinkList L, int i, ElemType e)
         printf("[ERROR] 插入结点失败！ErrorText: 位置i非法（小于1）！\n");
         return false;
     }
-    LNode *p = L;     // 创建指针p指向链表的头结点
-    int pos = 0;            // 创建变量pos用于记录当前遍历的元素位序
-    // 遍历链表，直到找到第i-1个元素
-    while(NULL != p && pos < i - 1)
-    {
-        p = p->next;
-        pos++;
-    }
+    LNode *p = getElem(L, i - 1); // 获取第i-1个元素
     // 判断是否找到第i-1个元素
     if(NULL == p)
     {
@@ -541,115 +677,8 @@ bool insertList(LinkList L, int i, ElemType e)
     return insertNextNode(p, e);
 }
 
-/**
- * @brief getElem
- *      按位查找
- * @param L
- *      链表
- * @param i
- *      位置
- * @param e
- *      结点数据
- * @return bool
- *      true: 查找成功
- *      false: 查找失败
- * @note
- *      函数功能
- *          本函数用于查找链表的第i个位序的元素，并将其值赋给*e。
- *      函数思路
- *          1.判断链表和数据指针是否为空，只要有一个为空则返回false。
- *          2.判断位置i是否合法，如果不合法则返回false。
- *          3.遍历链表，直到找到第i个元素，或者遍历到链表末尾。
- *          4.判断是否找到第i个元素，如果没有找到则返回false。
- *          5.将找到的元素的值赋给*e。
- *          6.查找成功返回true。
- *      注意
- *          1.按位查找的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。
- *          2.遍历时，pos用于记录当前遍历的元素位序，而线性表的位序是从1开始的，所以pos的初始值为1。
- */
-bool getElem(LinkList L, int i, ElemType *e)
-{
-    printf("[INFO] getElem()函数被调用...\n");
-    printf("[INFO] 尝试获取链表的第%d个元素...\n", i);
-    // 合法性检查
-    if(NULL == L || NULL == e) // 判断指针类型参数是否为空
-    {
-        printf("[ERROR] 查找结点失败！ErrorText: 指向链表的指针L或指向数据的指针e为空！\n");
-        return false;
-    }
-    if(i < 1)   // 判断位置是否合法
-    {
-        printf("[ERROR] 查找结点失败！ErrorText: 位置i非法（小于1）！\n");
-        return false;
-    }
-    // 查找结点
-    LNode *p = L->next;     // 创建临时指针p指向链表中的第一个元素
-    int pos = 1;            // 创建变量pos用于记录当前遍历的元素位序
-    while(NULL != p && pos < i)
-    {
-        p = p->next;
-        pos++;
-    }
-    if(NULL == p)
-    {
-        printf("[ERROR] 查找结点失败！ErrorText: 位置i非法（大于链表长度）！\n");
-        return false;
-    }
-    *e = p->data;
-    printf("[INFO] 查找第%d个元素成功！值为：%d\n", i, *e);
-    return true;
-}
 
 
-/**
- * @brief locateElem
- *      按值查找
- * @param L
- *      链表
- * @param e
- *      结点数据
- * @return bool
- *      int: 查找成功，返回结点位序
- *      -1：查找失败，返回错误标志-1
- * @note
- *      函数功能
- *          本函数用于查找链表中的元素e，并返回其位序。
- *      函数思路
- *          1.判断链表是否存在，如果不存在则返回-1。
- *          2.创建一个临时指针p指向链表中的第一个元素，创建一个变量pos用于记录当前遍历的元素位序。
- *          3.循环遍历链表，直到找到元素e，或者遍历到链表末尾。
- *          4.判断是否找到元素e，如果没有找到则返回-1。
- *          5.找到元素e后，返回其位序。
- *      注意
- *          1.按值查找的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。
- *          2.普通的按值查找有其局限性，如果链表中有多个符合条件的元素，只能返回第一个元素的位序。
- *          3.优化思路：如果ElemType类型的内存占用很大，可以考虑将ElemType类型改为常量指针，
- *            即const ElemType *e，这样可以节省内存空间，且避免了误操作导致*e的值被修改。
- */
-int locateElem(LinkList L, ElemType e)
-{
-    printf("[INFO] locateElem()函数被调用...\n");
-    printf("[INFO] 尝试查找元素%d...\n", e);
-    if(NULL == L)
-    {
-        printf("[ERROR] 查找结点失败！ErrorText: 链表不存在！\n");
-        return -1;
-    }
-    LNode *p = L->next;     // 创建临时指针p指向链表中的第一个元素
-    int pos = 1;            // 创建变量pos用于记录当前遍历的元素位序
-    while(NULL != p && p->data != e)
-    {
-        p = p->next;
-        pos++;
-    }
-    if(NULL == p)
-    {
-        printf("[ERROR] 查找结点失败！ErrorText: 未找到元素%d！\n", e);
-        return -1;
-    }
-    printf("[INFO] 查找元素%d成功！位于链表的第%d个位置！\n", e, pos);
-    return pos;
-}
 
 /**
  * @brief insertPriorNode
@@ -699,6 +728,32 @@ bool insertPriorNode(LNode *p, ElemType e)
     return true;
 }
 
+/**
+ * @brief insertListByForward
+ *      常用的前插操作
+ * @param L
+ *      链表
+ * @param i
+ *      位置
+ * @param e
+ *      结点数据
+ * @return bool
+ *      true: 插入成功
+ *      false: 插入失败
+ * @note
+ *      函数功能
+ *          本函数是常用的前插操作，即在指定位置i前插入结点。
+ *      函数思路
+ *          1.首先进行合法性检查，判断链表是否存在，如果不存在则返回false。
+ *          2.再判断位置i是否合法，如果不合法则返回false。
+ *          3.调用getElem()函数查找第i个元素，即指定结点，如果找不到则返回false。
+ *          4.调用insertPriorNode()函数插入新结点。
+ *      注意
+ *          1.在指定结点之前插入新结点的时间复杂度为O(1),但按位插入需要遍历链表，所以时间复杂度为O(n)，其中n为链表的长度。
+ *          2.插入操作不需要额外的内存空间，所以空间复杂度为O(1)。
+ *          3.前插操作理论上不能实现在表尾插入新元素，因为定位第i位元素时，会定位到NULL，从而无法找到第i-1位元素。
+ *            但是稍微修改一下逻辑，即当第i-1位元素存在但第i位元素不存在时，即第i位为表尾，此时调用insertNextNode()函数即可插入到表尾。
+ */
 bool insertListByForward(LinkList L, int i, ElemType e)
 {
     printf("[INFO] insertListByForward()函数被调用...\n");
@@ -715,28 +770,127 @@ bool insertListByForward(LinkList L, int i, ElemType e)
         return false;
     }
 
-    // 查找第i个结点
-    LNode *p = L;     // 创建临时指针p指向链表中的第一个元素
-    int pos = 0;            // 创建变量pos用于记录当前遍历的元素位序
-    while(NULL != p && pos < i)
-    {
-        p = p->next;
-        pos++;
-    }
-    // 判断第i个结点是否存在
+    // 查找第i-1个元素
+    LNode *p = getElem(L, i - 1);
     if(NULL == p)
     {
-        // 如果此时的p是表尾元素，那么说明第i个位置是合法的，可以在表尾插入元素
-        if(pos == i - 1)
-        {
-            printf("[INFO] 位置i合法，可以在表尾插入元素！\n");
-            return insertNextNode(p, e);
-        }
-        else
-        {
-            printf("[ERROR] 插入结点失败！ErrorText: 位置i非法（大于链表长度+2）！\n");
-            return false;
-        }
+        printf("[ERROR] 插入结点失败！ErrorText: 位置i非法（大于链表长度+2）！\n");
+        return false;
     }
-    return insertPriorNode(p, e);
+
+    // 如果第i-1个元素p存在但是p->next不存在，说明p是最后一个元素
+    // 则第i位为表尾，此时调用insertNextNode()函数即可插入到表尾
+    if(NULL == p->next)
+    {
+        return insertNextNode(p, e);
+    }
+    return insertPriorNode(p->next, e);
+}
+
+
+/**
+ * @brief removeNode
+ *      删除结点
+ * @param L
+ *      链表
+ * @param i
+ *      位置
+ * @param e
+ *      结点数据
+ * @return bool
+ *      true: 删除成功
+ *      false: 删除失败
+ * @note
+ *      函数功能
+ *          本函数用于删除链表中的第i个结点。
+ *      函数思路
+ *          1.首先进行合法性检查，判断链表是否存在，如果不存在则返回false。
+ *          2.再判断位置i是否合法，如果不合法则返回false。
+ *          3.调用getElem()函数查找第i-1个元素，即指定结点的前驱结点，如果找不到则返回false。
+ *          4.将待删除结点的数据保存到e中，再将其后继结点赋值给前驱结点的next指针。
+ *          5.释放待删除结点的内存空间，删除成功返回true。
+ *      注意
+ *          1.删除结点时，需要释放结点的内存空间，否则会造成内存泄漏。
+ *          2.删除指定结点的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。
+ */
+bool removeNode(LinkList L, int i, ElemType *e)
+{
+    printf("[INFO] removeNode()函数被调用...\n");
+    printf("[INFO] 尝试删除链表的第%d个结点...\n", i);
+    // 合法性检查
+    if(NULL == L || NULL == e)
+    {
+        printf("[ERROR] 删除结点失败！ErrorText: 链表不存在或e不存在！\n");
+        return false;
+    }
+    if(i < 1)
+    {
+        printf("[ERROR] 删除结点失败！ErrorText: 位置i非法（小于1）！\n");
+        return false;
+    }
+    // 查找第i-1个元素
+    LNode *p = getElem(L, i - 1);
+    if(NULL == p || NULL == p->next)
+    {
+        printf("[ERROR] 删除结点失败！ErrorText: 位置i非法（大于链表长度）！\n");
+        return false;
+    }
+    // 删除结点
+    LNode *q = p->next;
+    *e = q->data;
+    p->next = q->next;
+    free(q);
+    printf("[INFO] 删除结点成功！\n");
+    return true;
+}
+
+/**
+ * @brief setNode
+ *      修改结点数据
+ * @param L
+ *      链表
+ * @param i
+ *      位置
+ * @param e
+ *      结点数据
+ * @return bool
+ *      true: 修改成功
+ *      false: 修改失败
+ * @note
+ *      函数功能
+ *          本函数用于修改链表中的第i个结点的数据。
+ *      函数思路
+ *          1.首先进行合法性检查，判断链表是否存在，如果不存在则返回false。
+ *          2.再判断位置i是否合法，如果不合法则返回false。
+ *          3.调用getElem()函数查找第i个元素，如果找不到则返回false。
+ *          4.修改结点数据，修改成功返回true。
+ *      注意
+ *          1.修改结点数据的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。
+ */
+bool setNode(LinkList L, int i, ElemType e)
+{
+    printf("[INFO] setNode()函数被调用...\n");
+    printf("[INFO] 尝试修改链表的第%d个结点的数据为%d...\n", i, e);
+    // 合法性检查
+    if(NULL == L)
+    {
+        printf("[ERROR] 修改结点失败！ErrorText: 链表不存在！\n");
+        return false;
+    }
+    if(i < 1)
+    {
+        printf("[ERROR] 修改结点失败！ErrorText: 位置i非法（小于1）！\n");
+        return false;
+    }
+    // 查找第i个元素
+    LNode *p = getElem(L, i);
+    if(NULL == p)
+    {
+        printf("[ERROR] 修改结点失败！ErrorText: 位置i非法（大于链表长度）！\n");
+        return false;
+    }
+    // 修改结点数据
+    p->data = e;
+    printf("[INFO] 修改结点成功！\n");
+    return true;
 }
