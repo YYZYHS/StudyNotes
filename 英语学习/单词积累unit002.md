@@ -773,7 +773,7 @@ cuter / cutest
 
 ***【音标】***  
 
-[ɡlæd]
+[glæd]
 
 ***【释义】***  
 
@@ -979,7 +979,7 @@ comes
 
 ***【音标】***  
 
-[ˈɡlæsɪz]
+[ˈglæsɪz]
 
 ***【释义】***  
 
@@ -2127,7 +2127,7 @@ social etiquette  社交礼仪
 
 ***【音标】***  
 
-[ɡɪv ə pəˈfɔːrməns]
+[gɪv ə pəˈfɔːrməns]
 
 ***【释义】***  
 
@@ -3428,6 +3428,10 @@ smart trick  聪明的技巧
 
 <u>be glad to</u>  
 
+***【音标】***  
+
+[biː glæd tuː]
+
 ***【释义】***  
 
 乐意做某事
@@ -3481,6 +3485,10 @@ be ready to  准备好做某事
  ## E00135 glad news
 
 <u>glad news</u>  
+
+***【音标】***
+
+[glæd njuːz]
 
 ***【释义】***  
 
@@ -3536,6 +3544,10 @@ glad announcement  高兴的公告
 
 <u>glad to hear</u>  
 
+***【音标】***
+
+[glæd tuː hɪər]
+
 ***【释义】***  
 
 很高兴听到（某事）
@@ -3590,7 +3602,11 @@ glad to see  很高兴见到
 
 <u>everyone knows</u>  
 
-***【释义】***  
+***【音标】***
+
+[ˈevriwʌn nəʊz]
+
+***【释义】***
 
 大家都知道
 
@@ -3644,7 +3660,11 @@ everyone accepts  大家都接受
 
 <u>everyone else</u>  
 
-***【释义】***  
+***【音标】***
+
+[ˈevriwʌn els]
+
+***【释义】***
 
 其他所有人，其他人
 
@@ -3698,7 +3718,11 @@ anyone else  其他任何人
 
 <u>everyone agrees</u>  
 
-***【释义】***  
+***【音标】***
+
+[ˈevriwʌn əˈgriːz]
+
+***【释义】***
 
 大家都同意
 
@@ -3752,7 +3776,11 @@ everyone supports  大家都支持
 
 <u>come here</u>  
 
-***【释义】***  
+***【音标】***
+
+[kʌm hɪər]
+
+***【释义】***
 
 过来，来这里
 
@@ -3806,7 +3834,11 @@ come along  一起过来
 
 <u>come to mind</u>  
 
-***【释义】***  
+***【音标】***
+
+[kʌm tə maɪnd]
+
+***【释义】***
 
 想起，浮现脑海
 
@@ -3860,7 +3892,11 @@ put in mind  提醒
 
 <u>come from</u>  
 
-***【释义】***  
+***【音标】***
+
+[kʌm frəm]
+
+***【释义】***
 
 来自，出自
 
@@ -3914,7 +3950,11 @@ come along  一起走
 
 <u>a pair of glasses</u>  
 
-***【释义】***  
+***【音标】***
+
+[ə peər əv ˈglɑːsɪz]
+
+***【释义】***
 
 一副眼镜
 
@@ -3966,7 +4006,11 @@ a pair of binoculars  一副双筒望远镜
 
 <u>reading glasses</u>  
 
-***【释义】***  
+***【音标】***
+
+[ˈriːdɪŋ ˈglɑːsɪz]
+
+***【释义】***
 
 老花镜，阅读眼镜
 
@@ -4018,7 +4062,11 @@ bifocal glasses  双焦点眼镜
 
 <u>wine glasses</u>  
 
-***【释义】***  
+***【音标】***
+
+[waɪn ˈglɑːsɪz]
+
+***【释义】***
 
 酒杯，红酒杯
 
@@ -4070,7 +4118,11 @@ cocktail glasses  鸡尾酒杯
 
 <u>walking distance</u>  
 
-***【释义】***  
+***【音标】***
+
+[ˈwɔːkɪŋ ˈdɪstəns]
+
+***【释义】***
 
 步行距离，步行可达的距离
 
@@ -4234,7 +4286,11 @@ nature walk  自然步道
 
 <u>really good</u>  
 
-***【释义】***  
+***【音标】***
+
+[ˈrɪəli gʊd]
+
+***【释义】*** 
 
 非常好，真的很好
 
@@ -4286,7 +4342,11 @@ really great  非常棒
 
 <u>really important</u>  
 
-***【释义】***  
+***【音标】***
+
+[ˈrɪəli ɪmˈpɔːtənt]
+
+***【释义】*** 
 
 非常重要
 
@@ -4338,7 +4398,11 @@ really significant  非常显著
 
 <u>really like</u>  
 
-***【释义】***  
+***【音标】***
+
+[ˈrɪəli laɪk]
+
+***【释义】*** 
 
 非常喜欢
 
