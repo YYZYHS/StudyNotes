@@ -4074,7 +4074,7 @@ bifocal glasses  双焦点眼镜
 
 "Wine glasses" 用于指专门用于饮用酒类的杯子，通常用于品尝和享用葡萄酒。
 
-***【常用词组***  
+***【常用词组】***  
 
 serve wine in glasses  用酒杯盛酒
 
@@ -4130,7 +4130,7 @@ cocktail glasses  鸡尾酒杯
 
 "Walking distance" 用于指从一个地方到另一个地方的距离，通常是指可以轻松步行到达的距离。
 
-***【常用词组***  
+***【常用词组】***  
 
 within walking distance  在步行可达的范围内
 
@@ -4138,7 +4138,7 @@ a short walking distance  短暂的步行距离
 
 a long walking distance  较远的步行距离
 
-***【例句***  
+***【例句】***  
 
 The store is within walking distance from my house.
 
@@ -4186,7 +4186,7 @@ biking distance  骑自行车的距离
 
 "Walking stick" 用于指辅助行走的工具，通常由长杆构成，帮助人们保持平衡或减轻腿部负担。
 
-***【常用词组***  
+***【常用词组】***  
 
 use a walking stick  使用拐杖
 
@@ -4194,7 +4194,7 @@ bring a walking stick  带上拐杖
 
 find a walking stick  找到一根拐杖
 
-***【例句***  
+***【例句】***  
 
 He uses a walking stick to help him walk.
 
@@ -4242,7 +4242,7 @@ fishing rod  钓鱼竿
 
 "Walking tour" 用于指通过步行的方式参观某个地方，通常是为了欣赏风景、历史或文化。
 
-***【常用词组***  
+***【常用词组】***  
 
 join a walking tour  参加步行游览
 
@@ -4250,7 +4250,7 @@ take a walking tour  进行步行游览
 
 guided walking tour  导游带领的步行游览
 
-***【例句***  
+***【例句】***  
 
 We joined a walking tour of the historic district.
 
@@ -4298,7 +4298,7 @@ nature walk  自然步道
 
 "Really good" 用于强调某事物的质量或表现非常出色，常用于表示赞赏或满足。
 
-***【常用词组***  
+***【常用词组】***  
 
 feel really good  感觉非常好
 
@@ -4306,7 +4306,7 @@ taste really good  味道非常好
 
 look really good  看起来非常好
 
-***【例句***  
+***【例句】***  
 
 The food at this restaurant is really good.
 
@@ -4354,7 +4354,7 @@ really great  非常棒
 
 "Really important" 用于强调某事物在某个上下文中的重要性，通常表示这件事对结果或决策有很大影响。
 
-***【常用词组***  
+***【常用词组】***  
 
 find something really important  认为某事非常重要
 
@@ -4362,7 +4362,7 @@ consider it really important  认为这很重要
 
 it's really important to  …是非常重要的
 
-***【例句***  
+***【例句】***  
 
 It's really important to study for the exam.
 
@@ -4410,7 +4410,7 @@ really significant  非常显著
 
 "Really like" 用于强调对某人或某事物的强烈喜好，通常用于表达情感或态度。
 
-***【常用词组***  
+***【常用词组】***  
 
 really like something  非常喜欢某事
 
@@ -4418,7 +4418,7 @@ really like someone  非常喜欢某人
 
 I really like to  我非常喜欢做…
 
-***【例句***  
+***【例句】***  
 
 I really like this song.
 
@@ -4454,6 +4454,10 @@ really want  非常想要
 
 <u>a bowl of soup</u>  
 
+***【音标】***
+
+[ə boʊl əv suːp]
+
 ***【释义】***  
 
 一碗汤
@@ -4462,7 +4466,7 @@ really want  非常想要
 
 "A bowl of soup" 用于指一种盛汤的容器，通常是用来描述汤的量或作为菜肴的一部分。
 
-***【常用词组***  
+***【常用词组】***  
 
 serve a bowl of soup  上一碗汤
 
@@ -4470,7 +4474,7 @@ enjoy a bowl of soup  享用一碗汤
 
 make a bowl of soup  做一碗汤
 
-***【例句***  
+***【例句】***  
 
 I would like a bowl of soup for lunch.
 
@@ -4510,11 +4514,15 @@ a bowl of rice  一碗米饭
 
 搅拌碗，混合碗
 
+***【音标】***
+
+[ˈmɪksɪŋ boʊl]
+
 ***【用法】***  
 
 "Mixing bowl" 用于指用于混合食材的碗，通常用于烘焙或烹饪时。
 
-***【常用词组***  
+***【常用词组】***  
 
 use a mixing bowl  使用搅拌碗
 
@@ -4522,7 +4530,7 @@ pour into a mixing bowl  倒入搅拌碗
 
 clean the mixing bowl  清洗搅拌碗
 
-***【例句***  
+***【例句】***  
 
 She put the ingredients into the mixing bowl.
 
@@ -4558,6 +4566,10 @@ salad bowl  沙拉碗
 
 <u>salad bowl</u>  
 
+***【音标】***
+
+[ˈsæləd boʊl]
+
 ***【释义】***  
 
 沙拉碗，盛沙拉的碗
@@ -4566,7 +4578,7 @@ salad bowl  沙拉碗
 
 "Salad bowl" 用于指专门用于盛放沙拉的碗，通常容量较大，方便搅拌和分享。
 
-***【常用词组***  
+***【常用词组】***  
 
 make a salad bowl  做一碗沙拉
 
@@ -4574,7 +4586,7 @@ serve in a salad bowl  放在沙拉碗里上菜
 
 toss in a salad bowl  在沙拉碗里搅拌
 
-***【例句***  
+***【例句】***  
 
 She prepared a fresh salad bowl for dinner.
 
@@ -4610,15 +4622,19 @@ pasta bowl  意大利面碗
 
 <u>on time</u>  
 
-***【释义***  
+***【音标】***
+
+[ɒn taɪm]
+
+***【释义】***  
 
 准时，按时
 
-***【用法***  
+***【用法】***  
 
 "On time" 用于表示某事发生在预定的时间，不迟到。
 
-***【常用词组***  
+***【常用词组】***  
 
 be on time  准时到达
 
@@ -4626,7 +4642,7 @@ arrive on time  按时到达
 
 finish on time  按时完成
 
-***【例句***  
+***【例句】***  
 
 She always arrives on time for meetings.
 
@@ -4662,15 +4678,19 @@ ahead of time  提前
 
 <u>spend time</u>  
 
-***【释义***  
+***【音标】***
+
+[spɛnd taɪm]
+
+***【释义】***  
 
 花时间，度过时间
 
-***【用法***  
+***【用法】***  
 
 "Spend time" 用于表示花费时间做某事，通常涉及休闲、活动或与他人相处。
 
-***【常用词组***  
+***【常用词组】***  
 
 spend time with someone  和某人一起度过时间
 
@@ -4678,7 +4698,7 @@ spend time doing something  花时间做某事
 
 enjoy spending time  喜欢花时间
 
-***【例句***  
+***【例句】***  
 
 I like to spend time with my family on weekends.
 
@@ -4714,15 +4734,19 @@ take time  花费时间
 
 <u>time management</u>  
 
-***【释义***  
+***【音标】***
+
+[taɪm ˈmænɪdʒmənt]
+
+***【释义】***  
 
 时间管理，时间安排
 
-***【用法***  
+***【用法】***  
 
 "Time management" 用于指有效规划和控制时间的过程，以提高效率和生产力。
 
-***【常用词组***  
+***【常用词组】***  
 
 practice time management  练习时间管理
 
@@ -4730,7 +4754,7 @@ effective time management  有效的时间管理
 
 time management skills  时间管理技能
 
-***【例句***  
+***【例句】***  
 
 Good time management can help reduce stress.
 
@@ -4766,15 +4790,19 @@ time tracking  时间追踪
 
 <u>favorite hobby</u>  
 
-***【释义***  
+***【音标】***
+
+[ˈfeɪvərɪt ˈhɑːbi]
+
+***【释义】***  
 
 最喜欢的爱好
 
-***【用法***  
+***【用法】***  
 
 "Favorite hobby" 用于指个人在业余时间最喜欢的活动，通常用于表达兴趣和放松。
 
-***【常用词组***  
+***【常用词组】***  
 
 have a favorite hobby  有一个最喜欢的爱好
 
@@ -4782,7 +4810,7 @@ discover a favorite hobby  发现一个最喜欢的爱好
 
 pursue a favorite hobby  追求一个最喜欢的爱好
 
-***【例句***  
+***【例句】***  
 
 My favorite hobby is painting.
 
@@ -4818,15 +4846,19 @@ unique hobby  独特的爱好
 
 <u>hobby time</u>  
 
-***【释义***  
+***【音标】***
+
+[ˈhɑːbi taɪm]
+
+***【释义】***  
 
 爱好时间，闲暇时间
 
-***【用法***  
+***【用法】***  
 
 "Hobby time" 用于指专门用来进行个人爱好的时间，通常是在忙碌日程之外的放松时光。
 
-***【常用词组***  
+***【常用词组】***  
 
 set aside hobby time  留出爱好时间
 
@@ -4834,7 +4866,7 @@ enjoy hobby time  享受爱好时间
 
 schedule hobby time  安排爱好时间
 
-***【例句***  
+***【例句】***  
 
 I always set aside some hobby time on weekends.
 
@@ -4870,15 +4902,19 @@ family time  家庭时间
 
 <u>new hobby</u>  
 
-***【释义***  
+***【音标】***
+
+[nuː ˈhɑːbi]
+
+***【释义】***  
 
 新爱好，新兴趣
 
-***【用法***  
+***【用法】***  
 
 "New hobby" 用于指最近开始尝试或学习的活动，通常用于探索新的兴趣和技能。
 
-***【常用词组***  
+***【常用词组】***  
 
 start a new hobby  开始一个新爱好
 
@@ -4886,7 +4922,7 @@ discover a new hobby  发现一个新爱好
 
 enjoy a new hobby  享受一个新爱好
 
-***【例句***  
+***【例句】***  
 
 I decided to start a new hobby: photography.
 
