@@ -161,30 +161,53 @@ typedef struct LNode {
 </ol>
 <p><strong>总结</strong></p>
 <p><code>LNode</code>是结点的具体类型，而<code>*LinkList</code>是一个指向该类型的指针，通常用来表示整个链表的头指针。</p>
+<h4 id='2323-带头结点的单链表vs不带头结点的单链表'>2.3.2.3 带头结点的单链表V.S.不带头结点的单链表</h4>
+<p>带头结点的单链表和不带头结点的单链表的区别如下：</p>
+<ul>
+<li><p>带头结点的单链表：</p>
+<ul>
+<li>头结点不存储数据，仅作为入口。</li>
+<li>插入、删除操作较简洁，不需要特殊处理头部。</li>
+<li>需要额外内存存储头结点。</li>
+<li>适合频繁操作链表头部。</li>
+
+</ul>
+</li>
+<li><p>不带头结点的单链表：</p>
+<ul>
+<li>第一个节点即头节点，直接存储数据。</li>
+<li>插入、删除头部节点时需要额外判断。</li>
+<li>无需额外内存开销。</li>
+<li>适合操作简单、内存紧张的场景。</li>
+
+</ul>
+</li>
+
+</ul>
 <h3 id='233-带头结点的单链表的实现以c语言为例'>2.3.3 带头结点的单链表的实现（以C语言为例）</h3>
 <h4 id='2331-单链表的结构定义'>2.3.3.1 单链表的结构定义</h4>
-<p>单链表的结构体通常包含<code>一个数据域</code>和<code>一个指向下一个节点的指针</code>。每个节点的结构体通常如下定义：</p>
+<p>单链表的结构体通常包含<code>一个数据域</code>和<code>一个指向下一个结点的指针</code>。每个结点的结构体通常如下定义：</p>
 <pre><code class='language-c' lang='c'>// ============================预处理信息============================
 typedef int bool;      // C语言没有bool类型，使用int模拟，0为false，非0为true
 #define true 1         // 定义true为1
 #define false 0        // 定义false为0
 typedef int ElemType;  // 定义链表数据类型为int
 
-// ============================单链表节点结构定义============================
+// ============================单链表结点结构定义============================
 typedef struct LNode {
     ElemType data;      // 数据
-    struct LNode *next; // 指向下一个节点
-} LNode, *LinkList;     // LNode为节点类型，LinkList为节点指针类型
+    struct LNode *next; // 指向下一个结点
+} LNode, *LinkList;     // LNode为结点类型，LinkList为结点指针类型
 </code></pre>
 <p><strong>解释</strong>：</p>
 <ul>
 <li>C语言本身没有<code>bool</code> 类型，因此用 <code>typedef int bool;</code> 定义，同时定义<code>0</code> 表示 <code>false</code>，非零值（如 <code>1</code>）表示 <code>true</code>，以此模拟布尔类型。</li>
 <li><code>ElemType</code> 用于指定链表的数据类型，默认为 <code>int</code>，可以根据需要修改。</li>
-<li><code>LNode</code> 结构体表示链表节点，包含数据域 <code>data</code> 和指针 <code>next</code>，用于链接下一个节点。</li>
-<li><code>LinkList</code> 是指向链表头节点的指针类型，便于操作链表。</li>
+<li><code>LNode</code> 结构体表示链表结点，包含数据域 <code>data</code> 和指针 <code>next</code>，用于链接下一个结点。</li>
+<li><code>LinkList</code> 是指向链表头结点的指针类型，便于操作链表。</li>
 
 </ul>
-<h4 id='2332-单链表的初始化'>2.3.3.2 单链表的初始化</h4>
+<h4 id='2332-初始化单链表'>2.3.3.2 初始化单链表</h4>
 <ul>
 <li><p>函数名称：<code>bool initList(LinkList *L)</code></p>
 </li>
@@ -215,7 +238,7 @@ typedef struct LNode {
 <li><code>L</code>是一个<code>指向指针的指针</code>，对<code>L</code>的操作会<code>改变L指向的地址的内容</code>。</li>
 <li><code>*L</code>是指<code>向链表的头指针</code>，即<code>头结点的地址</code>，对<code>*L</code>的操作会<code>改变头结点的内容</code>。</li>
 <li>因此，可以使用二级指针在函数内部改变<code>*L</code>的内容，从而改变<code>外部指针L指向的地址的内容</code>。</li>
-<li>如果参数是LinkList L（即LNode *L），即直接传递指针，那么只能改变<code>指针的内容</code>，无法改变<code>指针指向的地址的内容</code>。</li>
+<li>如果参数是<code>LinkList L</code>（即<code>LNode *L</code>），即直接传递指针，那么只能改变<code>指针的内容</code>，无法改变<code>指针指向的地址的内容</code>。</li>
 
 </ul>
 </li>
@@ -241,40 +264,1135 @@ bool initList(LinkList *L)
     return true;
 }
 </code></pre>
-<p>&nbsp;</p>
+<h4 id='2333-销毁单链表'>2.3.3.3 销毁单链表</h4>
+<ul>
+<li><p>函数名称：<code>bool destroyList(LinkList *L)</code></p>
+</li>
+<li><p>函数功能：销毁一个带头结点的单链表。</p>
+</li>
+<li><p>函数思路：  </p>
+<ol start='' >
+<li>判断链表指针是否<code>有效</code>（即<code>L和*L是否为NULL</code>），如果无效则<code>返回false</code>。</li>
+<li>创建<code>两个临时指针p和q</code>，<code>p</code>指向<code>头结点</code>，<code>q</code>用于<code>释放结点</code>。</li>
+<li><code>循环遍历链表</code>，释放每个结点的内存空间。</li>
+<li>释放完所有结点后，将头指针<code>置为NULL</code>。</li>
+<li>销毁成功<code>返回true</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>销毁链表时，需要<code>释放每个结点的内存空间</code>，否则会造成<code>内存泄漏</code>。</li>
+<li>代码中释放结点内存的过程是<code>将首元素从链表中断开</code>，<code>原位于首元素之后的元素</code>成为新的首元素，然后释放<code>原首元素的内存</code>，如此循环。</li>
+<li>销毁链表后，需要<code>将头结点的内存空间也释放掉</code>，同时<code>将头指针置为NULL</code>，否则在链表最终被销毁后，会导致<code>有一块分配到堆区的内存空间没有被释放</code>，造成<code>内存泄漏</code>。</li>
+<li>销毁算法的时间复杂度为<code>O(n)</code>，其中n为<code>链表的长度</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>关于函数参数的说明，详见<code>initList()函数</code>的说明，简而言之，<code>initList()函数</code>和<code>destoryList()函数</code>都需要<code>对指向链表的指针进行操作</code>，所以参数必须是<code>指向“指向链表的指针”的指针</code>，而其他函数如<code>printList()</code>、<code>insertList()</code>等只需要对链表进行访问或操作，所以参数只需要是<code>指向链表的指针</code>即可。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief 销毁链表
+ *      销毁一个带头结点的单链表
+ * @param LinkList *L
+ *      指向链表的指针
+ * @return bool
+ *      true: 销毁成功
+ *      false: 销毁失败
+ */
+bool destroyList(LinkList *L)
+{
+    printf(&quot;[INFO] destroyList()函数被调用...\n&quot;);
+    if(NULL == L || NULL == *L)
+    {
+        printf(&quot;[ERROR] 销毁链表失败！ErrorText: 链表不存在！\n&quot;);
+        return false;
+    }
+    LinkList p = *L;    // 创建临时指针p指向头结点
+    LinkList q = NULL;  // 创建临时指针q
+    while(p-&gt;next != NULL) // 循环遍历链表
+    {
+        q = p-&gt;next;        // q指向第一个元素
+        p-&gt;next = q-&gt;next;  // 断链操作，将首元素从链表中断开，头结点p指向第二个元素
+        free(q);            // 释放原首元素q的内存空间
+    }
+    free(*L); // 释放头结点的内存空间
+    *L = NULL;
+    printf(&quot;[INFO] 销毁链表成功！\n&quot;);
+    return true;
+}
+</code></pre>
+<h4 id='2334-打印链表'>2.3.3.4 打印链表</h4>
+<ul>
+<li><p>函数名称：<code>bool printList(const LinkList L)</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>打印一个带头结点的单链表</code>。</p>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>判断链表是否<code>有效</code>，即<code>L是否为NULL</code>，如果无效则<code>返回false</code>。</li>
+<li>创建<code>临时指针p</code>指向<code>链表中的第一个元素</code>。</li>
+<li><code>循环遍历链表</code>，打印每个元素的值。</li>
+<li>打印成功<code>返回true</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>打印链表前，需要判断<code>链表是否存在</code>，否则有可能会导致<code>空指针异常</code>。</li>
+<li>打印链表的时间复杂度为<code>O(n)</code>，其中n为<code>链表的长度</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>函数参数<code>const LinkList L</code>表示传递的是一个<code>常量指针</code>，使用<code>LinkList</code>而不是<code>LNode *L</code>是为了<code>增加代码的可读性</code>，且传递指针可<code>节省内存空间</code>，而用<code>const</code>修饰表示<code>不允许修改指针指向的内容</code>，这样可以<code>避免误操作</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief 打印链表
+ *      打印一个带头结点的单链表
+ * @param const LinkList L
+ *      链表
+ * @return bool
+ *      true: 打印成功
+ *      false: 打印失败
+ */
+bool printList(const LinkList L)
+{
+    printf(&quot;[INFO] printList()函数被调用...\n&quot;);
+    if(NULL == L)
+    {
+        printf(&quot;[ERROR] 打印链表失败！ErrorText: 链表不存在！\n&quot;);
+        return false;
+    }
+    LinkList p = L-&gt;next; // 创建临时指针p指向链表中的第一个元素
+    printf(&quot;[INFO] 链表元素：[HNode]--&gt;&quot;); // 打印头结点
+    while(p != NULL)
+    {
+        printf(&quot;[%d]--&gt;&quot;, p-&gt;data);
+        p = p-&gt;next;
+    }
+    printf(&quot;[NULL]\n&quot;);
+    return true;
+}
+</code></pre>
+<h4 id='2335-判空操作'>2.3.3.5 判空操作</h4>
+<ul>
+<li><p>函数名称：<code>bool isEmpty(const LinkList L)</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>判断一个带头结点的单链表是否为空</code>。</p>
+</li>
+<li><p>函数思路：</p>
+<ol start='' >
+<li>首先判断<code>链表是否有效</code>，即<code>L是否为NULL</code>，如果<code>无效</code>则返回<code>true</code>。</li>
+<li>再判断<code>链表的第一个元素是否为NUL</code>L，如果是则返回true，否则返回false。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol start='' >
+<li>判断链表是否为空时，需要先判断链表是否存在，否则会导致<code>空指针异常</code>。</li>
+<li>判断链表是否为空的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+<li>函数参数const LinkList L的说明详见printList()函数的说明。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/**
+ * @brief 判断链表是否为空
+ *      判断一个带头结点的单链表是否为空
+ * @param const LinkList L
+ *      链表
+ * @return bool
+ *      true: 链表为空
+ *      false: 链表不为空 
+ */
+bool isEmpty(const LinkList L)
+{
+    printf(&quot;[INFO] isEmpty()函数被调用...\n&quot;);
+    if(NULL == L || NULL == L-&gt;next)
+    {
+        printf(&quot;[INFO] 链表不存在或为空！\n&quot;);
+        return true;
+    }
+    else
+    {
+        printf(&quot;[INFO] 链表不为空！\n&quot;);
+        return false;
+    }
+}
+</code></pre>
+<h4 id='2336-求长度操作'>2.3.3.6 求长度操作</h4>
+<ul>
+<li><p>函数名称：<code>int length(const LinkList L)</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>求一个带头结点的单链表的长度</code>。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>判断<code>链表是否存在</code>，如果<code>不存在</code>则返回<code>-1</code>。</li>
+<li>创建一个<code>变量len</code>用于存储<code>链表的长度</code>，初始化为<code>0</code>。</li>
+<li>创建一个<code>临时指针p</code>指向链表中的<code>第一个元素</code>。</li>
+<li>循环遍历链表，每遍历一个元素，<code>len加1</code>。</li>
+<li>遍历完链表后，返回<code>len</code>。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>求链表长度时，需要先判断链表是否存在，否则会导致空指针异常。</li>
+<li>求链表长度的时间复杂度为<code>O(n)</code>，其中n为<code>链表的长度</code>，空间复杂度为O(1)。</li>
+<li>函数参数const LinkList L的说明详见printList()函数的说明。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief 求链表长度
+ *      求一个带头结点的单链表的长度
+ * @param const LinkList L
+ *      链表
+ * @return int
+ *      链表的长度
+ */
+int length(const LinkList L)
+{
+    printf(&quot;[INFO] length()函数被调用...\n&quot;);
+    if(NULL == L)
+    {
+        printf(&quot;[ERROR] 求链表长度失败！ErrorText: 链表不存在！\n&quot;);
+        return -1;
+    }
+    int len = 0;
+    LinkList p = L-&gt;next;
+    while(NULL != p)
+    {
+        len++;
+        p = p-&gt;next;
+    }
+    printf(&quot;[INFO] 链表长度为：%d\n&quot;, len);
+    return len;
+}
+</code></pre>
+<h4 id='2337-创建新结点'>2.3.3.7 创建新结点</h4>
+<ul>
+<li><p>函数名称：LNode* createNewNode(ElemType e)</p>
+</li>
+<li><p>函数功能：本函数用于创建一个新结点。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>在<code>堆上</code>分配内存生成<code>一个新结点</code>。</li>
+<li>判断<code>生成新结点是否成功</code>，如果失败则返回<code>NULL</code>。</li>
+<li>将新结点的<code>数据域</code>赋值为<code>e</code>，<code>指针域</code>赋值为<code>NULL</code>。</li>
+<li>创建成功返回<code>新结点指针</code>。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>因为在堆上分配内存会有<code>失败</code>的可能，所以需要判断<code>是否分配成功</code>。</li>
+<li>新结点的<code>next指针</code>最好初始化为<code>NULL</code>，这样符合<code>指针创建即初始化</code>的原则。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief createNewNode
+ *      创建新结点
+ * @param e
+ *     结点数据
+ * @return
+ *    成功：返回新结点指针
+ *    失败：返回NULL
+ */
+LNode* createNewNode(ElemType e)
+{
+    printf(&quot;[INFO] createNewNode()函数被调用...\n&quot;);
+    LNode *node = (LNode *)malloc(sizeof(LNode));// 在堆上分配内存
+    if(NULL == node)
+    {
+        printf(&quot;[ERROR] 创建新结点失败！ErrorText: 在堆上分配内存失败！\n&quot;);
+        return NULL;
+    }
+    node-&gt;data = e;
+    node-&gt;next = NULL;
+    return node;
+}
+</code></pre>
+<h4 id='2338-在指定结点后插入结点'>2.3.3.8 在指定结点后插入结点</h4>
+<ul>
+<li><p>函数名称：<code>bool insertNextNode(LNode *p, ElemType e)</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>在指定结点后插入结点</code>。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>判断<code>指定结点是否存在</code>，如果不存在则返回<code>false</code>。</li>
+<li>创建一个新结点，并<code>判断是否创建成功</code>，如果<code>创建失败</code>则返回<code>false</code>。</li>
+<li>将<code>新结点的next指针</code>指向<code>指定结点的后继节点</code>。</li>
+<li>将<code>指定结点的next指针</code>指向<code>新结点</code>。</li>
+<li>插入成功返回<code>true</code>。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>参数p为<code>LNode *</code>类型，即指向结点的指针，表示<code>指定结点</code>，此处使用指针的原因是为了<code>在函数内部改变指定结点的指针域的内容</code>。</li>
+<li>插入新结点时，必须先<code>让指定结点的后继结点成为新结点的后继结点</code>(即<code>将指定结点的next域赋值给新结点的next域</code>)，然后再<code>让新结点成为指定结点的后继结点</code>(即<code>将新结点的地址赋值给指定结点的next域</code>)，二者顺序<code>不能颠倒</code>，否则会导致<code>链表断裂</code>。</li>
+<li>插入结点的时间复杂度为<code>O(1)</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief insertNextNode
+ *      在指定结点后插入结点
+ * @param p
+ *      指定结点
+ * @param e
+ *      结点数据
+ * @return bool
+ *      true: 插入成功
+ *      false: 插入失败
+ */
+bool insertNextNode(LNode *p, ElemType e)
+{
+    printf(&quot;[INFO] insertNextNode()函数被调用...\n&quot;);
+    if(NULL == p)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 指定结点不存在！\n&quot;);
+        return false;
+    }
+    LNode *newNode = createNewNode(e);
+    if(NULL == newNode)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 创建新结点失败！\n&quot;);
+        return false;
+    }
+    // 插入结点，注意顺序不能颠倒
+    newNode-&gt;next = p-&gt;next;
+    p-&gt;next = newNode;
+    printf(&quot;[INFO] 插入结点成功！\n&quot;);
+    return true;
+}
+</code></pre>
+<h4 id='2339-在指定结点前插入结点'>2.3.3.9 在指定结点前插入结点</h4>
+<ul>
+<li><p>函数名称：<code>bool insertPriorNode(LNode *p, ElemType e)</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>在指定结点前插入结点</code>。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>判断<code>指定结点是否存在</code>，如果<code>不存在</code>则返回<code>false</code>。</li>
+<li>创建一个新结点，并判断<code>是否创建成功</code>，如果<code>创建失败</code>则返回false。</li>
+<li>先<code>以后插法插入新结点</code>，再<code>交换数据</code>。</li>
+<li>插入成功返回<code>true</code>。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>常规的前插操作是<code>找到指定结点的前驱结点，然后在前驱结点后插入新结点</code>，此法时间复杂度为<code>O(n)</code>，不推荐使用。</li>
+<li>本函数是<code>在指定结点后插入新结点</code>，然后<code>交换指定结点和新结点的数据</code>，时间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief insertPriorNode
+ *      在指定结点前插入结点
+ * @param p
+ *      指定结点
+ * @param e
+ *      结点数据
+ * @return bool
+ *      true: 插入成功
+ *      false: 插入失败
+ */
+bool insertPriorNode(LNode *p, ElemType e)
+{
+    printf(&quot;[INFO] insertPriorNode()函数被调用...\n&quot;);
+    // 合法性检查
+    if(NULL == p)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 指定结点不存在！\n&quot;);
+        return false;
+    }
+    // 创建新结点
+    LNode *newNode = createNewNode(e);
+    if(NULL == newNode)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 创建新结点失败！\n&quot;);
+        return false;
+    }
+    // 先以后插法插入新结点，再交换数据
+    newNode-&gt;next = p-&gt;next;
+    p-&gt;next = newNode;
+    ElemType temp = p-&gt;data;// 临时变量temp用于交换
+    p-&gt;data = newNode-&gt;data;
+    newNode-&gt;data = temp;
+    printf(&quot;[INFO] 插入结点成功！\n&quot;);
+    return true;
+}
+</code></pre>
+<h4 id='23310-按位查找'>2.3.3.10 按位查找</h4>
+<ul>
+<li><p>函数名称：<code>LNode* getElem(LinkList L, int i)</code></p>
+</li>
+<li><p>函数功能：本函数用于按位查找链表中的元素。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>判断<code>链表是否存在</code>，如果<code>不存在</code>则返回<code>NULL</code>。</li>
+<li>判断<code>位置i是否合法</code>，如果<code>不合法</code>则返回<code>NULL</code>。</li>
+<li>特殊情况：获取<code>头结点</code>，即<code>i=0</code>时，<code>直接返回头结点</code>。</li>
+<li>创建一个<code>临时指针p</code>指向链表中的第<code>一个元素</code>，创建一个<code>变量pos</code>用于记录<code>当前遍历的元素位序</code>。</li>
+<li>循环遍历链表，直到找到第i个元素。</li>
+<li>判断是否<code>找到第i个元素</code>，如果没有找到则返回<code>NULL</code>。</li>
+<li>找到第i个元素后，返回<code>该结点的指针</code>。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>按位查找的时间复杂度为O(n)，其中n为链表的长度，空间复杂度为O(1)。</li>
+<li>链表的位序从1开始。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief getElem
+ *     按位查找
+ * @param LinkList L
+ *      链表
+ * @param int i
+ *      位置
+ */
+LNode* getElem(LinkList L, int i)
+{
+    printf(&quot;[INFO] getElem()函数被调用...\n&quot;);
+    printf(&quot;[INFO] 尝试获取链表的第%d个元素...\n&quot;, i);
+    // 合法性检查
+    if(NULL == L)
+    {
+        printf(&quot;[ERROR] 获取结点失败！ErrorText: 链表不存在！\n&quot;);
+        return NULL;
+    }
+    if(i &lt; 0)
+    {
+        printf(&quot;[ERROR] 获取结点失败！ErrorText: 位置i非法（小于0）！\n&quot;);
+        return NULL;
+    }
+    // 特殊情况：获取头结点
+    if(0 == i)
+    {
+        printf(&quot;[INFO] 待查找位置为0，即头结点！\n&quot;);
+        return L;
+    }
+    // 遍历链表，直到找到第i个元素
+    LNode *p = L-&gt;next; // 创建临时指针p指向链表中的第一个元素
+    int pos = 1;        // 创建变量pos用于记录当前遍历的元素位序
+    while(NULL != p &amp;&amp; pos &lt; i) // 遍历链表
+    {
+        p = p-&gt;next;
+        pos++;
+    }
+    // 判断是否找到第i个元素
+    if(NULL == p)
+    {
+        printf(&quot;[ERROR] 获取结点失败！ErrorText: 未找到第%d个元素！\n&quot;, i);
+        return NULL;
+    }
+    printf(&quot;[INFO] 获取结点成功！结点数据为：%d\n&quot;, p-&gt;data);
+    return p;
+}
+</code></pre>
+<h4 id='23311-按值查找'>2.3.3.11 按值查找</h4>
+<ul>
+<li><p>函数名称：<code>LNode* locateElem(LinkList L,int *i, ElemType e)</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>按值查找链表中的元素</code>。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>链表是否存在</code>，如果<code>不存在</code>则返回<code>NULL</code>。</li>
+<li>创建一个<code>临时指针p</code>指向<code>链表中的第一个元素</code>，创建一个<code>变量pos</code>用于记录<code>当前遍历的元素位序</code>。</li>
+<li>遍历链表，直到找到<code>数据域为e的</code>元素。</li>
+<li>判断是否<code>找到数据域为e的元素</code>，如果没有找到则返回<code>NULL</code>。</li>
+<li>找到<code>数据域为e的元素</code>后，返回<code>该结点的指针</code>。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>按值查找的时间复杂度为<code>O(n)</code>，其中n为<code>链表的长度</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief locateElem
+ *      按值查找
+ * @param LinkList L
+ *      链表
+ * @param int *i
+ *      位置
+ * @param ElemType e
+ *      结点数据
+ * @return LNode*
+ *      要查找的结点的指针，如果查找失败则返回NULL
+ */
+LNode* locateElem(LinkList L,int *i, ElemType e)
+{
+    printf(&quot;[INFO] locateElem()函数被调用...\n&quot;);
+    printf(&quot;[INFO] 尝试查找链表中数据为%d的元素...\n&quot;, e);
+    // 合法性检查
+    if(NULL == L)
+    {
+        printf(&quot;[ERROR] 查找结点失败！ErrorText: 链表不存在！\n&quot;);
+        return NULL;
+    }
+    // 创建临时指针p指向链表中的第一个元素
+    LNode *p = L-&gt;next;
+    int pos = 1; // 创建变量pos用于记录当前遍历的元素位序
+    // 遍历链表，直到找到数据域为e的元素
+    while(NULL != p &amp;&amp; p-&gt;data != e)
+    {
+        p = p-&gt;next;
+        pos++;
+    }
+    // 判断是否找到数据域为e的元素
+    if(NULL == p)
+    {
+        printf(&quot;[ERROR] 查找结点失败！ErrorText: 未找到数据域为%d的元素！\n&quot;, e);
+        return NULL;
+    }
+    *i = pos;
+    printf(&quot;[INFO] 查找结点成功！结点位序为：%d\n&quot;, pos);
+    return p;
+}
+</code></pre>
+<h4 id='23312-常用的插入操作后插'>2.3.3.12 常用的插入操作（后插）</h4>
+<ul>
+<li><p>函数名称：<code>bool insertList(LinkList L, int i, ElemType e)</code></p>
+</li>
+<li><p>函数功能：本函数是常用的<code>插入</code>操作，即<code>在指定位置i后插入结点</code>。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>链表是否存在</code>，如果<code>不存在</code>则返回<code>false</code>。</li>
+<li>判断<code>位置i是否合法</code>，如果<code>不合法</code>则返回<code>false</code>。</li>
+<li>调用<code>getElem()</code>函数查找<code>第i-1个元素</code>，即<code>指定结点的前驱结点</code>，如果找不到则返回<code>false</code>。</li>
+<li>调用<code>insertNextNode()</code>函数插入新结点。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>在指定结点之后插入新结点的时间复杂度为<code>O(1)</code>,但按位插入需要<code>遍历链表</code>，所以时间复杂度为<code>O(n)</code>，其中n为<code>链表的长度</code>。</li>
+<li>插入操作不需要额外的内存空间，所以空间复杂度为<code>O(1)</code>。</li>
+<li>插入算法允许<code>在表尾插入新元素</code>，但不允许在<code>超过链表长度+1</code>的位置插入新元素，否则会导致<code>链表断裂</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief insertList
+ *      常用的插入操作（后插）
+ * @param L
+ *      链表
+ * @param i
+ *      位置
+ * @param e
+ *      结点数据
+ * @return bool
+ *      true: 插入成功
+ *      false: 插入失败
+ */
+bool insertList(LinkList L, int i, ElemType e)
+{
+    printf(&quot;[INFO] insertList()函数被调用...\n&quot;);
+    printf(&quot;[INFO] 尝试在链表的第%d个位置插入数据%d...\n&quot;, i, e);
+    // 合法性检查
+    if(NULL == L)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 链表不存在！\n&quot;);
+        return false;
+    }
+    if(i &lt; 1)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 位置i非法（小于1）！\n&quot;);
+        return false;
+    }
+    LNode *p = getElem(L, i - 1); // 获取第i-1个元素
+    // 判断是否找到第i-1个元素
+    if(NULL == p)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 位置i非法（大于链表长度+2）！\n&quot;);
+        return false;
+    }
+    // 调用insertNextNode()函数插入新结点
+    return insertNextNode(p, e);
+}
+</code></pre>
+<h4 id='23313-前插操作'>2.3.3.13 前插操作</h4>
+<ul>
+<li><p>函数名称：<code>bool insertListByForward(LinkList L, int i, ElemType e)</code></p>
+</li>
+<li><p>函数功能：本函数是常用的前插操作，即<code>在指定位置i以前插方式插入结点</code>。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>链表是否存在</code>，如果<code>不存在</code>则返回<code>false</code>。</li>
+<li>再判断<code>位置i是否合法</code>，如果<code>不合法</code>则返回<code>false</code>。</li>
+<li>调用<code>getElem()</code>函数<code>查找第i个元素</code>，即<code>指定结点</code>，如果找不到则返回<code>false</code>。</li>
+<li>调用<code>insertPriorNode()</code>函数插入新结点。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>在指定结点之前插入新结点的时间复杂度为<code>O(1)</code>,但按位插入需要<code>遍历链表</code>，所以时间复杂度为<code>O(n)</code>，其中n为<code>链表的长度</code>。</li>
+<li>插入操作不需要额外的内存空间，所以空间复杂度为<code>O(1)</code>。</li>
+<li>前插操作理论上不能实现<code>在表尾插入新元素</code>，因为定位第i位元素时，会定位到<code>NULL</code>，从而无法找到<code>第i-1位元素</code>。但是稍微修改一下逻辑，即<code>当第i-1位元素存在但第i位元素不存在</code>时，即<code>第i位为表尾</code>，此时调用<code>insertNextNode()</code>函数即可插入到表尾。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief insertListByForward
+ *      常用的前插操作
+ * @param L
+ *      链表
+ * @param i
+ *      位置
+ * @param e
+ *      结点数据
+ * @return bool
+ *      true: 插入成功
+ *      false: 插入失败
+ */
+bool insertListByForward(LinkList L, int i, ElemType e)
+{
+    printf(&quot;[INFO] insertListByForward()函数被调用...\n&quot;);
+    printf(&quot;[INFO] 尝试在链表的第%d个位置前插入数据%d...\n&quot;, i, e);
+    // 合法性检查
+    if(NULL == L)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 链表不存在！\n&quot;);
+        return false;
+    }
+    if(i &lt; 1)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 位置i非法（小于1）！\n&quot;);
+        return false;
+    }
+
+    // 查找第i-1个元素
+    LNode *p = getElem(L, i - 1);
+    if(NULL == p)
+    {
+        printf(&quot;[ERROR] 插入结点失败！ErrorText: 位置i非法（大于链表长度+2）！\n&quot;);
+        return false;
+    }
+
+    // 如果第i-1个元素p存在但是p-&gt;next不存在，说明p是最后一个元素
+    // 则第i位为表尾，此时调用insertNextNode()函数即可插入到表尾
+    if(NULL == p-&gt;next)
+    {
+        return insertNextNode(p, e);
+    }
+    return insertPriorNode(p-&gt;next, e);
+}
+</code></pre>
+<h4 id='23314-删除结点操作'>2.3.3.14 删除结点操作</h4>
+<ul>
+<li><p>函数名称：<code>bool removeNode(LinkList L, int i, ElemType *e)</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>删除链表中的第i个结点</code>。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>链表是否存在</code>，如果<code>不存在</code>则返回<code>false</code>。</li>
+<li>再判断<code>位置i是否合法</code>，如果<code>不合法</code>则返回<code>false</code>。</li>
+<li>调用<code>getElem()</code>函数<code>查找第i-1个元素</code>，即<code>指定结点的前驱结点</code>，如果<code>找不到</code>则返回<code>false</code>。</li>
+<li>将<code>待删除结点的数据</code>保存到<code>*e</code>中，再将<code>其后继结点的地址</code>赋值给<code>前驱结点的next指针</code>。</li>
+<li><code>释放待删除结点的内存空间</code>，删除成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>删除结点时，需要<code>释放结点的内存空间</code>，否则会造成<code>内存泄漏</code>。</li>
+<li>删除指定结点的时间复杂度为<code>O(n)</code>，其中n为<code>链表的长度</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief removeNode
+ *      删除结点
+ * @param L
+ *      链表
+ * @param i
+ *      位置
+ * @param e
+ *      结点数据
+ * @return bool
+ *      true: 删除成功
+ *      false: 删除失败
+ */
+bool removeNode(LinkList L, int i, ElemType *e)
+{
+    printf(&quot;[INFO] removeNode()函数被调用...\n&quot;);
+    printf(&quot;[INFO] 尝试删除链表的第%d个结点...\n&quot;, i);
+    // 合法性检查
+    if(NULL == L || NULL == e)
+    {
+        printf(&quot;[ERROR] 删除结点失败！ErrorText: 链表不存在或e不存在！\n&quot;);
+        return false;
+    }
+    if(i &lt; 1)
+    {
+        printf(&quot;[ERROR] 删除结点失败！ErrorText: 位置i非法（小于1）！\n&quot;);
+        return false;
+    }
+    // 查找第i-1个元素
+    LNode *p = getElem(L, i - 1);
+    if(NULL == p || NULL == p-&gt;next)
+    {
+        printf(&quot;[ERROR] 删除结点失败！ErrorText: 位置i非法（大于链表长度）！\n&quot;);
+        return false;
+    }
+    // 删除结点
+    LNode *q = p-&gt;next;
+    *e = q-&gt;data;
+    p-&gt;next = q-&gt;next;
+    free(q);
+    printf(&quot;[INFO] 删除结点成功！\n&quot;);
+    return true;
+}
+</code></pre>
+<h4 id='23315-修改结点数据操作'>2.3.3.15 修改结点数据操作</h4>
+<ul>
+<li><p>函数名称：<code>bool setNode(LinkList L, int i, ElemType e)</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>修改链表中的第i个结点的数据</code>。</p>
+</li>
+<li><p>函数思路</p>
+<ol start='' >
+<li>首先进行<code>合法性检查</code>，判断<code>链表是否存在</code>，如果<code>不存在</code>则返回<code>false</code>。</li>
+<li>再判断<code>位置i是否合法</code>，如果<code>不合法</code>则返回<code>false</code>。</li>
+<li>调用<code>getElem()</code>函数<code>查找第i个元素</code>，如果<code>找不到</code>则返回<code>false</code>。</li>
+<li><code>修改结点数据</code>，修改成功返回true。</li>
+
+</ol>
+</li>
+<li><p>注意</p>
+<ol start='' >
+<li>修改结点数据的时间复杂度为<code>O(n)</code>，其中n为<code>链表的长度</code>，空间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-c' lang='c'>/**
+ * @brief setNode
+ *      修改结点数据
+ * @param L
+ *      链表
+ * @param i
+ *      位置
+ * @param e
+ *      结点数据
+ * @return bool
+ *      true: 修改成功
+ *      false: 修改失败
+ */
+bool setNode(LinkList L, int i, ElemType e)
+{
+    printf(&quot;[INFO] setNode()函数被调用...\n&quot;);
+    printf(&quot;[INFO] 尝试修改链表的第%d个结点的数据为%d...\n&quot;, i, e);
+    // 合法性检查
+    if(NULL == L)
+    {
+        printf(&quot;[ERROR] 修改结点失败！ErrorText: 链表不存在！\n&quot;);
+        return false;
+    }
+    if(i &lt; 1)
+    {
+        printf(&quot;[ERROR] 修改结点失败！ErrorText: 位置i非法（小于1）！\n&quot;);
+        return false;
+    }
+    // 查找第i个元素
+    LNode *p = getElem(L, i);
+    if(NULL == p)
+    {
+        printf(&quot;[ERROR] 修改结点失败！ErrorText: 位置i非法（大于链表长度）！\n&quot;);
+        return false;
+    }
+    // 修改结点数据
+    p-&gt;data = e;
+    printf(&quot;[INFO] 修改结点成功！\n&quot;);
+    return true;
+}
+</code></pre>
 <h3 id='234-不带头结点的单链表的实现以c++语言为例'>2.3.4 不带头结点的单链表的实现（以C++语言为例）</h3>
+<h4 id='2341-单链表结点类模板'>2.3.4.1 单链表结点类模板</h4>
+<pre><code class='language-cpp' lang='cpp'>/**
+ * @class LNode
+ * @brief 单链表结点类模板
+ * @tparam T 数据类型
+ * @code
+ * LNode&lt;int&gt; *node = new LNode&lt;int&gt;(10);
+ * LNode&lt;int&gt; *node = new LNode&lt;int&gt;();
+ * @endcode
+ */
+template &lt;class T&gt;
+class LNode
+{
+public:
+    LNode() : data(0), next(NULL) {};
+    LNode(T e) : data(e), next(NULL) {};
+    ~LNode() {};
+    T data;
+    LNode *next;
+};
+</code></pre>
+<p>这段代码定义了一个名为 <strong><code>LNode</code></strong> 的单链表节点类模板，用于表示单链表中的节点。模板参数 <strong><code>T</code></strong> 允许<code>存储任意类型的数据</code>。每个节点包含以下两个成员：</p>
+<ul>
+<li><strong><code>data</code></strong>：类型为 <strong><code>T</code></strong>，表示<code>存储在节点中的数据</code>。</li>
+<li><strong><code>next</code></strong>：<code>指向下一个节点的指针</code>，用于<code>连接单链表中的其他节点</code>。</li>
+
+</ul>
+<p>此外，该类提供了以下构造函数和析构函数：</p>
+<ol>
+<li><strong>默认构造函数</strong>：将数据初始化为 <strong><code>0</code></strong>，指针 <strong><code>next</code></strong> 初始化为 <strong><code>NULL</code></strong>。</li>
+<li><strong>带参构造函数</strong>：接受一个类型为 <strong><code>T</code></strong> 的参数 <strong><code>e</code></strong>，用于初始化数据成员 <strong><code>data</code></strong>，指针 <strong><code>next</code></strong> 仍初始化为 <strong><code>NULL</code></strong>。</li>
+<li><strong>析构函数</strong>：默认析构函数，用于<code>清理对象</code>。</li>
+
+</ol>
+<h4 id='2342-单链表类模板'>2.3.4.2 单链表类模板</h4>
+<pre><code class='language-cpp' lang='cpp'>/**
+ * @class LinkList
+ * @brief 单链表类模板
+ * @tparam T 数据类型
+ * @code
+ * LinkList&lt;int&gt; *list = new LinkList&lt;int&gt;();
+ * @endcode
+ */
+template &lt;class T&gt;
+class LinkList
+{
+public:
+    LinkList():m_head(nullptr), m_len(0) {};                // 构造函数，初始化头指针为空
+    ~LinkList() {destroyList();};                       // 析构函数，销毁链表
+   /*
+   ...相关操作函数
+   */
+private:
+    LNode&lt;T&gt; *m_head;     // 头指针
+    int m_len;            // 链表长度（可选）
+};
+
+</code></pre>
+<p><strong><code>LinkList</code></strong> 是一个<code>单链表的类模板</code>，用于<code>动态管理链表节点</code>。模板参数 <strong><code>T</code></strong> 指定链表中存储的<code>数据类型</code>。</p>
+<ul>
+<li><p>类的主要功能</p>
+<ul>
+<li><strong>构造函数</strong>：初始化链表，将头指针 <strong><code>m_head</code></strong> 置为<code>NULL</code>，长度 <strong><code>m_len</code></strong> 置为 <code>0</code>。</li>
+
+</ul>
+<ul>
+<li><strong>析构函数</strong>：销毁链表并释放内存，防止资源泄漏。</li>
+
+</ul>
+</li>
+
+</ul>
+<ul>
+<li><p>成员变量</p>
+<ul>
+<li><strong><code>m_head</code></strong>：指向链表头节点的指针。</li>
+
+</ul>
+<ul>
+<li><strong><code>m_len</code></strong>：记录链表中节点的数量。</li>
+
+</ul>
+</li>
+
+</ul>
+<p>该类设计简洁，适合动态存储和操作数据，后续可以根据需要扩展功能。</p>
+<h4 id='2343-初始化链表'>2.3.4.3 初始化链表</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool LinkList&lt;T&gt;::initList()</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>初始化一个不带头结点的单链表</code>。</p>
+</li>
+<li><p>函数步骤：</p>
+<ol>
+<li>判断<code>链表是否已经初始化(即头指针是否为空)</code>，若<code>已经初始化</code>，则返回<code>false</code>；</li>
+<li>因为是不带头结点的单链表，所以将头指针<code>直接置为空</code>即可；</li>
+<li>链表长度置为<code>0</code>，初始化成功返回<code>true</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol>
+<li>不带头结点的单链表初始化比较简单，只需<code>将头指针置为空</code>即可，其时间复杂度为<code>O(1)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/**
+ * @brief LinkList::initList 初始化链表
+ * @param 无
+ * @return bool
+ *      true: 初始化成功
+ *      false: 初始化失败
+ */
+template&lt;class T&gt;
+bool LinkList&lt;T&gt;::initList()
+{
+    cout &lt;&lt; &quot;【INFO】initList()函数被调用！&quot; &lt;&lt; endl;
+    if(NULL != m_head)
+    {
+        cout &lt;&lt; &quot;【ERROR】链表已经初始化！&quot; &lt;&lt; endl;
+        return false;
+    }
+    m_head = NULL;
+    m_len = 0;
+    cout &lt;&lt; &quot;【INFO】链表初始化成功！&quot; &lt;&lt; endl;
+    return true;
+}
+
+</code></pre>
+<h4 id='2344-销毁链表'>2.3.4.4 销毁链表</h4>
+<ul>
+<li><p>函数名称：<code>template&lt;class T&gt; bool LinkList&lt;T&gt;::destroyList()</code></p>
+</li>
+<li><p>函数功能：本函数用于<code>销毁一个不带头结点的单链表</code>。</p>
+</li>
+<li><p>函数步骤：</p>
+<ol>
+<li>创建<code>临时指针p指向头指针</code>、<code>临时指针q用于记录p的下一个结点</code>；</li>
+<li><code>遍历链表，释放每个结点</code>；</li>
+<li>将<code>头指针置为空</code>，<code>链表长度置为0</code>，销毁成功返回<code>true</code>。</li>
+
+</ol>
+</li>
+<li><p>注意：</p>
+<ol>
+<li>因为该单链表类有成员变量<code>len</code>记录<code>链表长度</code>，所以销毁链表时，也可以通过<code>len</code>来判断<code>链表是否为空</code>。</li>
+<li>不带头结点的单链表不需要判断<code>头指针是否为空</code>，因为<code>头指针为空</code>表示其指向的是一个<code>空表</code>。</li>
+<li>销毁操作的时间复杂度为<code>O(n)</code>。</li>
+
+</ol>
+</li>
+
+</ul>
+<pre><code class='language-cpp' lang='cpp'>/**
+ * @brief LinkList::destroyList 销毁链表
+ * @param 无
+ * @return bool
+ *      true: 销毁成功
+ *      false: 销毁失败
+ */
+template&lt;class T&gt; 
+bool LinkList&lt;T&gt;::destroyList()
+{
+    cout &lt;&lt; &quot;【INFO】destroyList()函数被调用！&quot; &lt;&lt; endl;
+    LNode&lt;T&gt; *p = m_head;     // 临时指针p指向头指针
+    LNode&lt;T&gt; *q = NULL;     // 临时指针q用于记录p的下一个结点
+    while (NULL != p)       // 遍历链表，释放每个结点
+    {
+        q = p-&gt;next;
+        delete p;
+        p = q;
+    }
+    m_head = NULL;            // 将头指针置为空
+    m_len = 0;                // 将链表长度置为0
+    cout &lt;&lt; &quot;【INFO】链表销毁成功！&quot; &lt;&lt; endl;
+    return true;
+}
+
+
+</code></pre>
+<p>&nbsp;</p>
 <h3 id='235-双链表的相关概念'>2.3.5 双链表的相关概念</h3>
 <h4 id='2351-双链表的基本概念'>2.3.5.1 双链表的基本概念</h4>
 <p><strong>单链表的局限</strong>：</p>
-<p>单链表只能从头节点到尾节点进行<code>单向遍历</code>，<code>不能反向遍历</code>。这导致在某些需要频繁访问前驱节点的操作中效率较低。此外，在单链表中插入或删除一个节点时，若需要访问前驱节点，也较为不便。</p>
+<p>单链表只能从头结点到尾结点进行<code>单向遍历</code>，<code>不能反向遍历</code>。这导致在某些需要频繁访问前驱结点的操作中效率较低。此外，在单链表中插入或删除一个结点时，若需要访问前驱结点，也较为不便。</p>
 <p><strong>双链表的定义</strong>：</p>
-<p>双链表是一种链表结构，其中每个节点包含三个部分：一个<code>存储数据的字段</code>，一个<code>指向前驱节点的指针</code>，以及一个<code>指向后继节点的指针</code>。通过这两个指针，可以实现<code>从任一节点向前和向后的双向遍历</code>。</p>
+<p>双链表是一种链表结构，其中每个结点包含三个部分：一个<code>存储数据的字段</code>，一个<code>指向前驱结点的指针</code>，以及一个<code>指向后继结点的指针</code>。通过这两个指针，可以实现<code>从任一结点向前和向后的双向遍历</code>。</p>
 <p><img src="./%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%AC%AC2%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8_2.3_%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E6%80%A7%E8%A1%A8%E7%A4%BA.assets/image-20240806000438537.png" referrerpolicy="no-referrer" alt="image-20240806000438537"></p>
 <p><img src="./%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E7%AC%AC2%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8_2.3_%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E6%80%A7%E8%A1%A8%E7%A4%BA.assets/image-20240806000448242.png" referrerpolicy="no-referrer" alt="image-20240806000448242"></p>
 <p><strong>双链表 V.S. 单链表</strong>：</p>
-<p>双链表与单链表的主要区别在于<code>双链表的节点包含两个指针</code>，一个<code>指向前一个节点</code>，一个指向后一个节点。这使得双链表可以进行<code>双向遍历</code>，更加灵活。在<code>插入</code>和<code>删除</code>操作中，双链表也更为方便，因为<code>可以直接访问前驱节点</code>。然而，双链表比单链表占用更多的内存，因为每个节点需要额外存储一个指针（存储密度更低）。</p>
+<p>双链表与单链表的主要区别在于<code>双链表的结点包含两个指针</code>，一个<code>指向前一个结点</code>，一个指向后一个结点。这使得双链表可以进行<code>双向遍历</code>，更加灵活。在<code>插入</code>和<code>删除</code>操作中，双链表也更为方便，因为<code>可以直接访问前驱结点</code>。然而，双链表比单链表占用更多的内存，因为每个结点需要额外存储一个指针（存储密度更低）。</p>
 <h4 id='2351-双链表结点的代码描述以c语言为例'>2.3.5.1 双链表结点的代码描述（以C语言为例）</h4>
-<p>在C语言中，双链表节点的结构体定义通常如下：</p>
-<pre><code class='language-c' lang='c'>// 定义双链表节点的结构体
+<p>在C语言中，双链表结点的结构体定义通常如下：</p>
+<pre><code class='language-c' lang='c'>// 定义双链表结点的结构体
 typedef struct DNode {
     ElemType data;           	// 存储数据的字段
-    struct DNode* prev; 		// 指向前一个节点的指针
-    struct DNode* next; 		// 指向后一个节点的指针
+    struct DNode* prev; 		// 指向前一个结点的指针
+    struct DNode* next; 		// 指向后一个结点的指针
 } DNode, *DLinkList;
 </code></pre>
 <p><strong>代码描述</strong>：</p>
 <ol start='' >
 <li><strong>定义结构体：</strong> 使用 <code>typedef struct</code> 关键字定义一个名为 <code>DNode</code> 的结构体。（D指Double）</li>
-<li><strong>数据字段：</strong> 在结构体中包含一个 <code>ElemType</code> 类型的字段 <code>data</code>，用于存储节点的数据。</li>
-<li><strong>前驱指针：</strong> 包含一个指向 <code>DNode</code> 结构体类型的指针 <code>prev</code>，用于指向前一个节点。</li>
-<li><strong>后继指针：</strong> 包含一个指向 <code>DNode</code> 结构体类型的指针 <code>next</code>，用于指向后一个节点。</li>
+<li><strong>数据字段：</strong> 在结构体中包含一个 <code>ElemType</code> 类型的字段 <code>data</code>，用于存储结点的数据。</li>
+<li><strong>前驱指针：</strong> 包含一个指向 <code>DNode</code> 结构体类型的指针 <code>prev</code>，用于指向前一个结点。</li>
+<li><strong>后继指针：</strong> 包含一个指向 <code>DNode</code> 结构体类型的指针 <code>next</code>，用于指向后一个结点。</li>
 <li><strong>类型定义：</strong> 使用 <code>typedef</code> 关键字，将 <code>struct DNode</code> 重命名为 <code>DNode</code>，并将 <code>struct DNode*</code> 重命名为 <code>DLinkList</code>，方便在代码中使用。</li>
 
 </ol>
 <p>通过这种定义方式，可以更简洁地使用 <code>DNode</code> 和 <code>DLinkList</code> 类型，而无需每次都写出完整的 <code>struct</code> 关键字。</p>
 <h3 id='236-带头结点的双链表的实现以c语言为例'>2.3.6 带头结点的双链表的实现（以C语言为例）</h3>
 <h3 id='237-不带头结点的双链表的实现以c++语言为例'>2.3.7 不带头结点的双链表的实现（以C++语言为例）</h3>
-<h3 id='238-循环双链表的相关概念'>2.3.8 循环双链表的相关概念</h3>
+<h3 id='238-循环链表的相关概念'>2.3.8 循环链表的相关概念</h3>
+<p><img src="./数据结构_第2章_线性表_2.3_线性表的链性表示.assets/循环单链表图示.png" referrerpolicy="no-referrer" alt="循环单链表图示"></p>
+<p><img src="./数据结构_第2章_线性表_2.3_线性表的链性表示.assets/循环双链表图示.png" referrerpolicy="no-referrer" alt="循环双链表图示"></p>
+<p>循环链表是一种链表结构，其中链表的最后一个结点指向头结点，形成一个环状结构。循环链表的相关概念可以大方向上分为<code>循环单链表</code>和<code>循环双链表</code>，它们的区别主要在于结点之间的链接方式。</p>
+<h4 id='2381-循环单链表'>2.3.8.1 循环单链表</h4>
+<ul>
+<li><p>定义</p>
+<ul>
+<li>循环单链表是一种链表结构，其中每个结点都包含一个数据域和指向下一个结点的指针。链表的最后一个结点的指针指向<code>链表的头结点</code>，形成一个闭环。也就是说，从<code>表中任意一个结点</code>出发，都可以<code>找到表中的其他任何结点</code>，从头结点找到尾结点的时间复杂度为<code>O(n)</code>，但从尾结点找到头结点的时间复杂度为<code>O(1)</code>。</li>
+
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li><code>单向链接</code>：每个结点只有一个指向下一个结点的指针。</li>
+<li><code>循环</code>：最后一个结点指向头结点，形成循环。</li>
+<li><code>没有尾结点指针</code>：没有单独的指向尾结点的指针，尾结点的指针指向头结点。</li>
+
+</ul>
+</li>
+<li><p>应用</p>
+<ul>
+<li><code>约瑟夫问题</code>：经典的环形结构问题，循环链表用于模拟这些情形。</li>
+<li><code>资源管理</code>：如处理任务队列，保证任务按顺序处理且循环进行。</li>
+
+</ul>
+</li>
+
+</ul>
+<h4 id='2382-循环双链表'>2.3.8.2 循环双链表</h4>
+<ul>
+<li><p>定义</p>
+<ul>
+<li>循环双链表是一种链表结构，每个结点包含数据域、指向下一个结点的指针和指向前一个结点的指针。链表的表尾结点的<code>后继指针</code>指向<code>头结点</code>，头结点的<code>前驱指针</code>指向<code>尾结点</code>，形成一个双向循环。</li>
+
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li><code>双向链接</code>：每个结点包含两个指针，一个指向下一个结点，一个指向前一个结点。</li>
+<li><code>循环</code>：头结点的前驱指针指向尾结点，尾结点的后继指针指向头结点。</li>
+<li><code>尾结点与头结点相连</code>：在循环链表中，头结点与尾结点有相互连接的指针。</li>
+
+</ul>
+</li>
+<li><p>应用</p>
+<ul>
+<li><code>双向队列</code>：双向链表的特性适合实现双向队列（Deque）。</li>
+<li><code>内存管理</code>：如操作系统中的进程调度和内存分配。</li>
+
+</ul>
+</li>
+
+</ul>
+<h4 id='2383-循环链表的优缺点'>2.3.8.3 循环链表的优缺点</h4>
+<ul>
+<li><p>优点</p>
+<ul>
+<li><code>不浪费空间</code>：链表是动态的，可以有效利用内存空间。</li>
+<li><code>环形特性</code>：适用于需要循环或重复访问数据的应用场景。</li>
+<li><code>灵活的插入和删除操作</code>：插入和删除操作无需移动其他元素，只需要修改指针即可。</li>
+
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li><code>复杂的指针管理</code>：需要小心管理指针，避免产生死循环。</li>
+<li><code>遍历较为麻烦</code>：相较于普通链表，循环链表的遍历需要特殊处理，避免陷入死循环。</li>
+
+</ul>
+</li>
+
+</ul>
+<p>总结来说，<code>循环单链表</code>和<code>循环双链表</code>都具有循环结构，区别在于结点是否具有双向指针，循环单链表适用于简单的循环场景，而循环双链表适合需要双向遍历的场景。</p>
+<h3 id='239-循环链表的代码实现'>2.3.9 循环链表的代码实现</h3>
+<h4 id='2391-循环单链表'>2.3.9.1 循环单链表</h4>
+<p><code>注</code>：本节讨论的代码，都是带头结点的循环单链表。</p>
+<p>增加头结点的优点如下： </p>
+<ol start='' >
+<li>循环单链表中<code>首结点的插入和删除操作</code>与其他结点一致，无需进行特殊处理。</li>
+<li>无论循环单链表是否为空都有<code>一个头结点</code>，因此统一了<code>空表和非空表</code>的处理过程。</li>
+
+</ol>
+<ul>
+<li>初始化</li>
+
+</ul>
+<p><img src="./数据结构_第2章_线性表_2.3_线性表的链性表示.assets/image-20241126074341132.png" referrerpolicy="no-referrer" alt="image-20241126074341132"></p>
+<p>可以通过传入一个初始值，创建一个包含一个头节点的循环单链表。此时，节点的 <code>next</code> 指针指向自己，形成一个环。</p>
+<pre><code class='language-c' lang='c'>// 初始化循环单链表，返回头结点
+Node* InitList() {
+    Node* head = (Node*)malloc(sizeof(Node));
+    if (!head) exit(1); // 分配失败
+    head-&gt;next = head;  // 自循环
+    return head;
+}
+</code></pre>
+<ul>
+<li>判空</li>
+
+</ul>
+<p>判断循环单链表是否为空，可以通过<code>检查表头结点的指针是否指向自己</code>来进行判断:</p>
+<pre><code class='language-c' lang='c'>int IsEmpty(Node* head) {
+    return head-&gt;next == head;
+}
+</code></pre>
+<ul>
+<li>判断指定结点p是否为表头或表尾</li>
+
+</ul>
+<p>表头判断：表头节点就是指向第一个节点的指针，直接比较节点 <code>p</code> 与 <code>head</code> 即可。</p>
+<p>表尾判断：表尾节点是指向头节点的节点，因此如果 <code>p-&gt;next == head</code> ，则说明该节点是表尾。</p>
+<pre><code class='language-c' lang='c'>int IsHead(Node* head, Node* p) {
+    return head == p;
+}
+
+int IsTail(Node* head, Node* p) {
+    return p-&gt;next == head;
+}
+</code></pre>
+<ul>
+<li>在表头插入节点</li>
+<li>在表中某节点之后插入节点</li>
+<li>在表尾插入节点</li>
+
+</ul>
+<h4 id='2392-循环双链表'>2.3.9.2 循环双链表</h4>
+<p><img src="./数据结构_第2章_线性表_2.3_线性表的链性表示.assets/image-20241126074440304.png" referrerpolicy="no-referrer" alt="image-20241126074440304"></p>
 <h1 id='第3章-栈队列和数组'>第3章 栈、队列和数组</h1>
 <h1 id='第4章-串'>第4章 串</h1>
 <h1 id='第5章-树和二叉树'>第5章 树和二叉树</h1>
